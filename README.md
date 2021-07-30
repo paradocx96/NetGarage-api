@@ -9,7 +9,9 @@
 | IT19180526 | S.A.N.L.D. Chandrasiri  | paradocx96            |
 | IT19240848 | H.G. Malwatta           | DeclanChirush         |  
 
-## Deployment
+## Deployment  
+
+**Database** - _MongoDB_
 <!--
 **Heroku** : _https://icaf-codewave-backend-api.herokuapp.com_
 -->

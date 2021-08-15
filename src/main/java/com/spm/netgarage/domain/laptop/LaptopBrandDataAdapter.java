@@ -1,5 +1,7 @@
 package com.spm.netgarage.domain.laptop;
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 public interface LaptopBrandDataAdapter {
@@ -8,7 +10,7 @@ public interface LaptopBrandDataAdapter {
 
     List<LaptopBrand> getAll();
 
-    void deleteById(String id);
+    ResponseEntity<?> deleteById(String id);
 
     LaptopBrand update(LaptopBrand laptopBrand);
 

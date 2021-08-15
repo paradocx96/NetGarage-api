@@ -6,6 +6,7 @@ import com.spm.netgarage.domain.laptop.LaptopProcessorDataAdapter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,8 +34,8 @@ public class LaptopProcessorAdapterMongoImpl implements LaptopProcessorDataAdapt
     }
 
     @Override
-    public void deleteById(String id) {
-
+    public ResponseEntity<?> deleteById(String id) {
+        return null;
     }
 
     @Override

@@ -30,6 +30,7 @@ public class LaptopEndpoint {
     }
 
     @GetMapping("/get")
+    @ResponseStatus(HttpStatus.OK)
     public List<Laptop> getAllLaptop() {
         return null;
     }

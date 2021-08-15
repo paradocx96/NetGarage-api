@@ -1,8 +1,8 @@
 package com.spm.netgarage.controller.laptop;
 
-import com.spm.netgarage.api.laptop.LaptopBrandApi;
-import com.spm.netgarage.domain.laptop.LaptopBrand;
-import com.spm.netgarage.dto.laptop.LaptopBrandDto;
+import com.spm.netgarage.api.laptop.LaptopGraphicApi;
+import com.spm.netgarage.domain.laptop.LaptopGraphic;
+import com.spm.netgarage.dto.laptop.LaptopGraphicDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,44 +12,44 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/laptop-brand")
+@RequestMapping("/laptop-graphic")
 @CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "*")
-public class LaptopBrandEndpoint {
+public class LaptopGraphicEndpoint {
 
-    private final LaptopBrandApi laptopBrandApi;
+    private final LaptopGraphicApi laptopGraphicApi;
 
     @Autowired
-    public LaptopBrandEndpoint(LaptopBrandApi laptopBrandApi) {
-        this.laptopBrandApi = laptopBrandApi;
+    public LaptopGraphicEndpoint(LaptopGraphicApi laptopGraphicApi) {
+        this.laptopGraphicApi = laptopGraphicApi;
     }
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public LaptopBrand addLaptopBrand(@RequestBody LaptopBrandDto laptopBrandDto) {
+    public LaptopGraphic addLaptopGraphic(@RequestBody LaptopGraphicDto laptopGraphicDto) {
         return null;
     }
 
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
-    public List<LaptopBrand> getAllLaptopBrand() {
+    public List<LaptopGraphic> getAllLaptopGraphic() {
         return null;
     }
 
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<LaptopBrand> getLaptopBrandById(@PathVariable String id) {
+    public List<LaptopGraphic> getLaptopGraphicById(@PathVariable String id) {
         return null;
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> deleteLaptopBrandById(@PathVariable String id) {
+    public ResponseEntity<?> deleteLaptopGraphicById(@PathVariable String id) {
         return null;
     }
 
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public LaptopBrand updateLaptopBrand(@RequestBody LaptopBrandDto laptopBrandDto, @PathVariable String id) {
+    public LaptopGraphic updateLaptopGraphic(@RequestBody LaptopGraphicDto laptopGraphicDto, @PathVariable String id) {
         return null;
     }
 }

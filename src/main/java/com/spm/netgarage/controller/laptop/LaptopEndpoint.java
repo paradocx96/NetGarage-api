@@ -63,4 +63,5 @@ public class LaptopEndpoint {
     public List<Laptop> getLaptopByStatus(@PathVariable String status) {
         return null;
     }
+
 }

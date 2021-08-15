@@ -1,0 +1,55 @@
+package com.spm.netgarage.controller.laptop;
+
+import com.spm.netgarage.api.laptop.LaptopOSApi;
+import com.spm.netgarage.domain.laptop.LaptopOS;
+import com.spm.netgarage.dto.laptop.LaptopOSDto;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/laptop-os")
+@CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "*")
+public class LaptopOSEndpoint {
+
+    private final LaptopOSApi laptopOSApi;
+
+    @Autowired
+    public LaptopOSEndpoint(LaptopOSApi laptopOSApi) {
+        this.laptopOSApi = laptopOSApi;
+    }
+
+    @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    public LaptopOS addLaptopOS(@RequestBody LaptopOSDto laptopOSDto) {
+        return null;
+    }
+
+    @GetMapping("/get")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LaptopOS> getAllLaptopOS() {
+        return null;
+    }
+
+    @GetMapping("/get-by-id/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LaptopOS> getLaptopOSById(@PathVariable String id) {
+        return null;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> deleteLaptopOSById(@PathVariable String id) {
+        return null;
+    }
+
+    @PutMapping("/update/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public LaptopOS updateLaptopOS(@RequestBody LaptopOSDto laptopOSDto, @PathVariable String id) {
+        return null;
+    }
+}

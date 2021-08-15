@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 public class LaptopDto {
 
     private String user;
-    private LocalDateTime datetime;
     private String status;
     private String name;
     private int year;
@@ -47,14 +46,6 @@ public class LaptopDto {
 
     public void setUser(String user) {
         this.user = user;
-    }
-
-    public LocalDateTime getDatetime() {
-        return datetime;
-    }
-
-    public void setDatetime(LocalDateTime datetime) {
-        this.datetime = datetime;
     }
 
     public String getStatus() {

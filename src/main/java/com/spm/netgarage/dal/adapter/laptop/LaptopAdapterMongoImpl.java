@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -36,35 +37,35 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
         laptopModel.setYear(laptop.getYear());
         laptopModel.setBrand(laptop.getBrand());
         laptopModel.setOs(laptop.getOs());
-        laptopModel.setModel(laptopModel.getModel());
-        laptopModel.setProcessorname(laptopModel.getProcessorname());
-        laptopModel.setProcessordetails(laptopModel.getProcessordetails());
-        laptopModel.setProcessorgeneration(laptopModel.getProcessorgeneration());
-        laptopModel.setChipset(laptopModel.getChipset());
-        laptopModel.setRamtype(laptopModel.getRamtype());
-        laptopModel.setRamcapacity(laptopModel.getRamcapacity());
-        laptopModel.setRamslotstype(laptopModel.getRamslotstype());
-        laptopModel.setRamslotscount(laptopModel.getRamslotscount());
-        laptopModel.setStoragefirst(laptopModel.getStoragefirst());
-        laptopModel.setStoragefirstcapacity(laptopModel.getStoragefirstcapacity());
-        laptopModel.setStoragesecond(laptopModel.getStoragesecond());
-        laptopModel.setStoragesecondcapacity(laptopModel.getStoragesecondcapacity());
-        laptopModel.setDisplaysizeresolution(laptopModel.getDisplaysizeresolution());
-        laptopModel.setDisplayrefreshrate(laptopModel.getDisplayrefreshrate());
-        laptopModel.setDisplaytype(laptopModel.getDisplaytype());
-        laptopModel.setGraphicbrand(laptopModel.getGraphicbrand());
-        laptopModel.setGraphicmodel(laptopModel.getGraphicmodel());
-        laptopModel.setGraphiccapacity(laptopModel.getGraphiccapacity());
-        laptopModel.setGraphicdetails(laptopModel.getGraphicdetails());
-        laptopModel.setWebcam(laptopModel.getWebcam());
-        laptopModel.setKeyboard(laptopModel.getKeyboard());
-        laptopModel.setCommunication(laptopModel.getCommunication());
-        laptopModel.setAudio(laptopModel.getAudio());
-        laptopModel.setIoports(laptopModel.getIoports());
-        laptopModel.setBattery(laptopModel.getBattery());
-        laptopModel.setDimension(laptopModel.getDimension());
-        laptopModel.setWeight(laptopModel.getWeight());
-        laptopModel.setColor(laptopModel.getColor());
+        laptopModel.setModel(laptop.getModel());
+        laptopModel.setProcessorname(laptop.getProcessorname());
+        laptopModel.setProcessordetails(laptop.getProcessordetails());
+        laptopModel.setProcessorgeneration(laptop.getProcessorgeneration());
+        laptopModel.setChipset(laptop.getChipset());
+        laptopModel.setRamtype(laptop.getRamtype());
+        laptopModel.setRamcapacity(laptop.getRamcapacity());
+        laptopModel.setRamslotstype(laptop.getRamslotstype());
+        laptopModel.setRamslotscount(laptop.getRamslotscount());
+        laptopModel.setStoragefirst(laptop.getStoragefirst());
+        laptopModel.setStoragefirstcapacity(laptop.getStoragefirstcapacity());
+        laptopModel.setStoragesecond(laptop.getStoragesecond());
+        laptopModel.setStoragesecondcapacity(laptop.getStoragesecondcapacity());
+        laptopModel.setDisplaysizeresolution(laptop.getDisplaysizeresolution());
+        laptopModel.setDisplayrefreshrate(laptop.getDisplayrefreshrate());
+        laptopModel.setDisplaytype(laptop.getDisplaytype());
+        laptopModel.setGraphicbrand(laptop.getGraphicbrand());
+        laptopModel.setGraphicmodel(laptop.getGraphicmodel());
+        laptopModel.setGraphiccapacity(laptop.getGraphiccapacity());
+        laptopModel.setGraphicdetails(laptop.getGraphicdetails());
+        laptopModel.setWebcam(laptop.getWebcam());
+        laptopModel.setKeyboard(laptop.getKeyboard());
+        laptopModel.setCommunication(laptop.getCommunication());
+        laptopModel.setAudio(laptop.getAudio());
+        laptopModel.setIoports(laptop.getIoports());
+        laptopModel.setBattery(laptop.getBattery());
+        laptopModel.setDimension(laptop.getDimension());
+        laptopModel.setWeight(laptop.getWeight());
+        laptopModel.setColor(laptop.getColor());
 
         // Saving model data in database
         laptopModel = repository.save(laptopModel);
@@ -77,7 +78,53 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
 
     @Override
     public List<Laptop> getAll() {
-        return null;
+        List<LaptopModel> laptopModels = repository.findAll();
+        List<Laptop> laptops = new ArrayList<>();
+
+        for (LaptopModel laptopModel : laptopModels) {
+            Laptop laptop = new Laptop();
+
+            laptop.setId(laptopModel.getId());
+            laptop.setUser(laptopModel.getUser());
+            laptop.setDatetime(laptopModel.getDatetime());
+            laptop.setStatus(laptopModel.getStatus());
+            laptop.setName(laptopModel.getName());
+            laptop.setYear(laptopModel.getYear());
+            laptop.setBrand(laptopModel.getBrand());
+            laptop.setOs(laptopModel.getOs());
+            laptop.setModel(laptopModel.getModel());
+            laptop.setProcessorname(laptopModel.getProcessorname());
+            laptop.setProcessordetails(laptopModel.getProcessordetails());
+            laptop.setProcessorgeneration(laptopModel.getProcessorgeneration());
+            laptop.setChipset(laptopModel.getChipset());
+            laptop.setRamtype(laptopModel.getRamtype());
+            laptop.setRamcapacity(laptopModel.getRamcapacity());
+            laptop.setRamslotstype(laptopModel.getRamslotstype());
+            laptop.setRamslotscount(laptopModel.getRamslotscount());
+            laptop.setStoragefirst(laptopModel.getStoragefirst());
+            laptop.setStoragefirstcapacity(laptopModel.getStoragefirstcapacity());
+            laptop.setStoragesecond(laptopModel.getStoragesecond());
+            laptop.setStoragesecondcapacity(laptopModel.getStoragesecondcapacity());
+            laptop.setDisplaysizeresolution(laptopModel.getDisplaysizeresolution());
+            laptop.setDisplayrefreshrate(laptopModel.getDisplayrefreshrate());
+            laptop.setDisplaytype(laptopModel.getDisplaytype());
+            laptop.setGraphicbrand(laptopModel.getGraphicbrand());
+            laptop.setGraphicmodel(laptopModel.getGraphicmodel());
+            laptop.setGraphiccapacity(laptopModel.getGraphiccapacity());
+            laptop.setGraphicdetails(laptopModel.getGraphicdetails());
+            laptop.setWebcam(laptopModel.getWebcam());
+            laptop.setKeyboard(laptopModel.getKeyboard());
+            laptop.setCommunication(laptopModel.getCommunication());
+            laptop.setAudio(laptopModel.getAudio());
+            laptop.setIoports(laptopModel.getIoports());
+            laptop.setBattery(laptopModel.getBattery());
+            laptop.setDimension(laptopModel.getDimension());
+            laptop.setWeight(laptopModel.getWeight());
+            laptop.setColor(laptopModel.getColor());
+
+            laptops.add(laptop);
+        }
+        return laptops;
     }
 
     @Override

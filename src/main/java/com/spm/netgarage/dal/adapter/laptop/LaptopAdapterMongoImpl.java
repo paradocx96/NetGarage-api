@@ -4,10 +4,13 @@ import com.spm.netgarage.dal.model.laptop.LaptopModel;
 import com.spm.netgarage.dal.repository.laptop.LaptopRepository;
 import com.spm.netgarage.domain.laptop.Laptop;
 import com.spm.netgarage.domain.laptop.LaptopDataAdapter;
-
 import com.spm.netgarage.dto.MessageResponseDto;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -149,7 +152,49 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
 
     @Override
     public Laptop update(Laptop laptop) {
-        return null;
+        LaptopModel laptopModel = mongoTemplate.findAndModify(
+                Query.query(Criteria.where("id").is(laptop.getId())),
+                new Update()
+                        .set("user", laptop.getUser())
+                        .set("status", laptop.getStatus())
+                        .set("name", laptop.getName())
+                        .set("year", laptop.getYear())
+                        .set("brand", laptop.getBrand())
+                        .set("os", laptop.getOs())
+                        .set("model", laptop.getModel())
+                        .set("processorname", laptop.getProcessorname())
+                        .set("processordetails", laptop.getProcessordetails())
+                        .set("processorgeneration", laptop.getProcessorgeneration())
+                        .set("chipset", laptop.getChipset())
+                        .set("ramtype", laptop.getRamtype())
+                        .set("ramcapacity", laptop.getRamcapacity())
+                        .set("ramslotstype", laptop.getRamslotstype())
+                        .set("ramslotscount", laptop.getRamslotscount())
+                        .set("storagefirst", laptop.getStoragefirst())
+                        .set("storagefirstcapacity", laptop.getStoragefirstcapacity())
+                        .set("storagesecond", laptop.getStoragesecond())
+                        .set("storagesecondcapacity", laptop.getStoragesecondcapacity())
+                        .set("displaysizeresolution", laptop.getDisplaysizeresolution())
+                        .set("displayrefreshrate", laptop.getDisplayrefreshrate())
+                        .set("displaytype", laptop.getDisplaytype())
+                        .set("graphicbrand", laptop.getGraphicbrand())
+                        .set("graphicmodel", laptop.getGraphicmodel())
+                        .set("graphiccapacity", laptop.getGraphiccapacity())
+                        .set("graphicdetails", laptop.getGraphicdetails())
+                        .set("webcam", laptop.getWebcam())
+                        .set("keyboard", laptop.getKeyboard())
+                        .set("communication", laptop.getCommunication())
+                        .set("audio", laptop.getAudio())
+                        .set("ioports", laptop.getIoports())
+                        .set("battery", laptop.getBattery())
+                        .set("dimension", laptop.getDimension())
+                        .set("weight", laptop.getWeight())
+                        .set("color", laptop.getColor()),
+                LaptopModel.class
+        );
+        laptop.setDatetime(laptopModel.getDatetime());
+
+        return laptop;
     }
 
     @Override

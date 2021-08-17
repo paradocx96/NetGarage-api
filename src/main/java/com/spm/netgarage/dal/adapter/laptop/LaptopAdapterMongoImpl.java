@@ -5,6 +5,7 @@ import com.spm.netgarage.dal.repository.laptop.LaptopRepository;
 import com.spm.netgarage.domain.laptop.Laptop;
 import com.spm.netgarage.domain.laptop.LaptopDataAdapter;
 
+import com.spm.netgarage.dto.MessageResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.ResponseEntity;
@@ -129,7 +130,21 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
 
     @Override
     public ResponseEntity<?> deleteById(String id) {
-        return null;
+        LaptopModel laptopModel = null;
+
+        laptopModel = repository.findById(id).get();
+
+        // Check Available or Not. Then Proceed Operation
+        if (laptopModel == null) {
+            return ResponseEntity.ok(new MessageResponseDto("Doesn't Exist!"));
+        } else {
+            try {
+                repository.deleteById(id);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+            return ResponseEntity.ok(new MessageResponseDto("Deleted successfully!"));
+        }
     }
 
     @Override

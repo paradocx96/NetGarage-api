@@ -49,7 +49,7 @@ public class LaptopOSEndpoint {
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopOSById(@PathVariable String id) {
-        return null;
+        return laptopOSApi.deleteLaptopOSById(id);
     }
 
     @PutMapping("/update/{id}")

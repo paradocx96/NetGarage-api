@@ -37,7 +37,7 @@ public class LaptopOSEndpoint {
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopOS> getAllLaptopOS() {
-        return null;
+        return laptopOSApi.getAllLaptopOS();
     }
 
     @GetMapping("/get-by-id/{id}")

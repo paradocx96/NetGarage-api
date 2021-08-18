@@ -1,5 +1,6 @@
 package com.spm.netgarage.dal.adapter.laptop;
 
+import com.spm.netgarage.dal.model.laptop.LaptopBrandModel;
 import com.spm.netgarage.dal.repository.laptop.LaptopBrandRepository;
 import com.spm.netgarage.domain.laptop.LaptopBrand;
 import com.spm.netgarage.domain.laptop.LaptopBrandDataAdapter;
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -25,7 +27,16 @@ public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
 
     @Override
     public LaptopBrand save(LaptopBrand laptopBrand) {
-        return null;
+        LaptopBrandModel laptopBrandModel = new LaptopBrandModel();
+
+        laptopBrandModel.setName(laptopBrand.getName());
+        laptopBrandModel.setUser(laptopBrand.getUser());
+        laptopBrandModel.setDatetime(LocalDateTime.now());
+
+        laptopBrandModel = repository.save(laptopBrandModel);
+        laptopBrand.setId(laptopBrandModel.getId());
+
+        return laptopBrand;
     }
 
     @Override

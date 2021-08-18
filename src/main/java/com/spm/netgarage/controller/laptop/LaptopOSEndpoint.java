@@ -26,7 +26,12 @@ public class LaptopOSEndpoint {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public LaptopOS addLaptopOS(@RequestBody LaptopOSDto laptopOSDto) {
-        return null;
+        LaptopOS laptopOS = new LaptopOS();
+
+        laptopOS.setName(laptopOSDto.getName());
+        laptopOS.setUser(laptopOSDto.getUser());
+
+        return laptopOSApi.saveLaptopOS(laptopOS);
     }
 
     @GetMapping("/get")

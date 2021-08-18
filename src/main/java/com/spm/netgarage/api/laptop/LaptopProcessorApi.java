@@ -20,22 +20,22 @@ public class LaptopProcessorApi {
     }
 
     public LaptopProcessor saveLaptopProcessor(LaptopProcessor laptopProcessor) {
-        return null;
+        return laptopProcessorDataAdapter.save(laptopProcessor);
     }
 
     public List<LaptopProcessor> getAllLaptopProcessor() {
-        return null;
+        return laptopProcessorDataAdapter.getAll();
     }
 
     public List<LaptopProcessor> getLaptopProcessorById(String id) {
-        return null;
+        return laptopProcessorDataAdapter.getById(id);
     }
 
     public LaptopProcessor updateLaptopProcessor(LaptopProcessor laptopProcessor) {
-        return null;
+        return laptopProcessorDataAdapter.update(laptopProcessor);
     }
 
     public ResponseEntity<?> deleteLaptopProcessorById(String id) {
-        return null;
+        return laptopProcessorDataAdapter.deleteById(id);
     }
 }

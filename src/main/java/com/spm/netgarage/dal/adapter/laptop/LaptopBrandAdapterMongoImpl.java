@@ -4,8 +4,8 @@ import com.spm.netgarage.dal.model.laptop.LaptopBrandModel;
 import com.spm.netgarage.dal.repository.laptop.LaptopBrandRepository;
 import com.spm.netgarage.domain.laptop.LaptopBrand;
 import com.spm.netgarage.domain.laptop.LaptopBrandDataAdapter;
-
 import com.spm.netgarage.dto.MessageResponseDto;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -95,6 +95,18 @@ public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
 
     @Override
     public List<LaptopBrand> getById(String id) {
-        return null;
+        LaptopBrandModel laptopBrandModel = new LaptopBrandModel();
+        laptopBrandModel = repository.findById(id).get();
+        List<LaptopBrand> laptopBrandList = new ArrayList<>();
+        LaptopBrand laptopBrand = new LaptopBrand();
+
+        laptopBrand.setId(laptopBrandModel.getId());
+        laptopBrand.setName(laptopBrandModel.getName());
+        laptopBrand.setUser(laptopBrandModel.getUser());
+        laptopBrand.setDatetime(laptopBrandModel.getDatetime());
+
+        laptopBrandList.add(laptopBrand);
+
+        return laptopBrandList;
     }
 }

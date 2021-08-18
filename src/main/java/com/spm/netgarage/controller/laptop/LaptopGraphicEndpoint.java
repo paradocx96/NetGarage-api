@@ -49,7 +49,7 @@ public class LaptopGraphicEndpoint {
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopGraphicById(@PathVariable String id) {
-        return null;
+        return laptopGraphicApi.deleteLaptopGraphicById(id);
     }
 
     @PutMapping("/update/{id}")

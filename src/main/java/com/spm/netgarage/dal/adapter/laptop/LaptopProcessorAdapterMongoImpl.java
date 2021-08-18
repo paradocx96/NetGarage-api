@@ -8,6 +8,9 @@ import com.spm.netgarage.dto.MessageResponseDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -76,7 +79,16 @@ public class LaptopProcessorAdapterMongoImpl implements LaptopProcessorDataAdapt
 
     @Override
     public LaptopProcessor update(LaptopProcessor laptopProcessor) {
-        return null;
+        LaptopProcessorModel laptopProcessorModel = mongoTemplate.findAndModify(
+                Query.query(Criteria.where("id").is(laptopProcessor.getId())),
+                new Update()
+                        .set("name", laptopProcessor.getName())
+                        .set("user", laptopProcessor.getUser()),
+                LaptopProcessorModel.class
+        );
+        laptopProcessor.setDatetime(laptopProcessorModel.getDatetime());
+
+        return laptopProcessor;
     }
 
     @Override

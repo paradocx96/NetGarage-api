@@ -26,7 +26,12 @@ public class LaptopBrandEndpoint {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public LaptopBrand addLaptopBrand(@RequestBody LaptopBrandDto laptopBrandDto) {
-        return null;
+        LaptopBrand laptopBrand = new LaptopBrand();
+
+        laptopBrand.setName(laptopBrandDto.getName());
+        laptopBrand.setUser(laptopBrandDto.getUser());
+
+        return laptopBrandApi.saveLaptopBrand(laptopBrand);
     }
 
     @GetMapping("/get")

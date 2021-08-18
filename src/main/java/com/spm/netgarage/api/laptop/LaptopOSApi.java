@@ -20,22 +20,22 @@ public class LaptopOSApi {
     }
 
     public LaptopOS saveLaptopOS(LaptopOS laptopOS) {
-        return null;
+        return laptopOSDataAdapter.save(laptopOS);
     }
 
     public List<LaptopOS> getAllLaptopOS() {
-        return null;
+        return laptopOSDataAdapter.getAll();
     }
 
     public List<LaptopOS> getLaptopOSById(String id) {
-        return null;
+        return laptopOSDataAdapter.getById(id);
     }
 
     public LaptopOS updateLaptopOS(LaptopOS laptopOS) {
-        return null;
+        return laptopOSDataAdapter.update(laptopOS);
     }
 
     public ResponseEntity<?> deleteLaptopOSById(String id) {
-        return null;
+        return laptopOSDataAdapter.deleteById(id);
     }
 }

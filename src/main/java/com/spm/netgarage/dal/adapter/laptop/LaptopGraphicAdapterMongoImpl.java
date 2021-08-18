@@ -4,6 +4,7 @@ import com.spm.netgarage.dal.model.laptop.LaptopGraphicModel;
 import com.spm.netgarage.dal.repository.laptop.LaptopGraphicRepository;
 import com.spm.netgarage.domain.laptop.LaptopGraphic;
 import com.spm.netgarage.domain.laptop.LaptopGraphicDataAdapter;
+import com.spm.netgarage.dto.MessageResponseDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -60,7 +61,19 @@ public class LaptopGraphicAdapterMongoImpl implements LaptopGraphicDataAdapter {
 
     @Override
     public ResponseEntity<?> deleteById(String id) {
-        return null;
+        LaptopGraphicModel laptopGraphicModel = null;
+        laptopGraphicModel = repository.findById(id).get();
+
+        if (laptopGraphicModel != null) {
+            try {
+                repository.deleteById(id);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+            return ResponseEntity.ok(new MessageResponseDto("Deleted successfully!"));
+        } else {
+            return ResponseEntity.ok(new MessageResponseDto("Doesn't Exist!"));
+        }
     }
 
     @Override

@@ -133,7 +133,12 @@ public class LaptopEndpoint {
     @PutMapping("/update-status/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Laptop updateLaptopStatus(@RequestBody LaptopDto laptopDto, @PathVariable String id) {
-        return null;
+        Laptop laptop = new Laptop();
+
+        laptop.setId(id);
+        laptop.setStatus(laptopDto.getStatus());
+
+        return laptopApi.updateLaptopStatus(laptop);
     }
 
     @GetMapping("/get-by-status/{status}")

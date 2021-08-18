@@ -55,6 +55,12 @@ public class LaptopBrandEndpoint {
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LaptopBrand updateLaptopBrand(@RequestBody LaptopBrandDto laptopBrandDto, @PathVariable String id) {
-        return null;
+        LaptopBrand laptopBrand = new LaptopBrand();
+
+        laptopBrand.setId(id);
+        laptopBrand.setName(laptopBrandDto.getName());
+        laptopBrand.setUser(laptopBrandDto.getUser());
+
+        return laptopBrandApi.updateLaptopBrand(laptopBrand);
     }
 }

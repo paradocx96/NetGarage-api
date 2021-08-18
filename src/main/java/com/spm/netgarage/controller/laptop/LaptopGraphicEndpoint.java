@@ -55,6 +55,12 @@ public class LaptopGraphicEndpoint {
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LaptopGraphic updateLaptopGraphic(@RequestBody LaptopGraphicDto laptopGraphicDto, @PathVariable String id) {
-        return null;
+        LaptopGraphic laptopGraphic = new LaptopGraphic();
+
+        laptopGraphic.setId(id);
+        laptopGraphic.setName(laptopGraphicDto.getName());
+        laptopGraphic.setUser(laptopGraphicDto.getUser());
+
+        return laptopGraphicApi.updateLaptopGraphic(laptopGraphic);
     }
 }

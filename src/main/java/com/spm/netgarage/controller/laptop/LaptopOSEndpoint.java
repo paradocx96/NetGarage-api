@@ -55,6 +55,12 @@ public class LaptopOSEndpoint {
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LaptopOS updateLaptopOS(@RequestBody LaptopOSDto laptopOSDto, @PathVariable String id) {
-        return null;
+        LaptopOS laptopOS = new LaptopOS();
+
+        laptopOS.setId(id);
+        laptopOS.setName(laptopOSDto.getName());
+        laptopOS.setUser(laptopOSDto.getUser());
+
+        return laptopOSApi.updateLaptopOS(laptopOS);
     }
 }

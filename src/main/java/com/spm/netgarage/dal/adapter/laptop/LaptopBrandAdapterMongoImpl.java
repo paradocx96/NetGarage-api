@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -41,7 +42,20 @@ public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
 
     @Override
     public List<LaptopBrand> getAll() {
-        return null;
+        List<LaptopBrandModel> laptopBrandModels = repository.findAll();
+        List<LaptopBrand> laptopBrands = new ArrayList<>();
+
+        for (LaptopBrandModel laptopBrandModel : laptopBrandModels) {
+            LaptopBrand laptopBrand = new LaptopBrand();
+
+            laptopBrand.setId(laptopBrandModel.getId());
+            laptopBrand.setName(laptopBrandModel.getName());
+            laptopBrand.setUser(laptopBrandModel.getUser());
+            laptopBrand.setDatetime(laptopBrandModel.getDatetime());
+
+            laptopBrands.add(laptopBrand);
+        }
+        return laptopBrands;
     }
 
     @Override

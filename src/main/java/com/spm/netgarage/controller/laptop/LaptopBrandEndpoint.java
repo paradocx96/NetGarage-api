@@ -43,7 +43,7 @@ public class LaptopBrandEndpoint {
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopBrand> getLaptopBrandById(@PathVariable String id) {
-        return null;
+        return laptopBrandApi.getLaptopBrandById(id);
     }
 
     @DeleteMapping("/delete/{id}")

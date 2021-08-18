@@ -26,7 +26,12 @@ public class LaptopProcessorEndpoint {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public LaptopProcessor addLaptopProcessor(@RequestBody LaptopProcessorDto laptopProcessorDto) {
-        return null;
+        LaptopProcessor laptopProcessor = new LaptopProcessor();
+
+        laptopProcessor.setName(laptopProcessorDto.getName());
+        laptopProcessor.setUser(laptopProcessorDto.getUser());
+
+        return laptopProcessorApi.saveLaptopProcessor(laptopProcessor);
     }
 
     @GetMapping("/get")

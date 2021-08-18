@@ -55,6 +55,12 @@ public class LaptopProcessorEndpoint {
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LaptopProcessor updateLaptopProcessor(@RequestBody LaptopProcessorDto laptopProcessorDto, @PathVariable String id) {
-        return null;
+        LaptopProcessor laptopProcessor = new LaptopProcessor();
+
+        laptopProcessor.setId(id);
+        laptopProcessor.setName(laptopProcessorDto.getName());
+        laptopProcessor.setUser(laptopProcessorDto.getUser());
+
+        return laptopProcessorApi.updateLaptopProcessor(laptopProcessor);
     }
 }

@@ -26,7 +26,12 @@ public class LaptopGraphicEndpoint {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public LaptopGraphic addLaptopGraphic(@RequestBody LaptopGraphicDto laptopGraphicDto) {
-        return null;
+        LaptopGraphic laptopGraphic = new LaptopGraphic();
+
+        laptopGraphic.setName(laptopGraphicDto.getName());
+        laptopGraphic.setUser(laptopGraphicDto.getUser());
+
+        return laptopGraphicApi.saveLaptopGraphic(laptopGraphic);
     }
 
     @GetMapping("/get")

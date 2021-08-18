@@ -49,7 +49,7 @@ public class LaptopBrandEndpoint {
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopBrandById(@PathVariable String id) {
-        return null;
+        return laptopBrandApi.deleteLaptopBrandById(id);
     }
 
     @PutMapping("/update/{id}")

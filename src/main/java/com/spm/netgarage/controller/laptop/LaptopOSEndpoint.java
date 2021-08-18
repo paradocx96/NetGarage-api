@@ -43,7 +43,7 @@ public class LaptopOSEndpoint {
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopOS> getLaptopOSById(@PathVariable String id) {
-        return null;
+        return laptopOSApi.getLaptopOSById(id);
     }
 
     @DeleteMapping("/delete/{id}")

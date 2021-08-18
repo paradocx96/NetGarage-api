@@ -37,7 +37,7 @@ public class LaptopProcessorEndpoint {
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopProcessor> getAllLaptopProcessor() {
-        return null;
+        return laptopProcessorApi.getAllLaptopProcessor();
     }
 
     @GetMapping("/get-by-id/{id}")

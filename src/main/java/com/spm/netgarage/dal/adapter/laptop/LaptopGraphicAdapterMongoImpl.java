@@ -1,5 +1,7 @@
 package com.spm.netgarage.dal.adapter.laptop;
 
+import com.spm.netgarage.dal.model.laptop.LaptopBrandModel;
+import com.spm.netgarage.dal.model.laptop.LaptopGraphicModel;
 import com.spm.netgarage.dal.repository.laptop.LaptopGraphicRepository;
 import com.spm.netgarage.domain.laptop.LaptopGraphic;
 import com.spm.netgarage.domain.laptop.LaptopGraphicDataAdapter;
@@ -9,6 +11,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -25,7 +28,16 @@ public class LaptopGraphicAdapterMongoImpl implements LaptopGraphicDataAdapter {
 
     @Override
     public LaptopGraphic save(LaptopGraphic laptopGraphic) {
-        return null;
+        LaptopGraphicModel laptopGraphicModel = new LaptopGraphicModel();
+
+        laptopGraphicModel.setName(laptopGraphic.getName());
+        laptopGraphicModel.setUser(laptopGraphic.getUser());
+        laptopGraphicModel.setDatetime(LocalDateTime.now());
+
+        laptopGraphicModel = repository.save(laptopGraphicModel);
+        laptopGraphic.setId(laptopGraphicModel.getId());
+
+        return laptopGraphic;
     }
 
     @Override

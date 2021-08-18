@@ -76,7 +76,7 @@ public class LaptopEndpoint {
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<Laptop> getLaptopById(@PathVariable String id) {
-        return null;
+        return laptopApi.getLaptopById(id);
     }
 
     @DeleteMapping("/delete/{id}")

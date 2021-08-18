@@ -8,6 +8,9 @@ import com.spm.netgarage.domain.laptop.LaptopBrandDataAdapter;
 import com.spm.netgarage.dto.MessageResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -78,7 +81,16 @@ public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
 
     @Override
     public LaptopBrand update(LaptopBrand laptopBrand) {
-        return null;
+        LaptopBrandModel laptopBrandModel = mongoTemplate.findAndModify(
+                Query.query(Criteria.where("id").is(laptopBrand.getId())),
+                new Update()
+                        .set("name", laptopBrand.getName())
+                        .set("user", laptopBrand.getUser()),
+                LaptopBrandModel.class
+        );
+        laptopBrand.setDatetime(laptopBrandModel.getDatetime());
+
+        return laptopBrand;
     }
 
     @Override

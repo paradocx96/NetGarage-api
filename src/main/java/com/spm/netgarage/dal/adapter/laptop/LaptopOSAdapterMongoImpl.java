@@ -93,6 +93,18 @@ public class LaptopOSAdapterMongoImpl implements LaptopOSDataAdapter {
 
     @Override
     public List<LaptopOS> getById(String id) {
-        return null;
+        LaptopOSModel laptopOSModel = new LaptopOSModel();
+        laptopOSModel = repository.findById(id).get();
+        List<LaptopOS> laptopOSList = new ArrayList<>();
+        LaptopOS laptopOS = new LaptopOS();
+
+        laptopOS.setId(laptopOSModel.getId());
+        laptopOS.setName(laptopOSModel.getName());
+        laptopOS.setUser(laptopOSModel.getUser());
+        laptopOS.setDatetime(laptopOSModel.getDatetime());
+
+        laptopOSList.add(laptopOS);
+
+        return laptopOSList;
     }
 }

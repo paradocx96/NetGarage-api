@@ -49,7 +49,7 @@ public class LaptopProcessorEndpoint {
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopProcessorById(@PathVariable String id) {
-        return null;
+        return laptopProcessorApi.deleteLaptopProcessorById(id);
     }
 
     @PutMapping("/update/{id}")

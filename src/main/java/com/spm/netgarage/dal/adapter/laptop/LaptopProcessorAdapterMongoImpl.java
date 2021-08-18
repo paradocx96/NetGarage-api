@@ -1,5 +1,6 @@
 package com.spm.netgarage.dal.adapter.laptop;
 
+import com.spm.netgarage.dal.model.laptop.LaptopProcessorModel;
 import com.spm.netgarage.dal.repository.laptop.LaptopProcessorRepository;
 import com.spm.netgarage.domain.laptop.LaptopProcessor;
 import com.spm.netgarage.domain.laptop.LaptopProcessorDataAdapter;
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -25,7 +27,14 @@ public class LaptopProcessorAdapterMongoImpl implements LaptopProcessorDataAdapt
 
     @Override
     public LaptopProcessor save(LaptopProcessor laptopProcessor) {
-        return null;
+        LaptopProcessorModel laptopProcessorModel = new LaptopProcessorModel();
+        laptopProcessorModel.setName(laptopProcessor.getName());
+        laptopProcessorModel.setUser(laptopProcessor.getUser());
+        laptopProcessorModel.setDatetime(LocalDateTime.now());
+        laptopProcessorModel = repository.save(laptopProcessorModel);
+        laptopProcessor.setId(laptopProcessorModel.getId());
+
+        return laptopProcessor;
     }
 
     @Override

@@ -93,6 +93,18 @@ public class LaptopProcessorAdapterMongoImpl implements LaptopProcessorDataAdapt
 
     @Override
     public List<LaptopProcessor> getById(String id) {
-        return null;
+        LaptopProcessorModel laptopProcessorModel = new LaptopProcessorModel();
+        laptopProcessorModel = repository.findById(id).get();
+        List<LaptopProcessor> laptopProcessorList = new ArrayList<>();
+        LaptopProcessor laptopProcessor = new LaptopProcessor();
+
+        laptopProcessor.setId(laptopProcessorModel.getId());
+        laptopProcessor.setName(laptopProcessorModel.getName());
+        laptopProcessor.setUser(laptopProcessorModel.getUser());
+        laptopProcessor.setDatetime(laptopProcessorModel.getDatetime());
+
+        laptopProcessorList.add(laptopProcessor);
+
+        return laptopProcessorList;
     }
 }

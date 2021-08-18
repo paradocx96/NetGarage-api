@@ -37,7 +37,7 @@ public class LaptopGraphicEndpoint {
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopGraphic> getAllLaptopGraphic() {
-        return null;
+        return laptopGraphicApi.getAllLaptopGraphic();
     }
 
     @GetMapping("/get-by-id/{id}")

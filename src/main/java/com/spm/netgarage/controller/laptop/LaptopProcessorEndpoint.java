@@ -43,7 +43,7 @@ public class LaptopProcessorEndpoint {
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopProcessor> getLaptopProcessorById(@PathVariable String id) {
-        return null;
+        return laptopProcessorApi.getLaptopProcessorById(id);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -4,6 +4,7 @@ import com.spm.netgarage.dal.model.laptop.LaptopProcessorModel;
 import com.spm.netgarage.dal.repository.laptop.LaptopProcessorRepository;
 import com.spm.netgarage.domain.laptop.LaptopProcessor;
 import com.spm.netgarage.domain.laptop.LaptopProcessorDataAdapter;
+import com.spm.netgarage.dto.MessageResponseDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -58,7 +59,19 @@ public class LaptopProcessorAdapterMongoImpl implements LaptopProcessorDataAdapt
 
     @Override
     public ResponseEntity<?> deleteById(String id) {
-        return null;
+        LaptopProcessorModel laptopProcessorModel = null;
+        laptopProcessorModel = repository.findById(id).get();
+
+        if (laptopProcessorModel != null) {
+            try {
+                repository.deleteById(id);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+            return ResponseEntity.ok(new MessageResponseDto("Deleted successfully!"));
+        } else {
+            return ResponseEntity.ok(new MessageResponseDto("Doesn't Exist!"));
+        }
     }
 
     @Override

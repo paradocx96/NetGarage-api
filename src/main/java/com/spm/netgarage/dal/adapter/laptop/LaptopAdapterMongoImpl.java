@@ -252,7 +252,21 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
 
     @Override
     public Laptop updateStatus(Laptop laptop) {
-        return null;
+        LaptopModel laptopModel = mongoTemplate.findAndModify(
+                Query.query(Criteria.where("id").is(laptop.getId())),
+                new Update()
+                        .set("status", laptop.getStatus()),
+                LaptopModel.class
+        );
+
+        if(laptopModel != null) {
+            laptop.setId(laptopModel.getId());
+            laptop.setStatus(laptopModel.getStatus());
+
+            return laptop;
+        } else {
+            return null;
+        }
     }
 
     @Override

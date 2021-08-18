@@ -37,7 +37,7 @@ public class LaptopBrandEndpoint {
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopBrand> getAllLaptopBrand() {
-        return null;
+        return laptopBrandApi.getAllLaptopBrand();
     }
 
     @GetMapping("/get-by-id/{id}")

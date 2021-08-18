@@ -1,6 +1,5 @@
 package com.spm.netgarage.dal.adapter.laptop;
 
-import com.spm.netgarage.dal.model.laptop.LaptopBrandModel;
 import com.spm.netgarage.dal.model.laptop.LaptopGraphicModel;
 import com.spm.netgarage.dal.repository.laptop.LaptopGraphicRepository;
 import com.spm.netgarage.domain.laptop.LaptopGraphic;
@@ -96,6 +95,18 @@ public class LaptopGraphicAdapterMongoImpl implements LaptopGraphicDataAdapter {
 
     @Override
     public List<LaptopGraphic> getById(String id) {
-        return null;
+        LaptopGraphicModel laptopGraphicModel = new LaptopGraphicModel();
+        laptopGraphicModel = repository.findById(id).get();
+        List<LaptopGraphic> laptopGraphicList = new ArrayList<>();
+        LaptopGraphic LaptopGraphic = new LaptopGraphic();
+
+        LaptopGraphic.setId(laptopGraphicModel.getId());
+        LaptopGraphic.setName(laptopGraphicModel.getName());
+        LaptopGraphic.setUser(laptopGraphicModel.getUser());
+        LaptopGraphic.setDatetime(laptopGraphicModel.getDatetime());
+
+        laptopGraphicList.add(LaptopGraphic);
+
+        return laptopGraphicList;
     }
 }

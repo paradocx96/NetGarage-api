@@ -8,6 +8,9 @@ import com.spm.netgarage.domain.laptop.LaptopOSDataAdapter;
 import com.spm.netgarage.dto.MessageResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -76,7 +79,16 @@ public class LaptopOSAdapterMongoImpl implements LaptopOSDataAdapter {
 
     @Override
     public LaptopOS update(LaptopOS laptopOS) {
-        return null;
+        LaptopOSModel laptopOSModel = mongoTemplate.findAndModify(
+                Query.query(Criteria.where("id").is(laptopOS.getId())),
+                new Update()
+                        .set("name", laptopOS.getName())
+                        .set("user", laptopOS.getUser()),
+                LaptopOSModel.class
+        );
+        laptopOS.setDatetime(laptopOSModel.getDatetime());
+
+        return laptopOS;
     }
 
     @Override

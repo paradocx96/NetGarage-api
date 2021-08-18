@@ -20,30 +20,30 @@ public class LaptopApi {
     }
 
     public Laptop saveLaptop(Laptop laptop) {
-        return null;
+        return laptopDataAdapter.save(laptop);
     }
 
     public List<Laptop> getAllLaptop() {
-        return null;
+        return laptopDataAdapter.getAll();
     }
 
     public List<Laptop> getLaptopById(String id) {
-        return null;
+        return laptopDataAdapter.getById(id);
     }
 
     public Laptop updateLaptop(Laptop laptop) {
-        return null;
+        return laptopDataAdapter.update(laptop);
     }
 
     public ResponseEntity<?> deleteLaptopById(String id) {
-        return null;
+        return laptopDataAdapter.deleteById(id);
     }
 
     public List<Laptop> getLaptopByStatus(String status) {
-        return null;
+        return laptopDataAdapter.getByStatus(status);
     }
 
     public Laptop updateLaptopStatus(Laptop laptop) {
-        return null;
+        return laptopDataAdapter.updateStatus(laptop);
     }
 }

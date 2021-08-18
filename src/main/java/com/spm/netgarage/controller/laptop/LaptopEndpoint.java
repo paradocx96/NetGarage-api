@@ -82,7 +82,7 @@ public class LaptopEndpoint {
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopById(@PathVariable String id) {
-        return null;
+        return laptopApi.deleteLaptopById(id);
     }
 
     @PutMapping("/update/{id}")

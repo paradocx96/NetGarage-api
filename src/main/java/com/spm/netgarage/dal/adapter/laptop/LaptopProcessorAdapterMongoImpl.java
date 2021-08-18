@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -39,7 +40,20 @@ public class LaptopProcessorAdapterMongoImpl implements LaptopProcessorDataAdapt
 
     @Override
     public List<LaptopProcessor> getAll() {
-        return null;
+        List<LaptopProcessorModel> laptopProcessorModels = repository.findAll();
+        List<LaptopProcessor> laptopProcessorList = new ArrayList<>();
+
+        for (LaptopProcessorModel laptopProcessorModel : laptopProcessorModels) {
+            LaptopProcessor laptopProcessor = new LaptopProcessor();
+
+            laptopProcessor.setId(laptopProcessorModel.getId());
+            laptopProcessor.setName(laptopProcessorModel.getName());
+            laptopProcessor.setUser(laptopProcessorModel.getUser());
+            laptopProcessor.setDatetime(laptopProcessorModel.getDatetime());
+
+            laptopProcessorList.add(laptopProcessor);
+        }
+        return laptopProcessorList;
     }
 
     @Override

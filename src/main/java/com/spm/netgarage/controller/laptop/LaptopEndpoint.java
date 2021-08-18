@@ -144,7 +144,6 @@ public class LaptopEndpoint {
     @GetMapping("/get-by-status/{status}")
     @ResponseStatus(HttpStatus.OK)
     public List<Laptop> getLaptopByStatus(@PathVariable String status) {
-        return null;
+        return laptopApi.getLaptopByStatus(status);
     }
-
 }

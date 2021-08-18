@@ -5,6 +5,7 @@ import com.spm.netgarage.dal.repository.laptop.LaptopBrandRepository;
 import com.spm.netgarage.domain.laptop.LaptopBrand;
 import com.spm.netgarage.domain.laptop.LaptopBrandDataAdapter;
 
+import com.spm.netgarage.dto.MessageResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +61,19 @@ public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
 
     @Override
     public ResponseEntity<?> deleteById(String id) {
-        return null;
+        LaptopBrandModel laptopBrandModel = null;
+        laptopBrandModel = repository.findById(id).get();
+
+        if (laptopBrandModel != null) {
+            try {
+                repository.deleteById(id);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+            return ResponseEntity.ok(new MessageResponseDto("Deleted successfully!"));
+        } else {
+            return ResponseEntity.ok(new MessageResponseDto("Doesn't Exist!"));
+        }
     }
 
     @Override

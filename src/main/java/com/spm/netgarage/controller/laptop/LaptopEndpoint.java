@@ -26,7 +26,45 @@ public class LaptopEndpoint {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public Laptop addLaptop(@RequestBody LaptopDto laptopDto) {
-        return null;
+        Laptop laptop = new Laptop();
+
+        laptop.setUser(laptopDto.getUser());
+        laptop.setStatus(laptopDto.getStatus());
+        laptop.setName(laptopDto.getName());
+        laptop.setYear(laptopDto.getYear());
+        laptop.setBrand(laptopDto.getBrand());
+        laptop.setOs(laptopDto.getOs());
+        laptop.setModel(laptopDto.getModel());
+        laptop.setProcessorname(laptopDto.getProcessorname());
+        laptop.setProcessordetails(laptopDto.getProcessordetails());
+        laptop.setProcessorgeneration(laptopDto.getProcessorgeneration());
+        laptop.setChipset(laptopDto.getChipset());
+        laptop.setRamtype(laptopDto.getRamtype());
+        laptop.setRamcapacity(laptopDto.getRamcapacity());
+        laptop.setRamslotstype(laptopDto.getRamslotstype());
+        laptop.setRamslotscount(laptopDto.getRamslotscount());
+        laptop.setStoragefirst(laptopDto.getStoragefirst());
+        laptop.setStoragefirstcapacity(laptopDto.getStoragefirstcapacity());
+        laptop.setStoragesecond(laptopDto.getStoragesecond());
+        laptop.setStoragesecondcapacity(laptopDto.getStoragesecondcapacity());
+        laptop.setDisplaysizeresolution(laptopDto.getDisplaysizeresolution());
+        laptop.setDisplayrefreshrate(laptopDto.getDisplayrefreshrate());
+        laptop.setDisplaytype(laptopDto.getDisplaytype());
+        laptop.setGraphicbrand(laptopDto.getGraphicbrand());
+        laptop.setGraphicmodel(laptopDto.getGraphicmodel());
+        laptop.setGraphiccapacity(laptopDto.getGraphiccapacity());
+        laptop.setGraphicdetails(laptopDto.getGraphicdetails());
+        laptop.setWebcam(laptopDto.getWebcam());
+        laptop.setKeyboard(laptopDto.getKeyboard());
+        laptop.setCommunication(laptopDto.getCommunication());
+        laptop.setAudio(laptopDto.getAudio());
+        laptop.setIoports(laptopDto.getIoports());
+        laptop.setBattery(laptopDto.getBattery());
+        laptop.setDimension(laptopDto.getDimension());
+        laptop.setWeight(laptopDto.getWeight());
+        laptop.setColor(laptopDto.getColor());
+
+        return laptopApi.saveLaptop(laptop);
     }
 
     @GetMapping("/get")

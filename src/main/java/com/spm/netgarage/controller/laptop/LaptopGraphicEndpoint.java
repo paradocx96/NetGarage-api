@@ -43,7 +43,7 @@ public class LaptopGraphicEndpoint {
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopGraphic> getLaptopGraphicById(@PathVariable String id) {
-        return null;
+        return laptopGraphicApi.getLaptopGraphicById(id);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -33,11 +33,14 @@ public class LaptopProcessorAdapterMongoImpl implements LaptopProcessorDataAdapt
     @Override
     public LaptopProcessor save(LaptopProcessor laptopProcessor) {
         LaptopProcessorModel laptopProcessorModel = new LaptopProcessorModel();
+
         laptopProcessorModel.setName(laptopProcessor.getName());
         laptopProcessorModel.setUser(laptopProcessor.getUser());
         laptopProcessorModel.setDatetime(LocalDateTime.now());
+
         laptopProcessorModel = repository.save(laptopProcessorModel);
         laptopProcessor.setId(laptopProcessorModel.getId());
+        laptopProcessor.setDatetime(laptopProcessorModel.getDatetime());
 
         return laptopProcessor;
     }

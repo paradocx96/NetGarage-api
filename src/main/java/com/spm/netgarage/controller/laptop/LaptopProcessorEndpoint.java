@@ -52,12 +52,12 @@ public class LaptopProcessorEndpoint {
         return laptopProcessorApi.deleteLaptopProcessorById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public LaptopProcessor updateLaptopProcessor(@RequestBody LaptopProcessorDto laptopProcessorDto, @PathVariable String id) {
+    public LaptopProcessor updateLaptopProcessor(@RequestBody LaptopProcessorDto laptopProcessorDto) {
         LaptopProcessor laptopProcessor = new LaptopProcessor();
 
-        laptopProcessor.setId(id);
+        laptopProcessor.setId(laptopProcessorDto.getId());
         laptopProcessor.setName(laptopProcessorDto.getName());
         laptopProcessor.setUser(laptopProcessorDto.getUser());
 

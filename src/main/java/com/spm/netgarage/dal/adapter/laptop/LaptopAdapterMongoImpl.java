@@ -38,6 +38,7 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
         laptopModel.setDatetime(LocalDateTime.now());
         laptopModel.setStatus(laptop.getStatus());
         laptopModel.setName(laptop.getName());
+        laptopModel.setType(laptop.getType());
         laptopModel.setYear(laptop.getYear());
         laptopModel.setBrand(laptop.getBrand());
         laptopModel.setOs(laptop.getOs());
@@ -73,9 +74,8 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
 
         // Saving model data in database
         laptopModel = repository.save(laptopModel);
-
-        // Assign auto generated key to object and return object
         laptop.setId(laptopModel.getId());
+        laptop.setDatetime(laptopModel.getDatetime());
 
         return laptop;
     }
@@ -93,6 +93,7 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
             laptop.setDatetime(laptopModel.getDatetime());
             laptop.setStatus(laptopModel.getStatus());
             laptop.setName(laptopModel.getName());
+            laptop.setType(laptopModel.getType());
             laptop.setYear(laptopModel.getYear());
             laptop.setBrand(laptopModel.getBrand());
             laptop.setOs(laptopModel.getOs());
@@ -158,6 +159,7 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
                         .set("user", laptop.getUser())
                         .set("status", laptop.getStatus())
                         .set("name", laptop.getName())
+                        .set("type", laptop.getType())
                         .set("year", laptop.getYear())
                         .set("brand", laptop.getBrand())
                         .set("os", laptop.getOs())
@@ -212,6 +214,7 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
         laptop.setDatetime(laptopModel.getDatetime());
         laptop.setStatus(laptopModel.getStatus());
         laptop.setName(laptopModel.getName());
+        laptop.setType(laptopModel.getType());
         laptop.setYear(laptopModel.getYear());
         laptop.setBrand(laptopModel.getBrand());
         laptop.setOs(laptopModel.getOs());
@@ -283,6 +286,7 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
             laptop.setDatetime(laptopModel.getDatetime());
             laptop.setStatus(laptopModel.getStatus());
             laptop.setName(laptopModel.getName());
+            laptop.setType(laptopModel.getType());
             laptop.setYear(laptopModel.getYear());
             laptop.setBrand(laptopModel.getBrand());
             laptop.setOs(laptopModel.getOs());

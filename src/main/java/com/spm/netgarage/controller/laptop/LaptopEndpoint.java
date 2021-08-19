@@ -31,6 +31,7 @@ public class LaptopEndpoint {
         laptop.setUser(laptopDto.getUser());
         laptop.setStatus(laptopDto.getStatus());
         laptop.setName(laptopDto.getName());
+        laptop.setType(laptopDto.getType());
         laptop.setYear(laptopDto.getYear());
         laptop.setBrand(laptopDto.getBrand());
         laptop.setOs(laptopDto.getOs());
@@ -85,15 +86,16 @@ public class LaptopEndpoint {
         return laptopApi.deleteLaptopById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public Laptop updateLaptop(@RequestBody LaptopDto laptopDto, @PathVariable String id) {
+    public Laptop updateLaptop(@RequestBody LaptopDto laptopDto) {
         Laptop laptop = new Laptop();
 
-        laptop.setId(id);
+        laptop.setId(laptopDto.getId());
         laptop.setUser(laptopDto.getUser());
         laptop.setStatus(laptopDto.getStatus());
         laptop.setName(laptopDto.getName());
+        laptop.setType(laptopDto.getType());
         laptop.setYear(laptopDto.getYear());
         laptop.setBrand(laptopDto.getBrand());
         laptop.setOs(laptopDto.getOs());
@@ -130,12 +132,12 @@ public class LaptopEndpoint {
         return laptopApi.updateLaptop(laptop);
     }
 
-    @PutMapping("/update-status/{id}")
+    @PutMapping("/update-status")
     @ResponseStatus(HttpStatus.OK)
-    public Laptop updateLaptopStatus(@RequestBody LaptopDto laptopDto, @PathVariable String id) {
+    public Laptop updateLaptopStatus(@RequestBody LaptopDto laptopDto) {
         Laptop laptop = new Laptop();
 
-        laptop.setId(id);
+        laptop.setId(laptopDto.getId());
         laptop.setStatus(laptopDto.getStatus());
 
         return laptopApi.updateLaptopStatus(laptop);

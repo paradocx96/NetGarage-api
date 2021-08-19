@@ -52,12 +52,12 @@ public class LaptopGraphicEndpoint {
         return laptopGraphicApi.deleteLaptopGraphicById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public LaptopGraphic updateLaptopGraphic(@RequestBody LaptopGraphicDto laptopGraphicDto, @PathVariable String id) {
+    public LaptopGraphic updateLaptopGraphic(@RequestBody LaptopGraphicDto laptopGraphicDto) {
         LaptopGraphic laptopGraphic = new LaptopGraphic();
 
-        laptopGraphic.setId(id);
+        laptopGraphic.setId(laptopGraphicDto.getId());
         laptopGraphic.setName(laptopGraphicDto.getName());
         laptopGraphic.setUser(laptopGraphicDto.getUser());
 

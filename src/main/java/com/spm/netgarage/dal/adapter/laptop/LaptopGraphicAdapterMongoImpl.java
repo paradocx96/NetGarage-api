@@ -40,6 +40,7 @@ public class LaptopGraphicAdapterMongoImpl implements LaptopGraphicDataAdapter {
 
         laptopGraphicModel = repository.save(laptopGraphicModel);
         laptopGraphic.setId(laptopGraphicModel.getId());
+        laptopGraphic.setDatetime(laptopGraphicModel.getDatetime());
 
         return laptopGraphic;
     }

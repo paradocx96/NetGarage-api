@@ -52,12 +52,12 @@ public class LaptopBrandEndpoint {
         return laptopBrandApi.deleteLaptopBrandById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public LaptopBrand updateLaptopBrand(@RequestBody LaptopBrandDto laptopBrandDto, @PathVariable String id) {
+    public LaptopBrand updateLaptopBrand(@RequestBody LaptopBrandDto laptopBrandDto) {
         LaptopBrand laptopBrand = new LaptopBrand();
 
-        laptopBrand.setId(id);
+        laptopBrand.setId(laptopBrandDto.getId());
         laptopBrand.setName(laptopBrandDto.getName());
         laptopBrand.setUser(laptopBrandDto.getUser());
 

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
 public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
@@ -40,6 +41,7 @@ public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
 
         laptopBrandModel = repository.save(laptopBrandModel);
         laptopBrand.setId(laptopBrandModel.getId());
+        laptopBrand.setDatetime(laptopBrandModel.getDatetime());
 
         return laptopBrand;
     }
@@ -70,7 +72,7 @@ public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
         if (laptopBrandModel != null) {
             try {
                 repository.deleteById(id);
-            } catch (Exception exception) {
+            } catch (NoSuchElementException exception) {
                 exception.printStackTrace();
             }
             return ResponseEntity.ok(new MessageResponseDto("Deleted successfully!"));

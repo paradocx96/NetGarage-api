@@ -26,30 +26,41 @@ public class LaptopBrandEndpoint {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public LaptopBrand addLaptopBrand(@RequestBody LaptopBrandDto laptopBrandDto) {
-        return null;
+        LaptopBrand laptopBrand = new LaptopBrand();
+
+        laptopBrand.setName(laptopBrandDto.getName());
+        laptopBrand.setUser(laptopBrandDto.getUser());
+
+        return laptopBrandApi.saveLaptopBrand(laptopBrand);
     }
 
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopBrand> getAllLaptopBrand() {
-        return null;
+        return laptopBrandApi.getAllLaptopBrand();
     }
 
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopBrand> getLaptopBrandById(@PathVariable String id) {
-        return null;
+        return laptopBrandApi.getLaptopBrandById(id);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopBrandById(@PathVariable String id) {
-        return null;
+        return laptopBrandApi.deleteLaptopBrandById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public LaptopBrand updateLaptopBrand(@RequestBody LaptopBrandDto laptopBrandDto, @PathVariable String id) {
-        return null;
+    public LaptopBrand updateLaptopBrand(@RequestBody LaptopBrandDto laptopBrandDto) {
+        LaptopBrand laptopBrand = new LaptopBrand();
+
+        laptopBrand.setId(laptopBrandDto.getId());
+        laptopBrand.setName(laptopBrandDto.getName());
+        laptopBrand.setUser(laptopBrandDto.getUser());
+
+        return laptopBrandApi.updateLaptopBrand(laptopBrand);
     }
 }

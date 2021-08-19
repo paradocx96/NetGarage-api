@@ -20,22 +20,22 @@ public class LaptopBrandApi {
     }
 
     public LaptopBrand saveLaptopBrand(LaptopBrand laptopBrand) {
-        return null;
+        return laptopBrandDataAdapter.save(laptopBrand);
     }
 
     public List<LaptopBrand> getAllLaptopBrand() {
-        return null;
+        return laptopBrandDataAdapter.getAll();
     }
 
     public List<LaptopBrand> getLaptopBrandById(String id) {
-        return null;
+        return laptopBrandDataAdapter.getById(id);
     }
 
     public LaptopBrand updateLaptopBrand(LaptopBrand laptopBrand) {
-        return null;
+        return laptopBrandDataAdapter.update(laptopBrand);
     }
 
     public ResponseEntity<?> deleteLaptopBrandById(String id) {
-        return null;
+        return laptopBrandDataAdapter.deleteById(id);
     }
 }

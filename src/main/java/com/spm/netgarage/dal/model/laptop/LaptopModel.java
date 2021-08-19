@@ -14,6 +14,7 @@ public class LaptopModel {
     private LocalDateTime datetime;
     private String status;
     private String name;
+    private String type;
     private int year;
     private String brand;
     private String os;
@@ -56,6 +57,7 @@ public class LaptopModel {
             LocalDateTime datetime,
             String status,
             String name,
+            String type,
             int year,
             String brand,
             String os,
@@ -93,6 +95,7 @@ public class LaptopModel {
         this.datetime = datetime;
         this.status = status;
         this.name = name;
+        this.type = type;
         this.year = year;
         this.brand = brand;
         this.os = os;
@@ -165,6 +168,14 @@ public class LaptopModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getYear() {

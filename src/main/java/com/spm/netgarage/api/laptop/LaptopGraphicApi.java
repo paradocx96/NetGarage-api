@@ -20,22 +20,22 @@ public class LaptopGraphicApi {
     }
 
     public LaptopGraphic saveLaptopGraphic(LaptopGraphic laptopGraphic) {
-        return null;
+        return laptopGraphicDataAdapter.save(laptopGraphic);
     }
 
     public List<LaptopGraphic> getAllLaptopGraphic() {
-        return null;
+        return laptopGraphicDataAdapter.getAll();
     }
 
     public List<LaptopGraphic> getLaptopGraphicById(String id) {
-        return null;
+        return laptopGraphicDataAdapter.getById(id);
     }
 
     public LaptopGraphic updateLaptopGraphic(LaptopGraphic laptopGraphic) {
-        return null;
+        return laptopGraphicDataAdapter.update(laptopGraphic);
     }
 
     public ResponseEntity<?> deleteLaptopGraphicById(String id) {
-        return null;
+        return laptopGraphicDataAdapter.deleteById(id);
     }
 }

@@ -9,6 +9,7 @@ public class Laptop {
     private LocalDateTime datetime;
     private String status;
     private String name;
+    private String type;
     private int year;
     private String brand;
     private String os;
@@ -80,6 +81,14 @@ public class Laptop {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getYear() {

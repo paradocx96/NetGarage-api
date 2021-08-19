@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 
 public class LaptopDto {
 
+    private String id;
     private String user;
     private String status;
     private String name;
+    private String type;
     private int year;
     private String brand;
     private String os;
@@ -40,6 +42,14 @@ public class LaptopDto {
     private String weight;
     private String color;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUser() {
         return user;
     }
@@ -62,6 +72,14 @@ public class LaptopDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getYear() {

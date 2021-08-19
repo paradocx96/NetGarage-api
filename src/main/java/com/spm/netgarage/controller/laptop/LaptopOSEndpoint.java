@@ -26,30 +26,41 @@ public class LaptopOSEndpoint {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public LaptopOS addLaptopOS(@RequestBody LaptopOSDto laptopOSDto) {
-        return null;
+        LaptopOS laptopOS = new LaptopOS();
+
+        laptopOS.setName(laptopOSDto.getName());
+        laptopOS.setUser(laptopOSDto.getUser());
+
+        return laptopOSApi.saveLaptopOS(laptopOS);
     }
 
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopOS> getAllLaptopOS() {
-        return null;
+        return laptopOSApi.getAllLaptopOS();
     }
 
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopOS> getLaptopOSById(@PathVariable String id) {
-        return null;
+        return laptopOSApi.getLaptopOSById(id);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopOSById(@PathVariable String id) {
-        return null;
+        return laptopOSApi.deleteLaptopOSById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public LaptopOS updateLaptopOS(@RequestBody LaptopOSDto laptopOSDto, @PathVariable String id) {
-        return null;
+    public LaptopOS updateLaptopOS(@RequestBody LaptopOSDto laptopOSDto) {
+        LaptopOS laptopOS = new LaptopOS();
+
+        laptopOS.setId(laptopOSDto.getId());
+        laptopOS.setName(laptopOSDto.getName());
+        laptopOS.setUser(laptopOSDto.getUser());
+
+        return laptopOSApi.updateLaptopOS(laptopOS);
     }
 }

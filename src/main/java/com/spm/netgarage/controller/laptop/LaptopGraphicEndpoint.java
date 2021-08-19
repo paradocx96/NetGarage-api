@@ -26,30 +26,41 @@ public class LaptopGraphicEndpoint {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public LaptopGraphic addLaptopGraphic(@RequestBody LaptopGraphicDto laptopGraphicDto) {
-        return null;
+        LaptopGraphic laptopGraphic = new LaptopGraphic();
+
+        laptopGraphic.setName(laptopGraphicDto.getName());
+        laptopGraphic.setUser(laptopGraphicDto.getUser());
+
+        return laptopGraphicApi.saveLaptopGraphic(laptopGraphic);
     }
 
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopGraphic> getAllLaptopGraphic() {
-        return null;
+        return laptopGraphicApi.getAllLaptopGraphic();
     }
 
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopGraphic> getLaptopGraphicById(@PathVariable String id) {
-        return null;
+        return laptopGraphicApi.getLaptopGraphicById(id);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopGraphicById(@PathVariable String id) {
-        return null;
+        return laptopGraphicApi.deleteLaptopGraphicById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public LaptopGraphic updateLaptopGraphic(@RequestBody LaptopGraphicDto laptopGraphicDto, @PathVariable String id) {
-        return null;
+    public LaptopGraphic updateLaptopGraphic(@RequestBody LaptopGraphicDto laptopGraphicDto) {
+        LaptopGraphic laptopGraphic = new LaptopGraphic();
+
+        laptopGraphic.setId(laptopGraphicDto.getId());
+        laptopGraphic.setName(laptopGraphicDto.getName());
+        laptopGraphic.setUser(laptopGraphicDto.getUser());
+
+        return laptopGraphicApi.updateLaptopGraphic(laptopGraphic);
     }
 }

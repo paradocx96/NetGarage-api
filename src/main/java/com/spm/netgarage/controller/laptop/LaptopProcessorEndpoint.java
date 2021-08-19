@@ -26,30 +26,41 @@ public class LaptopProcessorEndpoint {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public LaptopProcessor addLaptopProcessor(@RequestBody LaptopProcessorDto laptopProcessorDto) {
-        return null;
+        LaptopProcessor laptopProcessor = new LaptopProcessor();
+
+        laptopProcessor.setName(laptopProcessorDto.getName());
+        laptopProcessor.setUser(laptopProcessorDto.getUser());
+
+        return laptopProcessorApi.saveLaptopProcessor(laptopProcessor);
     }
 
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopProcessor> getAllLaptopProcessor() {
-        return null;
+        return laptopProcessorApi.getAllLaptopProcessor();
     }
 
     @GetMapping("/get-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<LaptopProcessor> getLaptopProcessorById(@PathVariable String id) {
-        return null;
+        return laptopProcessorApi.getLaptopProcessorById(id);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopProcessorById(@PathVariable String id) {
-        return null;
+        return laptopProcessorApi.deleteLaptopProcessorById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public LaptopProcessor updateLaptopProcessor(@RequestBody LaptopProcessorDto laptopProcessorDto, @PathVariable String id) {
-        return null;
+    public LaptopProcessor updateLaptopProcessor(@RequestBody LaptopProcessorDto laptopProcessorDto) {
+        LaptopProcessor laptopProcessor = new LaptopProcessor();
+
+        laptopProcessor.setId(laptopProcessorDto.getId());
+        laptopProcessor.setName(laptopProcessorDto.getName());
+        laptopProcessor.setUser(laptopProcessorDto.getUser());
+
+        return laptopProcessorApi.updateLaptopProcessor(laptopProcessor);
     }
 }

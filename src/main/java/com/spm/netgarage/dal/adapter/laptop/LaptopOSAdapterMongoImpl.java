@@ -33,11 +33,14 @@ public class LaptopOSAdapterMongoImpl implements LaptopOSDataAdapter {
     @Override
     public LaptopOS save(LaptopOS laptopOS) {
         LaptopOSModel laptopOSModel = new LaptopOSModel();
+
         laptopOSModel.setName(laptopOS.getName());
         laptopOSModel.setUser(laptopOS.getUser());
         laptopOSModel.setDatetime(LocalDateTime.now());
+
         laptopOSModel = repository.save(laptopOSModel);
         laptopOS.setId(laptopOSModel.getId());
+        laptopOS.setDatetime(laptopOSModel.getDatetime());
 
         return laptopOS;
     }

@@ -52,12 +52,12 @@ public class LaptopOSEndpoint {
         return laptopOSApi.deleteLaptopOSById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    public LaptopOS updateLaptopOS(@RequestBody LaptopOSDto laptopOSDto, @PathVariable String id) {
+    public LaptopOS updateLaptopOS(@RequestBody LaptopOSDto laptopOSDto) {
         LaptopOS laptopOS = new LaptopOS();
 
-        laptopOS.setId(id);
+        laptopOS.setId(laptopOSDto.getId());
         laptopOS.setName(laptopOSDto.getName());
         laptopOS.setUser(laptopOSDto.getUser());
 

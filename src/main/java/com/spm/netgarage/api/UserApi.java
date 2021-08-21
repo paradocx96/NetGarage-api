@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.spm.netgarage.dal.model.User;
 import com.spm.netgarage.domain.UserDataAdapter;
 import com.spm.netgarage.dto.UserRegisterDto;
 
@@ -16,4 +17,13 @@ public class UserApi {
 	public ResponseEntity<?> userRegistration(UserRegisterDto userRegisterDto){
 		return userDataAdapter.createAccount(userRegisterDto);
 	}
+	
+	public User getByID(String ID) {
+		return userDataAdapter.getByID(ID);
+	}
+	
+	public ResponseEntity<?> updateUserAccount(UserRegisterDto userRegisterDto){
+		return userDataAdapter.updateAccount(userRegisterDto);
+	}
+	
 }

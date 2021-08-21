@@ -5,11 +5,18 @@ package com.spm.netgarage.dto;
 
 public class UserRegisterDto {
 	
+	private String id;
 	private String username;
 	private String password;
 	private String email;
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}

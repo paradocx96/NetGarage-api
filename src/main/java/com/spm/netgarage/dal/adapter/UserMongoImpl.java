@@ -1,7 +1,9 @@
 package com.spm.netgarage.dal.adapter;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.spm.netgarage.dal.model.EmailSender;
 import com.spm.netgarage.dal.model.User;
 import com.spm.netgarage.dal.repository.UserMongoRepository;
 import com.spm.netgarage.domain.UserDataAdapter;
@@ -20,6 +23,9 @@ public class UserMongoImpl implements UserDataAdapter{
 
 	@Autowired
 	private UserMongoRepository userRepository;
+	
+	@Autowired
+	private EmailSender emailSender;
 
 	@Override
 	public ResponseEntity<?> createAccount(@Valid @RequestBody UserRegisterDto userRegisterDto) {
@@ -36,6 +42,17 @@ public class UserMongoImpl implements UserDataAdapter{
 		User user = new User(userRegisterDto.getUsername(),
 							userRegisterDto.getPassword(),
 							userRegisterDto.getEmail());
+		
+		emailSender.setEmail(userRegisterDto.getEmail());
+		emailSender.setUsername(userRegisterDto.getUsername());
+		
+		try {
+				emailSender.sendEmail();
+				
+		} catch (UnsupportedEncodingException | MessagingException e) {
+			
+			e.printStackTrace();
+		}
 		
 		//Save all user details into the database
 		userRepository.save(user);

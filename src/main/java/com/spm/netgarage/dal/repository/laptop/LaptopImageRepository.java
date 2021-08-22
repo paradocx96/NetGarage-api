@@ -11,4 +11,8 @@ import java.util.List;
 public interface LaptopImageRepository extends MongoRepository<LaptopImageModel,String> {
 
     List<LaptopImageModel> findByLid(String lid);
+
+    LaptopImageModel getByLid(String lid);
+
+    LaptopImageModel deleteByLid(String lid);
 }

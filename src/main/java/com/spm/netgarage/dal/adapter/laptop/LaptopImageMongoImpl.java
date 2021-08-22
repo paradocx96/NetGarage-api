@@ -1,16 +1,13 @@
 package com.spm.netgarage.dal.adapter.laptop;
 
-import com.spm.netgarage.dal.model.laptop.LaptopBrandModel;
 import com.spm.netgarage.dal.model.laptop.LaptopImageModel;
 import com.spm.netgarage.dal.repository.laptop.LaptopImageRepository;
 
-import com.spm.netgarage.domain.laptop.LaptopBrand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component

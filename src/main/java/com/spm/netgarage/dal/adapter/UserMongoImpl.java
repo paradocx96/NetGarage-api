@@ -81,5 +81,19 @@ public class UserMongoImpl implements UserDataAdapter{
 	public User getByID(String id) {
 		return userRepository.findById(id).get();
 	}
+
+	@Override
+	public ResponseEntity<?> loginAccount(UserRegisterDto user) {
+		
+		User exist = userRepository.findByUsername(user.getUsername()).get();
+		
+		System.out.println(exist.getEmail());
+		exist.getId();
+		exist.getEmail();
+		exist.getUsername();
+		
+		// return success MSG to frontEnd user is updated successfully
+		return ResponseEntity.ok(new UserRegisterDto(exist.getId(),exist.getUsername(),exist.getEmail()));
+	}
 	
 }

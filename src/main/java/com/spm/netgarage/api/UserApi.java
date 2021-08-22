@@ -26,4 +26,8 @@ public class UserApi {
 		return userDataAdapter.updateAccount(userRegisterDto);
 	}
 	
+	public ResponseEntity<?> loginAccount(UserRegisterDto userRegisterDto){
+		return userDataAdapter.loginAccount(userRegisterDto);
+	}
+	
 }

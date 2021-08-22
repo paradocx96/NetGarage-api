@@ -38,4 +38,9 @@ public class UserEndPoint {
 	public ResponseEntity<?> updateUserAccount(@Valid @RequestBody UserRegisterDto userRegisterDto){
 		return userApi.updateUserAccount(userRegisterDto);
 	}
+	
+	@PostMapping("/sign-in")
+	public ResponseEntity<?> loginUserAccount(@Valid @RequestBody UserRegisterDto userRegisterDto){
+		return userApi.loginAccount(userRegisterDto);
+	}
 }

@@ -1,6 +1,7 @@
 package com.spm.netgarage.controller.laptop;
 
 import com.spm.netgarage.api.laptop.LaptopApi;
+import com.spm.netgarage.dal.model.laptop.LaptopModel;
 import com.spm.netgarage.domain.laptop.Laptop;
 import com.spm.netgarage.dto.laptop.LaptopDto;
 
@@ -148,4 +149,11 @@ public class LaptopEndpoint {
     public List<Laptop> getLaptopByStatus(@PathVariable String status) {
         return laptopApi.getLaptopByStatus(status);
     }
+
+    @GetMapping("/get-object-by-id/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public LaptopModel getLaptopObjectById(@PathVariable String id) {
+        return laptopApi.getLaptopObjectById(id);
+    }
+
 }

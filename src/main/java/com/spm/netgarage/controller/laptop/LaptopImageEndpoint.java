@@ -42,7 +42,7 @@ public class LaptopImageEndpoint {
 
     @GetMapping("/get-by-lid/{lid}")
     @ResponseStatus(HttpStatus.OK)
-    public List<LaptopImageModel> getLaptopImageByLid(@PathVariable String lid) {
+    public LaptopImageModel getLaptopImageByLid(@PathVariable String lid) {
         return imageMongo.getByLid(lid);
     }
 

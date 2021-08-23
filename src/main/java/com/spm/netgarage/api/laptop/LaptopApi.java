@@ -1,5 +1,6 @@
 package com.spm.netgarage.api.laptop;
 
+import com.spm.netgarage.dal.model.laptop.LaptopModel;
 import com.spm.netgarage.domain.laptop.Laptop;
 import com.spm.netgarage.domain.laptop.LaptopDataAdapter;
 
@@ -45,5 +46,9 @@ public class LaptopApi {
 
     public Laptop updateLaptopStatus(Laptop laptop) {
         return laptopDataAdapter.updateStatus(laptop);
+    }
+
+    public LaptopModel getLaptopObjectById(String id) {
+        return laptopDataAdapter.getObjectById(id);
     }
 }

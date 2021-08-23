@@ -324,4 +324,9 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
         }
         return laptops;
     }
+
+    @Override
+    public LaptopModel getObjectById(String id) {
+        return repository.findById(id).get();
+    }
 }

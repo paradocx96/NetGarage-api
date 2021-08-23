@@ -1,5 +1,7 @@
 package com.spm.netgarage.domain.laptop;
 
+import com.spm.netgarage.dal.model.laptop.LaptopModel;
+
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -19,4 +21,6 @@ public interface LaptopDataAdapter {
     Laptop updateStatus(Laptop laptop);
 
     List<Laptop> getByStatus(String status);
+
+    LaptopModel getObjectById(String id);
 }

@@ -52,7 +52,7 @@ public class LaptopImageMongoImpl {
         return repository.findById(id).get();
     }
 
-    public List<LaptopImageModel> getByLid(String lid) {
+    public LaptopImageModel getByLid(String lid) {
         return repository.findByLid(lid);
     }
 

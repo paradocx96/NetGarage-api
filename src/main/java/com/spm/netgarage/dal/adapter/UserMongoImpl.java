@@ -2,21 +2,30 @@ package com.spm.netgarage.dal.adapter;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.spm.netgarage.dal.model.EmailSender;
 import com.spm.netgarage.dal.model.User;
 import com.spm.netgarage.dal.repository.UserMongoRepository;
+import com.spm.netgarage.domain.JwtResponseDto;
 import com.spm.netgarage.domain.UserDataAdapter;
+import com.spm.netgarage.domain.UserLoginDto;
 import com.spm.netgarage.dto.MessageResponseDto;
 import com.spm.netgarage.dto.UserRegisterDto;
+import com.spm.netgarage.security.jwt.JwtUtils;
 
 @Component
 public class UserMongoImpl implements UserDataAdapter{
@@ -26,6 +35,18 @@ public class UserMongoImpl implements UserDataAdapter{
 	
 	@Autowired
 	private EmailSender emailSender;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	AuthenticationManager authenticationManager;
+	
+	@Autowired
+	JwtUtils jwtUtils;
+	
+	@Autowired
+	UserDetailsServiceImpl userDetailsServiceImpl;
 
 	@Override
 	public ResponseEntity<?> createAccount(@Valid @RequestBody UserRegisterDto userRegisterDto) {
@@ -83,17 +104,38 @@ public class UserMongoImpl implements UserDataAdapter{
 	}
 
 	@Override
-	public ResponseEntity<?> loginAccount(UserRegisterDto user) {
+	public ResponseEntity<?> loginAccount(@Valid @RequestBody UserLoginDto user) {
 		
-		User exist = userRepository.findByUsername(user.getUsername()).get();
+		//Get user name and password and create new AuthenticationToken 
+		Authentication authentication = authenticationManager.authenticate(
+						new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+
+		//Set above assigned user credentials using Authentication object
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+				
+		//After that create new JWT Token for that person
+		String jwt = jwtUtils.generateJwtToken(authentication);
+				
+		//Then get authentication principles and set that UserDetailimpl object 
+		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();	
+				
+		//Get getAuthorities and set to List object
+		List<String> roles = userDetails.getAuthorities().stream()
+						.map(item -> item.getAuthority())
+						.collect(Collectors.toList());
 		
-		System.out.println(exist.getEmail());
-		exist.getId();
-		exist.getEmail();
-		exist.getUsername();
+		//This is for check the program display correct values or not
+		System.out.println(userDetails.getUsername());
+		System.out.println(userDetails.getPassword());
+		System.out.println(jwt);
+		System.out.println(roles.toString());
 		
-		// return success MSG to frontEnd user is updated successfully
-		return ResponseEntity.ok(new UserRegisterDto(exist.getId(),exist.getUsername(),exist.getEmail()));
+		
+		//Return JWT response to FrontEnd
+		return ResponseEntity.ok(new JwtResponseDto(jwt, 
+													userDetails.getId(), 
+													userDetails.getUsername(), 
+													userDetails.getEmail(), 
+													roles));
 	}
-	
 }

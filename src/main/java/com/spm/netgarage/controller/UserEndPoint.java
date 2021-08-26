@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spm.netgarage.api.UserApi;
 import com.spm.netgarage.dal.model.User;
+import com.spm.netgarage.domain.UserLoginDto;
 import com.spm.netgarage.dto.UserRegisterDto;
 
 @RestController
@@ -40,7 +41,7 @@ public class UserEndPoint {
 	}
 	
 	@PostMapping("/sign-in")
-	public ResponseEntity<?> loginUserAccount(@Valid @RequestBody UserRegisterDto userRegisterDto){
-		return userApi.loginAccount(userRegisterDto);
+	public ResponseEntity<?> loginUserAccount(@Valid @RequestBody UserLoginDto userLoginDto){
+		return userApi.loginAccount(userLoginDto);
 	}
 }

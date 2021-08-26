@@ -1,7 +1,9 @@
 package com.spm.netgarage.dal.adapter;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.mail.MessagingException;
@@ -17,8 +19,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.spm.netgarage.dal.model.ERole;
 import com.spm.netgarage.dal.model.EmailSender;
+import com.spm.netgarage.dal.model.Role;
 import com.spm.netgarage.dal.model.User;
+import com.spm.netgarage.dal.repository.RoleMongoRepository;
 import com.spm.netgarage.dal.repository.UserMongoRepository;
 import com.spm.netgarage.domain.JwtResponseDto;
 import com.spm.netgarage.domain.UserDataAdapter;
@@ -32,6 +37,10 @@ public class UserMongoImpl implements UserDataAdapter{
 
 	@Autowired
 	private UserMongoRepository userRepository;
+	
+	@Autowired
+	RoleMongoRepository roleRepository;
+	
 	
 	@Autowired
 	private EmailSender emailSender;
@@ -61,8 +70,19 @@ public class UserMongoImpl implements UserDataAdapter{
 		
 		// Create new user's account
 		User user = new User(userRegisterDto.getUsername(),
-							userRegisterDto.getPassword(),
+							passwordEncoder.encode(userRegisterDto.getPassword()),
 							userRegisterDto.getEmail());
+		
+		
+		//Create new HashSet to store user Roles
+		Set<Role> roles = new HashSet<>();
+				
+		//If it is true, Add ROLE_USER to that user
+		Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		
+		roles.add(userRole);
+				
 		
 		emailSender.setEmail(userRegisterDto.getEmail());
 		emailSender.setUsername(userRegisterDto.getUsername());
@@ -75,6 +95,10 @@ public class UserMongoImpl implements UserDataAdapter{
 			e.printStackTrace();
 		}
 		
+		
+		//set all roles to user object
+		user.setRoles(roles);
+				
 		//Save all user details into the database
 		userRepository.save(user);
 		

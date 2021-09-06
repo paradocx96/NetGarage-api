@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.spm.netgarage.dal.model.ERole;
 import com.spm.netgarage.dal.model.EmailSender;
+import com.spm.netgarage.dal.model.ForgotPasswordEmailSender;
 import com.spm.netgarage.dal.model.Role;
 import com.spm.netgarage.dal.model.User;
 import com.spm.netgarage.dal.repository.RoleMongoRepository;
@@ -32,6 +33,7 @@ import com.spm.netgarage.dto.MessageResponseDto;
 import com.spm.netgarage.dto.UserRegisterDto;
 import com.spm.netgarage.security.jwt.JwtUtils;
 
+
 @Component
 public class UserMongoImpl implements UserDataAdapter{
 
@@ -41,6 +43,8 @@ public class UserMongoImpl implements UserDataAdapter{
 	@Autowired
 	RoleMongoRepository roleRepository;
 	
+	@Autowired
+	ForgotPasswordEmailSender forgotPasswordEmailSender;
 	
 	@Autowired
 	private EmailSender emailSender;
@@ -174,8 +178,21 @@ public class UserMongoImpl implements UserDataAdapter{
 			System.out.println("User ID " + userObject.getId());
 			System.out.println("User Email " + user.getEmail());
 			
+			forgotPasswordEmailSender.setEmail(user.getEmail());
+			forgotPasswordEmailSender.setUserID(userObject.getId());
+			
+			try {
+					forgotPasswordEmailSender.sendEmail();
+					
+			} catch (UnsupportedEncodingException | MessagingException e) {
+				e.printStackTrace();
+			}
+			
+			// return success MSG to frontEnd user is updated successfully
+			return ResponseEntity.ok(new MessageResponseDto("Please check your mail box!"));
+							
+		}else {
+			return ResponseEntity.badRequest().body(new MessageResponseDto("Email is not valid!"));
 		}
-		
-		return null;
 	}
 }

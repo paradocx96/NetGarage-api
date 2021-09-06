@@ -44,4 +44,9 @@ public class UserEndPoint {
 	public ResponseEntity<?> loginUserAccount(@Valid @RequestBody UserLoginDto userLoginDto){
 		return userApi.loginAccount(userLoginDto);
 	}
+	
+	@PostMapping("/forgot-password")
+	public ResponseEntity<?> userForgotPassword(@Valid @RequestBody UserRegisterDto user){
+		return userApi.forgotPassword(user);
+	}
 }

@@ -162,4 +162,20 @@ public class UserMongoImpl implements UserDataAdapter{
 													userDetails.getEmail(), 
 													roles));
 	}
+
+	@Override
+	public ResponseEntity<?> forgotPassword(@Valid @RequestBody UserRegisterDto user) {
+		
+		User userObject = userRepository.findByEmail(user.getEmail()).get();
+		
+		// Check if student email already exist in the DB
+		if(userRepository.existsByEmail(user.getEmail())) {
+			
+			System.out.println("User ID " + userObject.getId());
+			System.out.println("User Email " + user.getEmail());
+			
+		}
+		
+		return null;
+	}
 }

@@ -31,4 +31,8 @@ public class UserApi {
 		return userDataAdapter.loginAccount(userLoginDto);
 	}
 	
+	public ResponseEntity<?> forgotPassword(UserRegisterDto user){
+		return userDataAdapter.forgotPassword(user);
+	}
+	
 }

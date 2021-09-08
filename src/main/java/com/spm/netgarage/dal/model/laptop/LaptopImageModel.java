@@ -13,6 +13,7 @@ public class LaptopImageModel {
     private String id;
     private String lid;
     private List<String> link;
+    private String mainlink;
     private String user;
     private LocalDateTime datetime;
 
@@ -23,11 +24,13 @@ public class LaptopImageModel {
             String id,
             String lid,
             List<String> link,
+            String mainlink,
             String user,
             LocalDateTime datetime) {
         this.id = id;
         this.lid = lid;
         this.link = link;
+        this.mainlink = mainlink;
         this.user = user;
         this.datetime = datetime;
     }
@@ -54,6 +57,14 @@ public class LaptopImageModel {
 
     public void setLink(List<String> link) {
         this.link = link;
+    }
+
+    public String getMainlink() {
+        return mainlink;
+    }
+
+    public void setMainlink(String mainlink) {
+        this.mainlink = mainlink;
     }
 
     public String getUser() {

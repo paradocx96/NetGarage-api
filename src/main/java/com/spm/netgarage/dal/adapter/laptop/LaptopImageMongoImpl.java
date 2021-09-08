@@ -39,6 +39,7 @@ public class LaptopImageMongoImpl {
 
         imageModel = repository.save(imageModel);
         laptopImageModel.setId(imageModel.getId());
+        laptopImageModel.setMainlink(imageModel.getMainlink());
         laptopImageModel.setDatetime(imageModel.getDatetime());
 
         return laptopImageModel;
@@ -65,6 +66,22 @@ public class LaptopImageMongoImpl {
                 LaptopImageModel.class
         );
         laptopImageModel.setId(imageModel.getId());
+        laptopImageModel.setMainlink(imageModel.getMainlink());
+        laptopImageModel.setDatetime(imageModel.getDatetime());
+
+        return laptopImageModel;
+    }
+
+    public LaptopImageModel updateMainLinkByLid(LaptopImageModel laptopImageModel) {
+        LaptopImageModel imageModel = mongoTemplate.findAndModify(
+                Query.query(Criteria.where("lid").is(laptopImageModel.getLid())),
+                new Update()
+                        .set("mainlink", laptopImageModel.getMainlink()),
+                LaptopImageModel.class
+        );
+        laptopImageModel.setId(imageModel.getId());
+        laptopImageModel.setLink(imageModel.getLink());
+        laptopImageModel.setUser(imageModel.getUser());
         laptopImageModel.setDatetime(imageModel.getDatetime());
 
         return laptopImageModel;

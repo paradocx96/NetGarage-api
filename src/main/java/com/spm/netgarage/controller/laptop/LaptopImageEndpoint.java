@@ -52,6 +52,12 @@ public class LaptopImageEndpoint {
         return imageMongo.updateByLid(laptopImageModel);
     }
 
+    @PutMapping("/update-main")
+    @ResponseStatus(HttpStatus.OK)
+    public LaptopImageModel updateLaptopMainImageByLid(@RequestBody LaptopImageModel laptopImageModel) {
+        return imageMongo.updateMainLinkByLid(laptopImageModel);
+    }
+
     @DeleteMapping("/delete/{lid}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteLaptopImageByLid(@PathVariable String lid) {

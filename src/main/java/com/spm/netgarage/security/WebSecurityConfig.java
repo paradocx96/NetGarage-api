@@ -66,7 +66,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 			//All Permit Access Control
 			.antMatchers("/user/**").permitAll()
-	
+
+			.antMatchers("/laptop/**").permitAll()
+			.antMatchers("/laptop-brand/**").permitAll()
+			.antMatchers("/laptop-graphic/**").permitAll()
+			.antMatchers("/laptop-image/**").permitAll()
+			.antMatchers("/laptop-os/**").permitAll()
+			.antMatchers("/laptop-processor/**").permitAll()
+
 			.anyRequest().authenticated();
 
 

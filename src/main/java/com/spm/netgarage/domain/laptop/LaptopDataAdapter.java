@@ -23,4 +23,6 @@ public interface LaptopDataAdapter {
     List<Laptop> getByStatus(String status);
 
     LaptopModel getObjectById(String id);
+
+    Laptop updateImage(Laptop laptop);
 }

@@ -49,4 +49,9 @@ public class UserEndPoint {
 	public ResponseEntity<?> userForgotPassword(@Valid @RequestBody UserRegisterDto user){
 		return userApi.forgotPassword(user);
 	}
+	
+	@PostMapping("/reset-password")
+	public ResponseEntity<?> userResetPassword(@Valid @RequestBody UserRegisterDto user){
+		return userApi.resetPassword(user);
+	}
 }

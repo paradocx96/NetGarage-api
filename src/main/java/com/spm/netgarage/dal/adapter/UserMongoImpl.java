@@ -195,4 +195,17 @@ public class UserMongoImpl implements UserDataAdapter{
 			return ResponseEntity.badRequest().body(new MessageResponseDto("Email is not valid!"));
 		}
 	}
+
+	@Override
+	public ResponseEntity<?> resetPassword(@Valid @RequestBody UserRegisterDto user) {
+		
+		System.out.println(user.getId());
+		
+		User userResetPassword = userRepository.findById(user.getId()).get();
+		userResetPassword.setPassword(passwordEncoder.encode(user.getPassword()));
+		userRepository.save(userResetPassword);
+		
+		// return success MSG to frontEnd user is updated successfully
+		return ResponseEntity.ok(new MessageResponseDto("Successfully updated your password!"));
+	}
 }

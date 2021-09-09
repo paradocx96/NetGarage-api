@@ -321,6 +321,7 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
             laptop.setDimension(laptopModel.getDimension());
             laptop.setWeight(laptopModel.getWeight());
             laptop.setColor(laptopModel.getColor());
+            laptop.setImage(laptopModel.getImage());
 
             laptops.add(laptop);
         }

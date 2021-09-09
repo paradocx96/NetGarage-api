@@ -47,6 +47,7 @@ public class LaptopModel {
     private String dimension;
     private String weight;
     private String color;
+    private String image;
 
     public LaptopModel() {
     }
@@ -89,7 +90,8 @@ public class LaptopModel {
             String battery,
             String dimension,
             String weight,
-            String color) {
+            String color,
+            String image) {
         this.id = id;
         this.user = user;
         this.datetime = datetime;
@@ -128,6 +130,7 @@ public class LaptopModel {
         this.dimension = dimension;
         this.weight = weight;
         this.color = color;
+        this.image = image;
     }
 
     public String getId() {
@@ -432,5 +435,13 @@ public class LaptopModel {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

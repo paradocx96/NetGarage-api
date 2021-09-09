@@ -156,4 +156,14 @@ public class LaptopEndpoint {
         return laptopApi.getLaptopObjectById(id);
     }
 
+    @PutMapping("/update-image")
+    @ResponseStatus(HttpStatus.OK)
+    public Laptop updateLaptopImage(@RequestBody LaptopDto laptopDto) {
+        Laptop laptop = new Laptop();
+
+        laptop.setId(laptopDto.getId());
+        laptop.setImage(laptopDto.getImage());
+
+        return laptopApi.updateLaptopImage(laptop);
+    }
 }

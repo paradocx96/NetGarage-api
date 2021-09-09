@@ -329,4 +329,23 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
     public LaptopModel getObjectById(String id) {
         return repository.findById(id).get();
     }
+
+    @Override
+    public Laptop updateImage(Laptop laptop) {
+        LaptopModel laptopModel = mongoTemplate.findAndModify(
+                Query.query(Criteria.where("id").is(laptop.getId())),
+                new Update()
+                        .set("image", laptop.getImage()),
+                LaptopModel.class
+        );
+
+        if(laptopModel != null) {
+            laptop.setId(laptopModel.getId());
+            laptop.setImage(laptopModel.getImage());
+
+            return laptop;
+        } else {
+            return null;
+        }
+    }
 }

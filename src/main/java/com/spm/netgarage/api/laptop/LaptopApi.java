@@ -51,4 +51,8 @@ public class LaptopApi {
     public LaptopModel getLaptopObjectById(String id) {
         return laptopDataAdapter.getObjectById(id);
     }
+
+    public Laptop updateLaptopImage(Laptop laptop) {
+        return laptopDataAdapter.updateImage(laptop);
+    }
 }

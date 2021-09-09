@@ -126,6 +126,7 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
             laptop.setDimension(laptopModel.getDimension());
             laptop.setWeight(laptopModel.getWeight());
             laptop.setColor(laptopModel.getColor());
+            laptop.setImage(laptopModel.getImage());
 
             laptops.add(laptop);
         }
@@ -247,6 +248,7 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
         laptop.setDimension(laptopModel.getDimension());
         laptop.setWeight(laptopModel.getWeight());
         laptop.setColor(laptopModel.getColor());
+        laptop.setImage(laptopModel.getImage());
 
         laptopList.add(laptop);
 
@@ -328,5 +330,24 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
     @Override
     public LaptopModel getObjectById(String id) {
         return repository.findById(id).get();
+    }
+
+    @Override
+    public Laptop updateImage(Laptop laptop) {
+        LaptopModel laptopModel = mongoTemplate.findAndModify(
+                Query.query(Criteria.where("id").is(laptop.getId())),
+                new Update()
+                        .set("image", laptop.getImage()),
+                LaptopModel.class
+        );
+
+        if(laptopModel != null) {
+            laptop.setId(laptopModel.getId());
+            laptop.setImage(laptopModel.getImage());
+
+            return laptop;
+        } else {
+            return null;
+        }
     }
 }

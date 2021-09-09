@@ -3,8 +3,13 @@
 
 package com.spm.netgarage.dal.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 //Create table
 @Document(collection = "users")
@@ -16,6 +21,9 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	
+	@DBRef
+	private Set<Role> roles = new HashSet<>();
 
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -58,6 +66,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 }

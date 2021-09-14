@@ -58,6 +58,10 @@ public class PhoneController {
 		return phoneApi.deletePhoneById(id);
 	}
 	
+	@GetMapping("isPhoneAvailable/{brandmodel}")
+	public boolean isPhoneAvailable(@PathVariable String brandmodel) {
+		return phoneApi.isPhoneAvailable(brandmodel);
+	}
 	
 
 }

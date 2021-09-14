@@ -304,5 +304,21 @@ public class PhoneApi {
 		return phoneDataAdapter.delete(id);
 	}
 	
+	public boolean isPhoneAvailable(String brandmodel) {
+		List<PhoneDto> phoneDtoList = new ArrayList<>();
+		phoneDtoList = this.getAllPhones();
+		
+		boolean isAvailable = true;
+		
+		for(PhoneDto phoneDto : phoneDtoList) {
+			int compare = phoneDto.getBrandmodel().compareToIgnoreCase(brandmodel);
+			if(compare == 0) {
+				isAvailable = false;
+			}
+		}
+		
+		return isAvailable;
+	}
+	
 
 }

@@ -157,5 +157,140 @@ public class PhoneApi {
 		return phoneDtoList;
 	}
 	
+	public PhoneDto getPhoneById(String id) {
+		PhoneDto phoneDto = new PhoneDto();
+		PhoneModel phoneModel = new PhoneModel();
+		
+		phoneDto.setId(phoneModel.getId());
+		phoneDto.setBrandmodel(phoneModel.getBrandmodel());
+		phoneDto.setBrand(phoneModel.getBrand());
+		phoneDto.setImage(phoneModel.getImage());
+		
+		phoneDto.setNetwork(phoneModel.getNetwork());
+		
+		//body
+		phoneDto.setDimensions(phoneModel.getDimensions());
+		phoneDto.setWeight(phoneModel.getWeight());
+		phoneDto.setSim(phoneModel.getSim());
+		
+		//display
+		phoneDto.setDisplaytype(phoneModel.getDisplaytype());
+		phoneDto.setDisplaysize(phoneModel.getDisplaysize());
+		phoneDto.setDisplayresolution(phoneModel.getDisplayresolution());
+		phoneDto.setDisplayprotection(phoneModel.getDisplayprotection());
+		
+		//software
+		phoneDto.setOs(phoneModel.getOs());
+		phoneDto.setSoftwarefeatures(phoneModel.getSoftwarefeatures());
+		phoneDto.setChipset(phoneModel.getChipset());
+		phoneDto.setMemorystorage(phoneModel.getMemorystorage());
+		phoneDto.setCard(phoneModel.getCard());
+		
+		//main camera
+		phoneDto.setMaincamera(phoneModel.getMaincamera());
+		phoneDto.setMaincameraDetails(phoneModel.getMaincameraDetails());
+		phoneDto.setMaincameraVideo(phoneModel.getMaincameraVideo());
+		phoneDto.setMaincameraFeatures(phoneModel.getMaincameraFeatures());
+		
+		//selfie camera
+		phoneDto.setSelfcamera(phoneModel.getSelfcamera());
+		phoneDto.setSelfcameraDetails(phoneModel.getSelfcameraDetails());
+		phoneDto.setSelfcameraVideo(phoneModel.getSelfcameraVideo());
+		phoneDto.setSelfcameraFeatures(phoneModel.getSelfcameraFeatures());
+		
+		//audio attributes
+		phoneDto.setLoudspeaker(phoneModel.getLoudspeaker());
+		phoneDto.setHeadphonejack(phoneModel.getHeadphonejack());
+		phoneDto.setWlan(phoneModel.getWlan());
+		phoneDto.setBluetooth(phoneModel.getBluetooth());
+		phoneDto.setGps(phoneModel.getGps());
+		phoneDto.setNfc(phoneModel.getNfc());
+		phoneDto.setRadio(phoneModel.getRadio());
+		
+		//sensors
+		phoneDto.setSensors(phoneModel.getSensors());
+		
+		//battery
+		phoneDto.setBatterytype(phoneModel.getBatterytype());
+		phoneDto.setCharging(phoneModel.getCharging());
+		
+		//miscellaneous
+		phoneDto.setColors(phoneModel.getColors());
+		phoneDto.setModels(phoneModel.getModels());
+		phoneDto.setSar(phoneModel.getSar());
+		
+		return phoneDto;
+	}
+	
+	//update a phone entry
+	public String updatePhone(PhoneDto phoneDto) {
+		PhoneModel phoneModel =  new PhoneModel();
+		
+		phoneModel.setId(phoneDto.getId());
+		phoneModel.setBrandmodel(phoneDto.getBrandmodel());
+		phoneModel.setBrand(phoneDto.getBrand());
+		phoneModel.setImage(phoneDto.getImage());
+		
+		phoneModel.setNetwork(phoneDto.getNetwork());
+		
+		//body
+		phoneModel.setDimensions(phoneDto.getDimensions());
+		phoneModel.setWeight(phoneDto.getWeight());
+		phoneModel.setSim(phoneDto.getSim());
+		
+		//display
+		phoneModel.setDisplaytype(phoneDto.getDisplaytype());
+		phoneModel.setDisplaysize(phoneDto.getDisplaysize());
+		phoneModel.setDisplayresolution(phoneDto.getDisplayresolution());
+		phoneModel.setDisplayprotection(phoneDto.getDisplayprotection());
+		
+		//software
+		phoneModel.setOs(phoneDto.getOs());
+		phoneModel.setSoftwarefeatures(phoneDto.getSoftwarefeatures());
+		phoneModel.setChipset(phoneDto.getChipset());
+		phoneModel.setMemorystorage(phoneDto.getMemorystorage());
+		phoneModel.setCard(phoneDto.getCard());
+		
+		//main camera
+		phoneModel.setMaincamera(phoneDto.getMaincamera());
+		phoneModel.setMaincameraDetails(phoneDto.getMaincameraDetails());
+		phoneModel.setMaincameraVideo(phoneDto.getMaincameraVideo());
+		phoneModel.setMaincameraFeatures(phoneDto.getMaincameraFeatures());
+		
+		//selfie camera
+		phoneModel.setSelfcamera(phoneDto.getSelfcamera());
+		phoneModel.setSelfcameraDetails(phoneDto.getSelfcameraDetails());
+		phoneModel.setSelfcameraVideo(phoneDto.getSelfcameraVideo());
+		phoneModel.setSelfcameraFeatures(phoneDto.getSelfcameraFeatures());
+		
+		//audio attributes
+		phoneModel.setLoudspeaker(phoneDto.getLoudspeaker());
+		phoneModel.setHeadphonejack(phoneDto.getHeadphonejack());
+		phoneModel.setWlan(phoneDto.getWlan());
+		phoneModel.setBluetooth(phoneDto.getBluetooth());
+		phoneModel.setGps(phoneDto.getGps());
+		phoneModel.setNfc(phoneDto.getNfc());
+		phoneModel.setRadio(phoneDto.getRadio());
+		
+		//sensors
+		phoneModel.setSensors(phoneDto.getSensors());
+		
+		//battery
+		phoneModel.setBatterytype(phoneDto.getBatterytype());
+		phoneModel.setCharging(phoneDto.getCharging());
+		
+		//miscellaneous
+		phoneModel.setColors(phoneDto.getColors());
+		phoneModel.setModels(phoneDto.getModels());
+		phoneModel.setSar(phoneDto.getSar());
+		
+		return phoneDataAdapter.updateById(phoneModel);
+	}
+	
+	//deletes a phone by id
+	public String deletePhoneById(String id) {
+		return phoneDataAdapter.delete(id);
+	}
+	
 
 }

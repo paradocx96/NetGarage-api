@@ -23,6 +23,7 @@ public class PhoneAdapterMongoImpl implements PhoneDataAdapter {
 	@Override
 	public String save(PhoneModel phoneModel) {
 		//save a phone 
+		System.out.println("Saved phone model with id: "+ phoneModel.getId());
 		return phoneRepository.save(phoneModel).getId();
 	}
 
@@ -39,16 +40,18 @@ public class PhoneAdapterMongoImpl implements PhoneDataAdapter {
 	}
 
 
+	//updates a phone entry
 	@Override
-	public String updateById(String id, PhoneModel phoneModel) {
-		// TODO Auto-generated method stub
-		return null;
+	public String updateById( PhoneModel phoneModel) {
+		System.out.println("Updating phone with id: " + phoneModel.getId());
+		return phoneRepository.save(phoneModel).getId();
 	}
 
 	@Override
 	public String delete(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Deleting phone with id: " + id);
+		phoneRepository.deleteById(id);
+		return id;
 	}
 
 	//returns entries by  brand and model

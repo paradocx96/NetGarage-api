@@ -4,6 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,27 +29,32 @@ public class PhoneController {
 	}
 	
 	//add a phone entry
-	public String addPhone (PhoneDto phoneDto) {
+	@PostMapping("addPhone")
+	public String addPhone (@RequestBody PhoneDto phoneDto) {
 		return phoneApi.addPhone(phoneDto);
 	}
 	
 	//get all the phones 
+	@GetMapping("getAllPhones")
 	public List<PhoneDto> getAllPhones(){
 		return phoneApi.getAllPhones();
 	}
 	
 	//get the phone for a given id
+	@GetMapping("getPhoneById/{id}")
 	public PhoneDto getPhoneById(String id) {
 		return phoneApi.getPhoneById(id);
 	}
 	
 	//update a phone
-	public String updatePhone (PhoneDto phoneDto) {
+	@PutMapping("updatePhone")
+	public String updatePhone (@RequestBody PhoneDto phoneDto) {
 		return phoneApi.updatePhone(phoneDto);
 	}
 	
 	//delete a phone on a given id
-	public String deletePhoneById(String id) {
+	@DeleteMapping("deletePhone/{id}")
+	public String deletePhoneById(@PathVariable String id) {
 		return phoneApi.deletePhoneById(id);
 	}
 	

@@ -1,5 +1,8 @@
 package com.spm.netgarage.api.phone;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -79,6 +82,79 @@ public class PhoneApi {
 		
 		return phoneDataAdapter.save(newPhone);
 		
+	}
+	
+	public List<PhoneDto> getAllPhones(){
+		List<PhoneDto> phoneDtoList = new ArrayList<>();
+		List<PhoneModel> phoneModelList = new ArrayList<>();
+		
+		phoneModelList =  phoneDataAdapter.getAll();
+		
+		for(PhoneModel phoneModel : phoneModelList) {
+			PhoneDto phoneDto = new PhoneDto();
+			
+			phoneDto.setId(phoneModel.getId());
+			phoneDto.setBrandmodel(phoneModel.getBrandmodel());
+			phoneDto.setBrand(phoneModel.getBrand());
+			phoneDto.setImage(phoneModel.getImage());
+			
+			phoneDto.setNetwork(phoneModel.getNetwork());
+			
+			//body
+			phoneDto.setDimensions(phoneModel.getDimensions());
+			phoneDto.setWeight(phoneModel.getWeight());
+			phoneDto.setSim(phoneModel.getSim());
+			
+			//display
+			phoneDto.setDisplaytype(phoneModel.getDisplaytype());
+			phoneDto.setDisplaysize(phoneModel.getDisplaysize());
+			phoneDto.setDisplayresolution(phoneModel.getDisplayresolution());
+			phoneDto.setDisplayprotection(phoneModel.getDisplayprotection());
+			
+			//software
+			phoneDto.setOs(phoneModel.getOs());
+			phoneDto.setSoftwarefeatures(phoneModel.getSoftwarefeatures());
+			phoneDto.setChipset(phoneModel.getChipset());
+			phoneDto.setMemorystorage(phoneModel.getMemorystorage());
+			phoneDto.setCard(phoneModel.getCard());
+			
+			//main camera
+			phoneDto.setMaincamera(phoneModel.getMaincamera());
+			phoneDto.setMaincameraDetails(phoneModel.getMaincameraDetails());
+			phoneDto.setMaincameraVideo(phoneModel.getMaincameraVideo());
+			phoneDto.setMaincameraFeatures(phoneModel.getMaincameraFeatures());
+			
+			//selfie camera
+			phoneDto.setSelfcamera(phoneModel.getSelfcamera());
+			phoneDto.setSelfcameraDetails(phoneModel.getSelfcameraDetails());
+			phoneDto.setSelfcameraVideo(phoneModel.getSelfcameraVideo());
+			phoneDto.setSelfcameraFeatures(phoneModel.getSelfcameraFeatures());
+			
+			//audio attributes
+			phoneDto.setLoudspeaker(phoneModel.getLoudspeaker());
+			phoneDto.setHeadphonejack(phoneModel.getHeadphonejack());
+			phoneDto.setWlan(phoneModel.getWlan());
+			phoneDto.setBluetooth(phoneModel.getBluetooth());
+			phoneDto.setGps(phoneModel.getGps());
+			phoneDto.setNfc(phoneModel.getNfc());
+			phoneDto.setRadio(phoneModel.getRadio());
+			
+			//sensors
+			phoneDto.setSensors(phoneModel.getSensors());
+			
+			//battery
+			phoneDto.setBatterytype(phoneModel.getBatterytype());
+			phoneDto.setCharging(phoneModel.getCharging());
+			
+			//miscellaneous
+			phoneDto.setColors(phoneModel.getColors());
+			phoneDto.setModels(phoneModel.getModels());
+			phoneDto.setSar(phoneModel.getSar());
+			
+			phoneDtoList.add(phoneDto);
+		}
+		
+		return phoneDtoList;
 	}
 	
 

@@ -20,8 +20,13 @@ public class PhoneApi {
 		this.phoneDataAdapter = phoneDataAdapter;
 	}
 	
+	//add a phone entry
 	public String addPhone(PhoneDto phoneDto) {
+		
+		//instantiate new model
 		PhoneModel newPhone = new PhoneModel();
+		
+		//set the attributes
 		newPhone.setId(phoneDto.getId());
 		newPhone.setBrandmodel(phoneDto.getBrandmodel());
 		newPhone.setBrand(phoneDto.getBrand());
@@ -85,14 +90,20 @@ public class PhoneApi {
 	}
 	
 	public List<PhoneDto> getAllPhones(){
+		
+		//instantiate phoneDto and model list
 		List<PhoneDto> phoneDtoList = new ArrayList<>();
 		List<PhoneModel> phoneModelList = new ArrayList<>();
 		
+		//get all phone models to phoneModel list
 		phoneModelList =  phoneDataAdapter.getAll();
 		
+		//iterate through phone model list
 		for(PhoneModel phoneModel : phoneModelList) {
+			//instantiate phone dto
 			PhoneDto phoneDto = new PhoneDto();
 			
+			//set the attributes to the phone DTO
 			phoneDto.setId(phoneModel.getId());
 			phoneDto.setBrandmodel(phoneModel.getBrandmodel());
 			phoneDto.setBrand(phoneModel.getBrand());
@@ -157,6 +168,7 @@ public class PhoneApi {
 		return phoneDtoList;
 	}
 	
+	//get a phone by id
 	public PhoneDto getPhoneById(String id) {
 		PhoneDto phoneDto = new PhoneDto();
 		PhoneModel phoneModel = new PhoneModel();

@@ -1,5 +1,6 @@
 package com.spm.netgarage.dal.model.phone;
 
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,9 +11,11 @@ public class PhoneModel {
 	private String brandmodel;
 	private String brand;
 	private String image;
+	//public List<String> otherimages;
 	
-	//body attributes
 	private String network;
+	//body attributes
+	
 	private String dimensions;
 	private String weight;
 	private String sim;
@@ -47,7 +50,7 @@ public class PhoneModel {
 	private String selfcameraVideo;
 	private String selfcameraFeatures;
 	
-	//audio attrinutes
+	//audio attributes
 	private String loudspeaker;
 	private String headphonejack;
 	

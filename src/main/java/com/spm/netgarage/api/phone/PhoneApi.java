@@ -491,21 +491,25 @@ public class PhoneApi {
 	//publish a phone
 	public String doPublishPhone(String id) {
 		//get the phone on the given id
-		PhoneModel phoneModel =  phoneDataAdapter.getById(id);
+		//PhoneModel phoneModel =  phoneDataAdapter.getById(id);
 		//set the status as published
-		phoneModel.setPublishstatus("published");
+		//phoneModel.setPublishstatus("published");
 		//update the database
-		return phoneDataAdapter.updateById(phoneModel);
+	
+		//use mongo template based publish method.
+		return phoneDataAdapter.publishPhone(id);
 	}
 	
 	//unpublish a phone
 		public String doUnpublishPhone(String id) {
 			//get the phone on the given id
-			PhoneModel phoneModel =  phoneDataAdapter.getById(id);
+			//PhoneModel phoneModel =  phoneDataAdapter.getById(id);
 			//set the status as published
-			phoneModel.setPublishstatus("unpublished");
+			//phoneModel.setPublishstatus("unpublished");
 			//update the database
-			return phoneDataAdapter.updateById(phoneModel);
+			
+			//use mongo template based unpublish method.
+			return phoneDataAdapter.unpublishPhone(id);
 		}
 	
 

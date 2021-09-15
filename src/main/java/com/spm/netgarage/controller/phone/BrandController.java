@@ -63,4 +63,11 @@ public class BrandController {
 	public String deleteBrandById(@PathVariable String id) {
 		return phoneBrandApi.deleteBrandById(id);
 	}
+	
+	//checking whether the brand name is available
+	//returns true of available
+	@GetMapping("isBrandAvailable/{brand}")
+	public boolean isBrandAvailable(@PathVariable String brand) {
+		return phoneBrandApi.isBrandAvailable(brand);
+	}
 }

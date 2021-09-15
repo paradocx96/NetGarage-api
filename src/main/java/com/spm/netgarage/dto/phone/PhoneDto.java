@@ -6,6 +6,7 @@ public class PhoneDto {
 	private String brandmodel;
 	private String brand;
 	private String image;
+	private boolean published;
 	
 	//body attributes
 	private String network;
@@ -88,6 +89,15 @@ public class PhoneDto {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	
+	
+	public boolean isPublished() {
+		return published;
+	}
+	public void setPublished(boolean published) {
+		this.published = published;
 	}
 	public String getNetwork() {
 		return network;

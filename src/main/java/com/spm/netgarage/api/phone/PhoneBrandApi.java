@@ -24,7 +24,7 @@ public class PhoneBrandApi {
 	//save a phone brand
 	public String addBrand(PhoneBrandDto phoneBrandDto) {
 		PhoneBrandModel phoneBrandModel =  new PhoneBrandModel();
-		phoneBrandModel.setName(phoneBrandDto.getId());
+		phoneBrandModel.setName(phoneBrandDto.getName());
 		
 		//add the brand
 		return phoneBrandDataAdapter.save(phoneBrandModel);

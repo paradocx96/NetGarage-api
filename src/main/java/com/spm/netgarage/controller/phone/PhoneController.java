@@ -58,10 +58,35 @@ public class PhoneController {
 		return phoneApi.deletePhoneById(id);
 	}
 	
+	//check the availability of a phone
+	//true if available else false
 	@GetMapping("isPhoneAvailable/{brandmodel}")
 	public boolean isPhoneAvailable(@PathVariable String brandmodel) {
 		return phoneApi.isPhoneAvailable(brandmodel);
 	}
 	
+	//get all published phones
+	@GetMapping("getPublihsedPhones")
+	public List<PhoneDto> getAllPublishedPhones(){
+		return phoneApi.getPublishedPhones();
+	}
+	
+	//get all unpublished phones
+	@GetMapping("getUnpublihsedPhones")
+	public List<PhoneDto> getAllUnpublishedPhones(){
+		return phoneApi.getUnpublishedPhones();
+	}
+	
+	//publish a phone entry by id
+	@PutMapping("publishPhone/{id}")
+	public String publishPhone(@PathVariable String id) {
+		return phoneApi.doPublishPhone(id);
+	}
+	
+	//unpublish a phone entry by id
+	@PutMapping("unpublishPhone/{id}")
+	public String unpublishPhone(@PathVariable String id) {
+		return phoneApi.doUnpublishPhone(id);
+	}
 
 }

@@ -489,23 +489,23 @@ public class PhoneApi {
 	}
 	
 	//publish a phone
-	public void doPublishPhone(String id) {
+	public String doPublishPhone(String id) {
 		//get the phone on the given id
 		PhoneModel phoneModel =  phoneDataAdapter.getById(id);
 		//set the status as published
 		phoneModel.setPublishstatus("published");
 		//update the database
-		phoneDataAdapter.updateById(phoneModel);
+		return phoneDataAdapter.updateById(phoneModel);
 	}
 	
 	//unpublish a phone
-		public void doUnpublishPhone(String id) {
+		public String doUnpublishPhone(String id) {
 			//get the phone on the given id
 			PhoneModel phoneModel =  phoneDataAdapter.getById(id);
 			//set the status as published
 			phoneModel.setPublishstatus("unpublished");
 			//update the database
-			phoneDataAdapter.updateById(phoneModel);
+			return phoneDataAdapter.updateById(phoneModel);
 		}
 	
 

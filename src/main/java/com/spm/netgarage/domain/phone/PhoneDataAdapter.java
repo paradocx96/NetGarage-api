@@ -16,6 +16,9 @@ public interface PhoneDataAdapter {
 	public List<PhoneModel> getByOs(String os);
 	public List<PhoneModel> getByChipset(String chipset);
 	public List<PhoneModel> getByPublishedStatus(String status);
+	public String publishPhone(String id);
+	public String unpublishPhone(String id);
+	
 	
 
 }

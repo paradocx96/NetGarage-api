@@ -3,6 +3,10 @@ package com.spm.netgarage.dal.adapter.phone;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 import com.spm.netgarage.dal.model.phone.PhoneModel;
@@ -13,10 +17,12 @@ import com.spm.netgarage.domain.phone.PhoneDataAdapter;
 public class PhoneAdapterMongoImpl implements PhoneDataAdapter {
 	
 	private PhoneRepository phoneRepository;
+	private final MongoTemplate mongoTemplate;
 	
 	@Autowired
-	public PhoneAdapterMongoImpl(PhoneRepository phoneRepository) {
+	public PhoneAdapterMongoImpl(PhoneRepository phoneRepository, MongoTemplate mongoTemplate) {
 		this.phoneRepository = phoneRepository;
+		this.mongoTemplate = mongoTemplate;
 	}
 
 	//save a phone entry
@@ -81,6 +87,22 @@ public class PhoneAdapterMongoImpl implements PhoneDataAdapter {
 	@Override
 	public List<PhoneModel> getByPublishedStatus(String status) {
 		return phoneRepository.findByPublishstatus(status);
+	}
+
+	@Override
+	public String publishPhone(String id) {
+		PhoneModel phoneModel = 
+				mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(id)),
+						new Update().set("publishstatus", "published"), PhoneModel.class);
+		return phoneModel.getId();
+	}
+
+	@Override
+	public String unpublishPhone(String id) {
+		PhoneModel phoneModel = 
+				mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(id)),
+						new Update().set("publishstatus", "unpublished"), PhoneModel.class);
+		return phoneModel.getId();
 	}
 
 

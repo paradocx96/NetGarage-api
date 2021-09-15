@@ -47,7 +47,7 @@ public class BrandController {
 	}
 	
 	//get brand by name
-	@GetMapping("getBrandByName/{id}")
+	@GetMapping("getBrandByName/{name}")
 	public PhoneBrandDto getBrandByName(@PathVariable String name) {
 		return phoneBrandApi.getBrandByName(name);
 	}

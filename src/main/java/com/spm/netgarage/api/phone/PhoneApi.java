@@ -31,6 +31,7 @@ public class PhoneApi {
 		newPhone.setBrandmodel(phoneDto.getBrandmodel());
 		newPhone.setBrand(phoneDto.getBrand());
 		newPhone.setImage(phoneDto.getImage());
+		newPhone.setPublishstatus("unpublished");
 		
 		newPhone.setNetwork(phoneDto.getNetwork());
 		
@@ -108,6 +109,7 @@ public class PhoneApi {
 			phoneDto.setBrandmodel(phoneModel.getBrandmodel());
 			phoneDto.setBrand(phoneModel.getBrand());
 			phoneDto.setImage(phoneModel.getImage());
+			phoneDto.setPublishstatus(phoneModel.getPublishstatus());
 			
 			phoneDto.setNetwork(phoneModel.getNetwork());
 			
@@ -177,6 +179,7 @@ public class PhoneApi {
 		phoneDto.setBrandmodel(phoneModel.getBrandmodel());
 		phoneDto.setBrand(phoneModel.getBrand());
 		phoneDto.setImage(phoneModel.getImage());
+		phoneDto.setPublishstatus(phoneModel.getPublishstatus());
 		
 		phoneDto.setNetwork(phoneModel.getNetwork());
 		
@@ -242,6 +245,7 @@ public class PhoneApi {
 		phoneModel.setBrandmodel(phoneDto.getBrandmodel());
 		phoneModel.setBrand(phoneDto.getBrand());
 		phoneModel.setImage(phoneDto.getImage());
+		phoneModel.setPublishstatus(phoneDto.getPublishstatus());
 		
 		phoneModel.setNetwork(phoneDto.getNetwork());
 		
@@ -319,6 +323,190 @@ public class PhoneApi {
 		
 		return isAvailable;
 	}
+	
+	//get published phones
+	public List<PhoneDto> getPublishedPhones(){
+		//instantiate phoneDto and model list
+				List<PhoneDto> phoneDtoList = new ArrayList<>();
+				List<PhoneModel> phoneModelList = new ArrayList<>();
+				
+				//get all phone models to phoneModel list
+				phoneModelList =  phoneDataAdapter.getByPublishedStatus("published");
+				
+				//iterate through phone model list
+				for(PhoneModel phoneModel : phoneModelList) {
+					//instantiate phone dto
+					PhoneDto phoneDto = new PhoneDto();
+					
+					//set the attributes to the phone DTO
+					phoneDto.setId(phoneModel.getId());
+					phoneDto.setBrandmodel(phoneModel.getBrandmodel());
+					phoneDto.setBrand(phoneModel.getBrand());
+					phoneDto.setImage(phoneModel.getImage());
+					phoneDto.setPublishstatus(phoneModel.getPublishstatus());
+					
+					phoneDto.setNetwork(phoneModel.getNetwork());
+					
+					//body
+					phoneDto.setDimensions(phoneModel.getDimensions());
+					phoneDto.setWeight(phoneModel.getWeight());
+					phoneDto.setSim(phoneModel.getSim());
+					
+					//display
+					phoneDto.setDisplaytype(phoneModel.getDisplaytype());
+					phoneDto.setDisplaysize(phoneModel.getDisplaysize());
+					phoneDto.setDisplayresolution(phoneModel.getDisplayresolution());
+					phoneDto.setDisplayprotection(phoneModel.getDisplayprotection());
+					
+					//software
+					phoneDto.setOs(phoneModel.getOs());
+					phoneDto.setSoftwarefeatures(phoneModel.getSoftwarefeatures());
+					phoneDto.setChipset(phoneModel.getChipset());
+					phoneDto.setMemorystorage(phoneModel.getMemorystorage());
+					phoneDto.setCard(phoneModel.getCard());
+					
+					//main camera
+					phoneDto.setMaincamera(phoneModel.getMaincamera());
+					phoneDto.setMaincameraDetails(phoneModel.getMaincameraDetails());
+					phoneDto.setMaincameraVideo(phoneModel.getMaincameraVideo());
+					phoneDto.setMaincameraFeatures(phoneModel.getMaincameraFeatures());
+					
+					//selfie camera
+					phoneDto.setSelfcamera(phoneModel.getSelfcamera());
+					phoneDto.setSelfcameraDetails(phoneModel.getSelfcameraDetails());
+					phoneDto.setSelfcameraVideo(phoneModel.getSelfcameraVideo());
+					phoneDto.setSelfcameraFeatures(phoneModel.getSelfcameraFeatures());
+					
+					//audio attributes
+					phoneDto.setLoudspeaker(phoneModel.getLoudspeaker());
+					phoneDto.setHeadphonejack(phoneModel.getHeadphonejack());
+					phoneDto.setWlan(phoneModel.getWlan());
+					phoneDto.setBluetooth(phoneModel.getBluetooth());
+					phoneDto.setGps(phoneModel.getGps());
+					phoneDto.setNfc(phoneModel.getNfc());
+					phoneDto.setRadio(phoneModel.getRadio());
+					
+					//sensors
+					phoneDto.setSensors(phoneModel.getSensors());
+					
+					//battery
+					phoneDto.setBatterytype(phoneModel.getBatterytype());
+					phoneDto.setCharging(phoneModel.getCharging());
+					
+					//miscellaneous
+					phoneDto.setColors(phoneModel.getColors());
+					phoneDto.setModels(phoneModel.getModels());
+					phoneDto.setSar(phoneModel.getSar());
+					
+					phoneDtoList.add(phoneDto);
+				}
+				
+				return phoneDtoList;
+				
+				
+	}
+	
+	//method to get unpublished phones
+	public List<PhoneDto> getUnpublishedPhones(){
+		//instantiate phoneDto and model list
+				List<PhoneDto> phoneDtoList = new ArrayList<>();
+				List<PhoneModel> phoneModelList = new ArrayList<>();
+				
+				//get all phone models to phoneModel list
+				phoneModelList =  phoneDataAdapter.getByPublishedStatus("unpublished");
+				
+				//iterate through phone model list
+				for(PhoneModel phoneModel : phoneModelList) {
+					//instantiate phone dto
+					PhoneDto phoneDto = new PhoneDto();
+					
+					//set the attributes to the phone DTO
+					phoneDto.setId(phoneModel.getId());
+					phoneDto.setBrandmodel(phoneModel.getBrandmodel());
+					phoneDto.setBrand(phoneModel.getBrand());
+					phoneDto.setImage(phoneModel.getImage());
+					phoneDto.setPublishstatus(phoneModel.getPublishstatus());
+					
+					phoneDto.setNetwork(phoneModel.getNetwork());
+					
+					//body
+					phoneDto.setDimensions(phoneModel.getDimensions());
+					phoneDto.setWeight(phoneModel.getWeight());
+					phoneDto.setSim(phoneModel.getSim());
+					
+					//display
+					phoneDto.setDisplaytype(phoneModel.getDisplaytype());
+					phoneDto.setDisplaysize(phoneModel.getDisplaysize());
+					phoneDto.setDisplayresolution(phoneModel.getDisplayresolution());
+					phoneDto.setDisplayprotection(phoneModel.getDisplayprotection());
+					
+					//software
+					phoneDto.setOs(phoneModel.getOs());
+					phoneDto.setSoftwarefeatures(phoneModel.getSoftwarefeatures());
+					phoneDto.setChipset(phoneModel.getChipset());
+					phoneDto.setMemorystorage(phoneModel.getMemorystorage());
+					phoneDto.setCard(phoneModel.getCard());
+					
+					//main camera
+					phoneDto.setMaincamera(phoneModel.getMaincamera());
+					phoneDto.setMaincameraDetails(phoneModel.getMaincameraDetails());
+					phoneDto.setMaincameraVideo(phoneModel.getMaincameraVideo());
+					phoneDto.setMaincameraFeatures(phoneModel.getMaincameraFeatures());
+					
+					//selfie camera
+					phoneDto.setSelfcamera(phoneModel.getSelfcamera());
+					phoneDto.setSelfcameraDetails(phoneModel.getSelfcameraDetails());
+					phoneDto.setSelfcameraVideo(phoneModel.getSelfcameraVideo());
+					phoneDto.setSelfcameraFeatures(phoneModel.getSelfcameraFeatures());
+					
+					//audio attributes
+					phoneDto.setLoudspeaker(phoneModel.getLoudspeaker());
+					phoneDto.setHeadphonejack(phoneModel.getHeadphonejack());
+					phoneDto.setWlan(phoneModel.getWlan());
+					phoneDto.setBluetooth(phoneModel.getBluetooth());
+					phoneDto.setGps(phoneModel.getGps());
+					phoneDto.setNfc(phoneModel.getNfc());
+					phoneDto.setRadio(phoneModel.getRadio());
+					
+					//sensors
+					phoneDto.setSensors(phoneModel.getSensors());
+					
+					//battery
+					phoneDto.setBatterytype(phoneModel.getBatterytype());
+					phoneDto.setCharging(phoneModel.getCharging());
+					
+					//miscellaneous
+					phoneDto.setColors(phoneModel.getColors());
+					phoneDto.setModels(phoneModel.getModels());
+					phoneDto.setSar(phoneModel.getSar());
+					
+					phoneDtoList.add(phoneDto);
+				}
+				
+				return phoneDtoList;
+				
+				
+	}
+	
+	//publish a phone
+	public void doPublishPhone(String id) {
+		//get the phone on the given id
+		PhoneModel phoneModel =  phoneDataAdapter.getById(id);
+		//set the status as published
+		phoneModel.setPublishstatus("published");
+		//update the database
+		phoneDataAdapter.updateById(phoneModel);
+	}
+	
+	//unpublish a phone
+		public void doUnpublishPhone(String id) {
+			//get the phone on the given id
+			PhoneModel phoneModel =  phoneDataAdapter.getById(id);
+			//set the status as published
+			phoneModel.setPublishstatus("unpublished");
+			//update the database
+			phoneDataAdapter.updateById(phoneModel);
+		}
 	
 
 }

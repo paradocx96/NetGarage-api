@@ -78,6 +78,11 @@ public class PhoneAdapterMongoImpl implements PhoneDataAdapter {
 		return phoneRepository.findByChipset(chipset);
 	}
 
+	@Override
+	public List<PhoneModel> getByPublishedStatus(String status) {
+		return phoneRepository.findByPublishstatus(status);
+	}
+
 
 
 }

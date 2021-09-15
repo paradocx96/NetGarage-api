@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.spm.netgarage.dal.model.phone.PhoneBrandModel;
 import com.spm.netgarage.dal.repository.phone.PhoneBrandRepository;
-import com.spm.netgarage.dal.repository.phone.PhoneRepository;
+
 import com.spm.netgarage.domain.phone.PhoneBrandDataAdapter;
 
 @Component

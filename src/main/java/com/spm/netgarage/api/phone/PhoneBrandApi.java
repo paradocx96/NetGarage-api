@@ -92,5 +92,20 @@ public class PhoneBrandApi {
 		return phoneBrandDataAdapter.delete(id);
 	}
 	
+	//checks whether a brand is available
+	public boolean isBrandAvailable(String brand) {
+		List<PhoneBrandDto> brandDtoList = new ArrayList<>();
+		brandDtoList = this.getAllBrands();
+		
+		boolean isAvailable = true;
+		
+		for(PhoneBrandDto phoneBrandDto : brandDtoList) {
+			int compare = phoneBrandDto.getName().compareToIgnoreCase(brand);
+			if(compare == 0) {
+				isAvailable = false;
+			}
+		}
+		return isAvailable;
+	}
 	
 }

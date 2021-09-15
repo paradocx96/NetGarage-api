@@ -11,7 +11,7 @@ public class PhoneModel {
 	private String brandmodel;
 	private String brand;
 	private String image;
-	private boolean published;
+	private String publishstatus;
 	//public List<String> otherimages;
 	
 	private String network;
@@ -77,11 +77,10 @@ public class PhoneModel {
 	public PhoneModel() {
 		
 	}
-	
-	
-	
 
-	public PhoneModel(String id, String brandmodel, String brand, String image, boolean published, String network,
+
+
+	public PhoneModel(String id, String brandmodel, String brand, String image, String publishstatus, String network,
 			String dimensions, String weight, String sim, String displaytype, String displaysize,
 			String displayresolution, String displayprotection, String os, String softwarefeatures, String chipset,
 			String memorystorage, String card, String maincamera, String maincameraDetails, String maincameraVideo,
@@ -94,7 +93,7 @@ public class PhoneModel {
 		this.brandmodel = brandmodel;
 		this.brand = brand;
 		this.image = image;
-		this.published = published;
+		this.publishstatus = publishstatus;
 		this.network = network;
 		this.dimensions = dimensions;
 		this.weight = weight;
@@ -134,6 +133,14 @@ public class PhoneModel {
 
 
 
+
+
+
+
+
+
+
+
 	public String getId() {
 		return id;
 	}
@@ -168,15 +175,18 @@ public class PhoneModel {
 	
 	
 
-	public boolean isPublished() {
-		return published;
+
+
+
+	public String getPublishstatus() {
+		return publishstatus;
 	}
 
 
-	public void setPublished(boolean published) {
-		this.published = published;
-	}
 
+	public void setPublishstatus(String publishstatus) {
+		this.publishstatus = publishstatus;
+	}
 
 
 

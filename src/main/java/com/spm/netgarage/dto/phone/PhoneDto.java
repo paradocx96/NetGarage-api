@@ -6,7 +6,7 @@ public class PhoneDto {
 	private String brandmodel;
 	private String brand;
 	private String image;
-	private boolean published;
+	private String publishstatus;
 	
 	//body attributes
 	private String network;
@@ -91,13 +91,11 @@ public class PhoneDto {
 		this.image = image;
 	}
 	
-	
-	
-	public boolean isPublished() {
-		return published;
+	public String getPublishstatus() {
+		return publishstatus;
 	}
-	public void setPublished(boolean published) {
-		this.published = published;
+	public void setPublishstatus(String publishstatus) {
+		this.publishstatus = publishstatus;
 	}
 	public String getNetwork() {
 		return network;

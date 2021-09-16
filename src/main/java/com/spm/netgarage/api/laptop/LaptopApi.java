@@ -55,4 +55,8 @@ public class LaptopApi {
     public Laptop updateLaptopImage(Laptop laptop) {
         return laptopDataAdapter.updateImage(laptop);
     }
+
+    public ResponseEntity<?> deleteAllLaptop(List<String> ids) {
+        return laptopDataAdapter.deleteAll(ids);
+    }
 }

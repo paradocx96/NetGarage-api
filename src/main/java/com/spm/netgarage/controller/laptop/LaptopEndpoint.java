@@ -166,4 +166,11 @@ public class LaptopEndpoint {
 
         return laptopApi.updateLaptopImage(laptop);
     }
+
+    @DeleteMapping("/delete-selected")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> deleteAllLaptop(@RequestParam("ids") List<String> ids) {
+        return laptopApi.deleteAllLaptop(ids);
+    }
+
 }

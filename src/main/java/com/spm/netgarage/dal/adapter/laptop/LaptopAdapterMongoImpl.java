@@ -351,4 +351,18 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
             return null;
         }
     }
+
+    @Override
+    public ResponseEntity<?> deleteAll(List<String> ids) {
+        Query query = new Query(Criteria.where("id").in(ids));
+
+        List<LaptopModel> laptopModelList = mongoTemplate.findAllAndRemove(query, LaptopModel.class);
+
+        // Check Available or Not. Then Proceed Operation
+        if (laptopModelList == null) {
+            return ResponseEntity.ok(new MessageResponseDto("Doesn't Exist!"));
+        } else {
+            return ResponseEntity.ok(new MessageResponseDto("Deleted successfully!"));
+        }
+    }
 }

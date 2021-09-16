@@ -25,4 +25,6 @@ public interface LaptopDataAdapter {
     LaptopModel getObjectById(String id);
 
     Laptop updateImage(Laptop laptop);
+
+    ResponseEntity<?> deleteAll(List<String> ids);
 }

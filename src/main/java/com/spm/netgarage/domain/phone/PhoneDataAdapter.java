@@ -3,6 +3,7 @@ package com.spm.netgarage.domain.phone;
 import java.util.List;
 
 import com.spm.netgarage.dal.model.phone.PhoneModel;
+import com.spm.netgarage.dto.phone.ImageUpdateRequest;
 
 public interface PhoneDataAdapter {
 	
@@ -18,6 +19,7 @@ public interface PhoneDataAdapter {
 	public List<PhoneModel> getByPublishedStatus(String status);
 	public String publishPhone(String id);
 	public String unpublishPhone(String id);
+	public String updateImageUrl(ImageUpdateRequest imegeUpdateRequest);
 	
 	
 

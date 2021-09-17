@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.spm.netgarage.dal.model.phone.PhoneModel;
 import com.spm.netgarage.dal.repository.phone.PhoneRepository;
 import com.spm.netgarage.domain.phone.PhoneDataAdapter;
+import com.spm.netgarage.dto.phone.ImageUpdateRequest;
 
 @Component
 public class PhoneAdapterMongoImpl implements PhoneDataAdapter {
@@ -91,17 +92,35 @@ public class PhoneAdapterMongoImpl implements PhoneDataAdapter {
 
 	@Override
 	public String publishPhone(String id) {
+		
+		//update status
 		PhoneModel phoneModel = 
 				mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(id)),
 						new Update().set("publishstatus", "published"), PhoneModel.class);
+		
+		//return id
 		return phoneModel.getId();
 	}
 
 	@Override
 	public String unpublishPhone(String id) {
+		//update status
 		PhoneModel phoneModel = 
 				mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(id)),
 						new Update().set("publishstatus", "unpublished"), PhoneModel.class);
+		
+		//return id
+		return phoneModel.getId();
+	}
+
+	//updates the image URL of the phone entry
+	@Override
+	public String updateImageUrl(ImageUpdateRequest imageUpdateRequest) {
+		//update the image
+		PhoneModel phoneModel = 
+				mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(imageUpdateRequest.getId())),
+						new Update().set("image", imageUpdateRequest.getUrl()),PhoneModel.class);
+		//return id
 		return phoneModel.getId();
 	}
 

@@ -121,4 +121,21 @@ public class ChipsetApi {
 			return false;
 		}
 	}
+	
+	//get chipset by brand and model
+	public ChipsetDto getChipseByBrandModel(String brandModel) {
+		
+		ChipsetDto chipsetDto = new ChipsetDto();
+		ChipsetModel chipsetModel = new ChipsetModel();
+		
+		chipsetModel = chipsetDataAdapter.getByBrandAndModel(brandModel);
+		
+		chipsetDto.setId(chipsetModel.getId());
+		chipsetDto.setBrandmodel(chipsetModel.getBrandmodel());
+		chipsetDto.setCpu(chipsetModel.getCpu());
+		chipsetDto.setGpu(chipsetModel.getGpu());
+		chipsetDto.setLithography(chipsetModel.getLithography());
+		
+		return chipsetDto;
+	}
 }

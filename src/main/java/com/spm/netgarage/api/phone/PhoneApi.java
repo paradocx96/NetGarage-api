@@ -521,4 +521,59 @@ public class PhoneApi {
 		//update and return the id
 		return phoneDataAdapter.updateImageUrl(imageUpdateRequest);
 	}
+	
+	//get the phones by chipset
+	public List<PhoneDto> getPhoneByChipset(String chipset){
+		
+		//instantiate lists
+		List<PhoneDto> phoneDtoList = new ArrayList<>();
+		List<PhoneDto> filteredPhoneDtoList = new ArrayList<>();
+		
+		phoneDtoList = this.getAllPhones();
+		
+		for(PhoneDto phoneDto : phoneDtoList) {
+			if(phoneDto.getChipset().equalsIgnoreCase(chipset)) {
+				filteredPhoneDtoList.add(phoneDto);
+			}
+		}
+		
+		return filteredPhoneDtoList;
+	}
+	
+	//get the phones by OS
+		public List<PhoneDto> getPhoneByOs(String os){
+			
+			//instantiate lists
+			List<PhoneDto> phoneDtoList = new ArrayList<>();
+			List<PhoneDto> filteredPhoneDtoList = new ArrayList<>();
+			
+			phoneDtoList = this.getAllPhones();
+			
+			for(PhoneDto phoneDto : phoneDtoList) {
+				if(phoneDto.getOs().equalsIgnoreCase(os)) {
+					filteredPhoneDtoList.add(phoneDto);
+				}
+			}
+			
+			return filteredPhoneDtoList;
+		}
+		
+		//get the phones by brand
+		public List<PhoneDto> getPhoneByBrand(String brand){
+					
+			System.out.println("Recived brand : " + brand);
+			//instantiate lists
+			List<PhoneDto> phoneDtoList = new ArrayList<>();
+			List<PhoneDto> filteredPhoneDtoList = new ArrayList<>();
+					
+			phoneDtoList = this.getAllPhones();
+					
+			for(PhoneDto phoneDto : phoneDtoList) {
+				if(phoneDto.getBrand().equalsIgnoreCase(brand)) {
+					filteredPhoneDtoList.add(phoneDto);
+				}
+			}
+					
+			return filteredPhoneDtoList;
+		}
 }

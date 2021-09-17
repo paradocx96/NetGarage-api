@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spm.netgarage.api.phone.PhoneApi;
+
 import com.spm.netgarage.dto.phone.ImageUpdateRequest;
 import com.spm.netgarage.dto.phone.PhoneDto;
 
@@ -95,6 +96,21 @@ public class PhoneController {
 	@PutMapping("updateImage")
 	public String updatePhoneImage(@RequestBody ImageUpdateRequest imageUpdateRequest) {
 		return phoneApi.updatePhoneImage(imageUpdateRequest);
+	}
+	
+	@GetMapping("getPhonesByChipset/{chipset}")
+	public List<PhoneDto> getPhonesByChipset(@PathVariable String chipset){
+		return phoneApi.getPhoneByChipset(chipset);
+	}
+	
+	@GetMapping("getPhonesByOs/{os}")
+	public List<PhoneDto> getPhonesByOs(@PathVariable String os){
+		return phoneApi.getPhoneByOs(os);
+	}
+	
+	@GetMapping("getPhonesByBrand/{brand}")
+	public List<PhoneDto> getPhonesByBrand(@PathVariable String brand){
+		return phoneApi.getPhoneByBrand(brand);
 	}
 
 }

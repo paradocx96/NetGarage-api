@@ -60,7 +60,7 @@ public class ChipsetController {
 	}
 	
 	@GetMapping("getByBrandModel/{brandAndModel}")
-	public ChipsetDto getChipsetByBrandModel(@PathVariable String brandAndModel) {
+	public List<ChipsetDto> getChipsetByBrandModel(@PathVariable String brandAndModel) {
 		return chipsetApi.getChipseByBrandModel(brandAndModel);
 	}
 	 

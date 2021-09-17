@@ -108,7 +108,7 @@ public class ChipsetApi {
 		
 		ChipsetModel chipsetModel = new ChipsetModel();
 		//get the chipsetModel for the brandAndModel
-		chipsetModel = 	chipsetDataAdapter.getByBrandAndModel(brandAndModel);
+		chipsetModel = 	chipsetDataAdapter.getSingleByBrandAndModel(brandAndModel);
 		
 		//if the model id is empty return true
 		if(chipsetModel == null) {
@@ -123,19 +123,42 @@ public class ChipsetApi {
 	}
 	
 	//get chipset by brand and model
-	public ChipsetDto getChipseByBrandModel(String brandModel) {
+	public List<ChipsetDto> getChipseByBrandModel(String brandModel) {
 		
-		ChipsetDto chipsetDto = new ChipsetDto();
-		ChipsetModel chipsetModel = new ChipsetModel();
+		System.out.println("Chipset API, Getting by brand model: brandmodel:" + brandModel);
 		
-		chipsetModel = chipsetDataAdapter.getByBrandAndModel(brandModel);
+		//ChipsetDto chipsetDto = new ChipsetDto();
+		//ChipsetModel chipsetModel = new ChipsetModel();
 		
-		chipsetDto.setId(chipsetModel.getId());
-		chipsetDto.setBrandmodel(chipsetModel.getBrandmodel());
-		chipsetDto.setCpu(chipsetModel.getCpu());
-		chipsetDto.setGpu(chipsetModel.getGpu());
-		chipsetDto.setLithography(chipsetModel.getLithography());
+		List<ChipsetModel> chipsetModelList = new ArrayList<>();
+		List<ChipsetModel> filteredChipsetModelList = new ArrayList<>();
+		List<ChipsetDto> chipsetDtoList = new ArrayList<>();
 		
-		return chipsetDto;
+		chipsetModelList = chipsetDataAdapter.getAll();
+		
+		for(ChipsetModel chipsetModel : chipsetModelList) {
+			System.out.println("Chipset brand model : "+chipsetModel.getBrandmodel());
+			if(chipsetModel.getBrandmodel().replaceAll("\\s+", "").equalsIgnoreCase(brandModel.replaceAll("\\s+", ""))) {
+				filteredChipsetModelList.add(chipsetModel);
+			}
+		}
+		
+		//chipsetModelList = chipsetDataAdapter.getByBrandAndModel(brandModel);
+		
+		for(ChipsetModel chipsetModel : filteredChipsetModelList) {
+			ChipsetDto chipsetDto = new ChipsetDto();
+			
+			chipsetDto.setId(chipsetModel.getId());
+			chipsetDto.setBrandmodel(chipsetModel.getBrandmodel());
+			chipsetDto.setCpu(chipsetModel.getCpu());
+			chipsetDto.setGpu(chipsetModel.getGpu());
+			chipsetDto.setLithography(chipsetModel.getLithography());
+			
+			chipsetDtoList.add(chipsetDto);
+		}
+		
+		
+		
+		return chipsetDtoList;
 	}
 }

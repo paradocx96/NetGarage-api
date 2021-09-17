@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spm.netgarage.api.phone.PhoneApi;
+import com.spm.netgarage.dto.phone.ImageUpdateRequest;
 import com.spm.netgarage.dto.phone.PhoneDto;
 
 @RestController
@@ -88,6 +89,12 @@ public class PhoneController {
 	@PutMapping("unpublishPhone/{id}")
 	public String unpublishPhone(@PathVariable String id) {
 		return phoneApi.doUnpublishPhone(id);
+	}
+	
+	//update the phone image
+	@PutMapping("updateImage")
+	public String updatePhoneImage(@RequestBody ImageUpdateRequest imageUpdateRequest) {
+		return phoneApi.updatePhoneImage(imageUpdateRequest);
 	}
 
 }

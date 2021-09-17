@@ -522,7 +522,7 @@ public class PhoneApi {
 		return phoneDataAdapter.updateImageUrl(imageUpdateRequest);
 	}
 	
-	//get the phones by chipset
+	//get all the phones by chipset
 	public List<PhoneDto> getPhoneByChipset(String chipset){
 		
 		//instantiate lists
@@ -540,7 +540,25 @@ public class PhoneApi {
 		return filteredPhoneDtoList;
 	}
 	
-	//get the phones by OS
+	//get the published phones by chipset
+		public List<PhoneDto> getPublishedPhoneByChipset(String chipset){
+			
+			//instantiate lists
+			List<PhoneDto> phoneDtoList = new ArrayList<>();
+			List<PhoneDto> filteredPhoneDtoList = new ArrayList<>();
+			
+			phoneDtoList = this.getPublishedPhones();
+			
+			for(PhoneDto phoneDto : phoneDtoList) {
+				if(phoneDto.getChipset().equalsIgnoreCase(chipset)) {
+					filteredPhoneDtoList.add(phoneDto);
+				}
+			}
+			
+			return filteredPhoneDtoList;
+		}
+	
+	//get all the phones by OS
 		public List<PhoneDto> getPhoneByOs(String os){
 			
 			//instantiate lists
@@ -558,7 +576,25 @@ public class PhoneApi {
 			return filteredPhoneDtoList;
 		}
 		
-		//get the phones by brand
+		//get published phones by OS
+				public List<PhoneDto> getPublishedPhoneByOs(String os){
+					
+					//instantiate lists
+					List<PhoneDto> phoneDtoList = new ArrayList<>();
+					List<PhoneDto> filteredPhoneDtoList = new ArrayList<>();
+					
+					phoneDtoList = this.getPublishedPhones();
+					
+					for(PhoneDto phoneDto : phoneDtoList) {
+						if(phoneDto.getOs().equalsIgnoreCase(os)) {
+							filteredPhoneDtoList.add(phoneDto);
+						}
+					}
+					
+					return filteredPhoneDtoList;
+				}
+		
+		//get all the phones by brand
 		public List<PhoneDto> getPhoneByBrand(String brand){
 					
 			System.out.println("Recived brand : " + brand);
@@ -576,4 +612,23 @@ public class PhoneApi {
 					
 			return filteredPhoneDtoList;
 		}
+		
+		//get published phones by brand
+				public List<PhoneDto> getPublishedPhoneByBrand(String brand){
+							
+					System.out.println("Recived brand : " + brand);
+					//instantiate lists
+					List<PhoneDto> phoneDtoList = new ArrayList<>();
+					List<PhoneDto> filteredPhoneDtoList = new ArrayList<>();
+							
+					phoneDtoList = this.getPublishedPhones();
+							
+					for(PhoneDto phoneDto : phoneDtoList) {
+						if(phoneDto.getBrand().equalsIgnoreCase(brand)) {
+							filteredPhoneDtoList.add(phoneDto);
+						}
+					}
+							
+					return filteredPhoneDtoList;
+				}
 }

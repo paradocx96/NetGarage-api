@@ -103,14 +103,34 @@ public class PhoneController {
 		return phoneApi.getPhoneByChipset(chipset);
 	}
 	
+	//get published phones by chipset
+	@GetMapping("getPublishedPhonesByChipset/{chipset}")
+	public List<PhoneDto> getPublishedPhonesByChipset(@PathVariable String chipset){
+		return phoneApi.getPublishedPhoneByChipset(chipset);
+	}
+	
 	@GetMapping("getPhonesByOs/{os}")
 	public List<PhoneDto> getPhonesByOs(@PathVariable String os){
 		return phoneApi.getPhoneByOs(os);
+	}
+	
+	//get published phone by OS
+	@GetMapping("getPublishedPhonesByOs/{os}")
+	public List<PhoneDto> getPublishedPhonesByOs(@PathVariable String os){
+		return phoneApi.getPublishedPhoneByOs(os);
 	}
 	
 	@GetMapping("getPhonesByBrand/{brand}")
 	public List<PhoneDto> getPhonesByBrand(@PathVariable String brand){
 		return phoneApi.getPhoneByBrand(brand);
 	}
+	
+	//get published phone by brand
+	@GetMapping("getPublishedPhonesByBrand/{brand}")
+	public List<PhoneDto> getPublishedPhonesByBrand(@PathVariable String brand){
+		return phoneApi.getPublishedPhoneByBrand(brand);
+	}
+	
+	
 
 }

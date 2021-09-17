@@ -1,5 +1,6 @@
 package com.spm.netgarage.dal.model.phone;
 
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,9 +11,12 @@ public class PhoneModel {
 	private String brandmodel;
 	private String brand;
 	private String image;
+	private String publishstatus;
+	//public List<String> otherimages;
 	
-	//body attributes
 	private String network;
+	//body attributes
+	
 	private String dimensions;
 	private String weight;
 	private String sim;
@@ -47,7 +51,7 @@ public class PhoneModel {
 	private String selfcameraVideo;
 	private String selfcameraFeatures;
 	
-	//audio attrinutes
+	//audio attributes
 	private String loudspeaker;
 	private String headphonejack;
 	
@@ -73,20 +77,23 @@ public class PhoneModel {
 	public PhoneModel() {
 		
 	}
-	
-	public PhoneModel(String id, String brandmodel, String brand, String image, String network, String dimensions,
-			String weight, String sim, String displaytype, String displaysize, String displayresolution,
-			String displayprotection, String os, String softwarefeatures, String chipset, String memorystorage,
-			String card, String maincamera, String maincameraDetails, String maincameraVideo, String maincameraFeatures,
-			String selfcamera, String selfcameraDetails, String selfcameraVideo, String selfcameraFeatures,
-			String loudspeaker, String headphonejack, String wlan, String bluetooth, String gps, String nfc,
-			String radio, String sensors, String batterytype, String charging, String colors, String models,
-			String sar) {
+
+
+
+	public PhoneModel(String id, String brandmodel, String brand, String image, String publishstatus, String network,
+			String dimensions, String weight, String sim, String displaytype, String displaysize,
+			String displayresolution, String displayprotection, String os, String softwarefeatures, String chipset,
+			String memorystorage, String card, String maincamera, String maincameraDetails, String maincameraVideo,
+			String maincameraFeatures, String selfcamera, String selfcameraDetails, String selfcameraVideo,
+			String selfcameraFeatures, String loudspeaker, String headphonejack, String wlan, String bluetooth,
+			String gps, String nfc, String radio, String sensors, String batterytype, String charging, String colors,
+			String models, String sar) {
 		super();
 		this.id = id;
 		this.brandmodel = brandmodel;
 		this.brand = brand;
 		this.image = image;
+		this.publishstatus = publishstatus;
 		this.network = network;
 		this.dimensions = dimensions;
 		this.weight = weight;
@@ -123,6 +130,17 @@ public class PhoneModel {
 		this.sar = sar;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
 	public String getId() {
 		return id;
 	}
@@ -154,6 +172,23 @@ public class PhoneModel {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+	
+
+
+
+
+	public String getPublishstatus() {
+		return publishstatus;
+	}
+
+
+
+	public void setPublishstatus(String publishstatus) {
+		this.publishstatus = publishstatus;
+	}
+
+
 
 	public String getNetwork() {
 		return network;

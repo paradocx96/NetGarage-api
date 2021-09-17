@@ -11,6 +11,7 @@ public interface ChipsetDataAdapter {
 	public ChipsetModel getById(String id);
 	public String updateById(String id, ChipsetModel chipset);
 	public String delete(String id);
-	public ChipsetModel getByBrandAndModel(String brandAndModel);
+	public List<ChipsetModel> getByBrandAndModel(String brandAndModel);
+	public ChipsetModel getSingleByBrandAndModel(String brandAndModel);
 
 }

@@ -12,5 +12,6 @@ public interface PhoneRepository extends MongoRepository<PhoneModel, String> {
 	public List<PhoneModel> findByBrandmodel(String brandmodel);
 	public List<PhoneModel> findByOs(String os);
 	public List<PhoneModel> findByChipset(String chipset);
+	public List<PhoneModel> findByPublishstatus(String publishstatus);
 
 }

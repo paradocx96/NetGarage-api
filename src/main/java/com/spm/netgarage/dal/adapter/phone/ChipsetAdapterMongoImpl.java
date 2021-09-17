@@ -1,5 +1,6 @@
 package com.spm.netgarage.dal.adapter.phone;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,8 +65,16 @@ public class ChipsetAdapterMongoImpl implements ChipsetDataAdapter {
 	
 	//returns the chipset on the given brand and model
 	@Override
-	public ChipsetModel getByBrandAndModel(String brandAndModel) {
-		return chipsetRepository.findByBrandmodel(brandAndModel);
+	public List<ChipsetModel> getByBrandAndModel(String brandAndModel) {
+		List<ChipsetModel> chipsetModelList = new ArrayList<>();
+		chipsetModelList =  chipsetRepository.findByBrandmodel(brandAndModel);
+		return chipsetModelList;
+	}
+
+	@Override
+	public ChipsetModel getSingleByBrandAndModel(String brandAndModel) {
+		// TODO Auto-generated method stub
+		return chipsetRepository.findByBrandmodel(brandAndModel).get(0);
 	}
 
 }

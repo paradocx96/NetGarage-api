@@ -55,7 +55,14 @@ public class ChipsetController {
 
 	@GetMapping("isChipsetAvailable/{brandAndModel}") 
 	public boolean isChipsetAvailable(@PathVariable String brandAndModel) { 
-		return chipsetApi.isChipsetAvailable(brandAndModel); }
+		return chipsetApi.isChipsetAvailable(brandAndModel); 
+		
+	}
+	
+	@GetMapping("getByBrandModel/{brandAndModel}")
+	public List<ChipsetDto> getChipsetByBrandModel(@PathVariable String brandAndModel) {
+		return chipsetApi.getChipseByBrandModel(brandAndModel);
+	}
 	 
 
 }

@@ -73,6 +73,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/laptop-image/**").permitAll()
 			.antMatchers("/laptop-os/**").permitAll()
 			.antMatchers("/laptop-processor/**").permitAll()
+			
+			//phone access control
+			//temporarily permitted all
+			.antMatchers("/api/phone/**").permitAll()
 
 			.anyRequest().authenticated();
 

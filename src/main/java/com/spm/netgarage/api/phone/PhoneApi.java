@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spm.netgarage.dal.model.phone.PhoneModel;
 import com.spm.netgarage.domain.phone.PhoneDataAdapter;
+import com.spm.netgarage.dto.phone.ImageUpdateRequest;
 import com.spm.netgarage.dto.phone.PhoneDto;
 
 @Service
@@ -503,16 +504,21 @@ public class PhoneApi {
 	}
 	
 	//unpublish a phone
-		public String doUnpublishPhone(String id) {
-			//get the phone on the given id
-			//PhoneModel phoneModel =  phoneDataAdapter.getById(id);
-			//set the status as published
-			//phoneModel.setPublishstatus("unpublished");
-			//update the database
+	public String doUnpublishPhone(String id) {
+		//get the phone on the given id
+		//PhoneModel phoneModel =  phoneDataAdapter.getById(id);
+		//set the status as published
+		//phoneModel.setPublishstatus("unpublished");
+		//update the database
 			
-			//use mongo template based unpublish method.
-			return phoneDataAdapter.unpublishPhone(id);
-		}
+		//use mongo template based unpublish method.
+		return phoneDataAdapter.unpublishPhone(id);
+	}
 	
-
+		
+	//update the image of a phone
+	public String updatePhoneImage(ImageUpdateRequest imageUpdateRequest) {
+		//update and return the id
+		return phoneDataAdapter.updateImageUrl(imageUpdateRequest);
+	}
 }

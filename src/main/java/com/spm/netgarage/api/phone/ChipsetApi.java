@@ -10,6 +10,7 @@ import com.spm.netgarage.dal.model.phone.ChipsetModel;
 import com.spm.netgarage.domain.phone.ChipsetDataAdapter;
 import com.spm.netgarage.dto.phone.ChipsetDto;
 
+
 @Service
 public class ChipsetApi {
 	
@@ -105,21 +106,22 @@ public class ChipsetApi {
 	//checks the availability of the chipset
 	public boolean isChipsetAvailable(String brandAndModel) {
 		
+		//String brandAndModelSpaceRemoved = brandAndModel.replaceAll("\\s+", "");
 		
-		ChipsetModel chipsetModel = new ChipsetModel();
-		//get the chipsetModel for the brandAndModel
-		chipsetModel = 	chipsetDataAdapter.getSingleByBrandAndModel(brandAndModel);
+		//System.out.println("Space removed chipset brand and model : " + brandAndModelSpaceRemoved);
 		
-		//if the model id is empty return true
-		if(chipsetModel == null) {
-			return true;
+		
+		
+		List<ChipsetDto> chipsetDtoList = new ArrayList<>();
+		chipsetDtoList = this.getAllChipsets();
+		
+		for(ChipsetDto chipset : chipsetDtoList) {
+			if(chipset.getBrandmodel().toLowerCase().equalsIgnoreCase(brandAndModel)) {
+				return false;
+			}
 		}
-		else {
-			//id is not empty
-			//the name is taken
-			//return false
-			return false;
-		}
+		
+		return true;
 	}
 	
 	//get chipset by brand and model
@@ -141,6 +143,10 @@ public class ChipsetApi {
 			if(chipsetModel.getBrandmodel().replaceAll("\\s+", "").equalsIgnoreCase(brandModel.replaceAll("\\s+", ""))) {
 				filteredChipsetModelList.add(chipsetModel);
 			}
+			
+			/*if(chipsetModel.getBrandmodel().toLowerCase().equals(brandModel.toLowerCase())) {
+				filteredChipsetModelList.add(chipsetModel);
+			}*/
 		}
 		
 		//chipsetModelList = chipsetDataAdapter.getByBrandAndModel(brandModel);

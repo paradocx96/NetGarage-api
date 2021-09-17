@@ -175,6 +175,8 @@ public class PhoneApi {
 		PhoneDto phoneDto = new PhoneDto();
 		PhoneModel phoneModel = new PhoneModel();
 		
+		phoneModel = phoneDataAdapter.getById(id);
+		
 		phoneDto.setId(phoneModel.getId());
 		phoneDto.setBrandmodel(phoneModel.getBrandmodel());
 		phoneDto.setBrand(phoneModel.getBrand());

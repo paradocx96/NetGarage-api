@@ -42,7 +42,8 @@ public class PhoneController {
 	
 	//get the phone for a given id
 	@GetMapping("getPhoneById/{id}")
-	public PhoneDto getPhoneById(String id) {
+	public PhoneDto getPhoneById(@PathVariable String id) {
+		System.out.println("Controller. Recived ID : " + id);
 		return phoneApi.getPhoneById(id);
 	}
 	

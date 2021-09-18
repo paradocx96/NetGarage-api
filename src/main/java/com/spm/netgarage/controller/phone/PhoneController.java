@@ -131,6 +131,11 @@ public class PhoneController {
 		return phoneApi.getPublishedPhoneByBrand(brand);
 	}
 	
+	@GetMapping("getPhoneByName/{name}")
+	public List<PhoneDto> getPhoneByName (@PathVariable String name){
+		return phoneApi.getPhoneByName(name);
+	}
+	
 	
 
 }

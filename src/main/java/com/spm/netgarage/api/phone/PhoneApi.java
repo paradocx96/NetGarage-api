@@ -628,5 +628,54 @@ public class PhoneApi {
 
 		return filteredPhoneDtoList;
 	}
+	
+	//this is for searching
+	public List<PhoneDto> getPhoneByName (String name){
+		
+		name= name.toLowerCase();
+		
+		//instantiate Dto Lists
+		List<PhoneDto> phoneDtoList = new ArrayList<>();
+		List<PhoneDto> filteredPhoneDtoList = new ArrayList<>();
+		
+		//get all published phones to phoneDtoList
+		phoneDtoList = this.getPublishedPhones();
+		
+		//get the length of the name string
+		int nameStringLength = name.length();
+		
+		//System.out.println("Received name length: " + nameStringLength);
+		
+		//iterate through phoneDtoList
+		for(PhoneDto phoneDto : phoneDtoList) {
+			//get the full brand and model
+			String fullBrandModel = phoneDto.getBrandmodel().toLowerCase();
+			String croppedBrandModel  = new String();
+			String originalName = name;
+			
+			//check if the result is longer than the requested name
+			if(fullBrandModel.length() > nameStringLength) {
+				//crop the brand and model to length of received name
+				croppedBrandModel = fullBrandModel.substring(0, nameStringLength);
+			}
+			else if(fullBrandModel.length() < nameStringLength) { // if the request is longer
+				//originalName = name.substring(0, fullBrandModel.length());
+				//croppedBrandModel = fullBrandModel;
+				continue;
+			}
+			else {
+				croppedBrandModel = fullBrandModel; //just copy the full name to cropped name variable
+			}
+			
+			
+			//if the cropped version matches the name add to filteredDto list
+			if(croppedBrandModel.equalsIgnoreCase(originalName)) {
+				filteredPhoneDtoList.add(phoneDto);
+			}
+		}
+		
+		//return the filteredPhoneDtoList
+		return filteredPhoneDtoList;
+	}
 
 }

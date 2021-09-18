@@ -81,5 +81,15 @@ public class UserMongoImpl implements UserDataAdapter{
 	public User getByID(String id) {
 		return userRepository.findById(id).get();
 	}
+
+	@Override
+	public ResponseEntity<?> deleteAccount(UserRegisterDto user) {
+
+		User exist = userRepository.findByUsername(user.getUsername()).get();
+		userRepository.delete(exist);
+
+		// return success MSG to frontEnd user is updated successfully
+		return ResponseEntity.ok(new MessageResponseDto("Profile deleted successfully!"));
+	}
 	
 }

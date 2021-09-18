@@ -12,5 +12,5 @@ public interface UserDataAdapter {
 	ResponseEntity<?> createAccount(UserRegisterDto user);
 	User getByID(String id);
 	ResponseEntity<?> updateAccount(UserRegisterDto user);
-	
+	ResponseEntity<?> deleteAccount(UserRegisterDto user);
 }

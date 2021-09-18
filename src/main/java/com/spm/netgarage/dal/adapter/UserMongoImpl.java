@@ -132,6 +132,26 @@ public class UserMongoImpl implements UserDataAdapter{
 	}
 
 	@Override
+	public ResponseEntity<?> deleteAccount(String id) {
+
+		User userExist = userRepository.findById(id).get();
+		
+		if(userExist == null) {
+			// return success MSG to frontEnd user is updated successfully
+			return ResponseEntity.ok(new MessageResponseDto("No such user!"));
+		}else {
+			
+			try {
+				userRepository.deleteById(id);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+
+			// return success MSG to frontEnd user is updated successfully
+			return ResponseEntity.ok(new MessageResponseDto("Profile deleted successfully!"));
+		}	
+	}
+	
 	public ResponseEntity<?> loginAccount(@Valid @RequestBody UserLoginDto user) {
 		
 		//Get user name and password and create new AuthenticationToken 
@@ -208,4 +228,5 @@ public class UserMongoImpl implements UserDataAdapter{
 		// return success MSG to frontEnd user is updated successfully
 		return ResponseEntity.ok(new MessageResponseDto("Successfully updated your password!"));
 	}
+
 }

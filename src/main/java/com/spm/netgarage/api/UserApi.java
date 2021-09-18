@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.spm.netgarage.dal.model.User;
 import com.spm.netgarage.domain.UserDataAdapter;
+import com.spm.netgarage.domain.UserLoginDto;
 import com.spm.netgarage.dto.UserRegisterDto;
 
 @Service
@@ -30,4 +31,16 @@ public class UserApi {
 		return userDataAdapter.deleteAccount(id);
 	}
 	
+	public ResponseEntity<?> loginAccount(UserLoginDto userLoginDto){
+		return userDataAdapter.loginAccount(userLoginDto);
+	}
+	
+	public ResponseEntity<?> forgotPassword(UserRegisterDto user){
+		return userDataAdapter.forgotPassword(user);
+	}
+	
+	public ResponseEntity<?> resetPassword(UserRegisterDto user){
+		return userDataAdapter.resetPassword(user);
+	}
+
 }

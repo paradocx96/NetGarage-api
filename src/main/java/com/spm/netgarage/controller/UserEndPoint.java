@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spm.netgarage.api.UserApi;
 import com.spm.netgarage.dal.model.User;
+import com.spm.netgarage.domain.UserLoginDto;
 import com.spm.netgarage.dto.UserRegisterDto;
 
 @RestController
@@ -43,5 +44,21 @@ public class UserEndPoint {
 	@DeleteMapping("/delete-account/{id}")
 	public ResponseEntity<?> deleteUserAccount(@PathVariable String id){
 		return userApi.deleteUserAccount(id);
+  }
+  
+	@PostMapping("/sign-in")
+	public ResponseEntity<?> loginUserAccount(@Valid @RequestBody UserLoginDto userLoginDto){
+		return userApi.loginAccount(userLoginDto);
 	}
+	
+	@PostMapping("/forgot-password")
+	public ResponseEntity<?> userForgotPassword(@Valid @RequestBody UserRegisterDto user){
+		return userApi.forgotPassword(user);
+	}
+	
+	@PostMapping("/reset-password")
+	public ResponseEntity<?> userResetPassword(@Valid @RequestBody UserRegisterDto user){
+		return userApi.resetPassword(user);
+	}
+  
 }

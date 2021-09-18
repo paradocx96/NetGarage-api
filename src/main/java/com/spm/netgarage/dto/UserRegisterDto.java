@@ -11,6 +11,12 @@ public class UserRegisterDto {
 	private String email;
 	
 	
+	public UserRegisterDto(String id, String username, String email) {
+		// TODO Auto-generated constructor stub
+		this.id = id;
+		this.username = username;
+		this.email = email;
+	}
 	public String getId() {
 		return id;
 	}

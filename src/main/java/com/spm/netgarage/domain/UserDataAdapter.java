@@ -13,4 +13,8 @@ public interface UserDataAdapter {
 	User getByID(String id);
 	ResponseEntity<?> updateAccount(UserRegisterDto user);
 	ResponseEntity<?> deleteAccount(String id);
+	ResponseEntity<?> loginAccount(UserLoginDto user);
+	ResponseEntity<?> forgotPassword(UserRegisterDto user);
+	ResponseEntity<?> resetPassword(UserRegisterDto user);
+
 }

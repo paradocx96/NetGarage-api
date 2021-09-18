@@ -42,6 +42,7 @@ public class Laptop {
     private String dimension;
     private String weight;
     private String color;
+    private String image;
 
     public String getId() {
         return id;
@@ -345,5 +346,13 @@ public class Laptop {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

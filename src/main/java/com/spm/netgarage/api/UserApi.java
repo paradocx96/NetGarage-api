@@ -26,8 +26,8 @@ public class UserApi {
 		return userDataAdapter.updateAccount(userRegisterDto);
 	}
 	
-	public ResponseEntity<?> deleteUserAccount(UserRegisterDto userRegisterDto){
-		return userDataAdapter.deleteAccount(userRegisterDto);
+	public ResponseEntity<?> deleteUserAccount(String id){
+		return userDataAdapter.deleteAccount(id);
 	}
 	
 }

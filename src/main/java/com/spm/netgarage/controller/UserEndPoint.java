@@ -40,8 +40,8 @@ public class UserEndPoint {
 		return userApi.updateUserAccount(userRegisterDto);
 	}
 	
-	@DeleteMapping("/delete-account")
-	public ResponseEntity<?> deleteUserAccount(@Valid @RequestBody UserRegisterDto userRegisterDto){
-		return userApi.deleteUserAccount(userRegisterDto);
+	@DeleteMapping("/delete-account/{id}")
+	public ResponseEntity<?> deleteUserAccount(@PathVariable String id){
+		return userApi.deleteUserAccount(id);
 	}
 }

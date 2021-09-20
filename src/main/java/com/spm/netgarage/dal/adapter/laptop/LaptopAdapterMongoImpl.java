@@ -365,4 +365,19 @@ public class LaptopAdapterMongoImpl implements LaptopDataAdapter {
             return ResponseEntity.ok(new MessageResponseDto("Deleted successfully!"));
         }
     }
+
+    @Override
+    public List<Laptop> findByBrand(String brand) {
+        return null;
+    }
+
+    @Override
+    public List<Laptop> findByRamcapacity(String ramcapacity) {
+        return null;
+    }
+
+    @Override
+    public List<Laptop> findByProcessorname(String processorname) {
+        return null;
+    }
 }

@@ -31,4 +31,6 @@ public interface LaptopDataAdapter {
     List<Laptop> findByBrand(String brand);
 
     List<Laptop> findByRamcapacity(String ramcapacity);
+
+    List<Laptop> findByProcessorname(String processorname);
 }

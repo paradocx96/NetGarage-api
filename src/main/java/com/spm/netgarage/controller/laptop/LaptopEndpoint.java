@@ -184,4 +184,10 @@ public class LaptopEndpoint {
     public List<Laptop> getLaptopByRamCapacityActivated(@PathVariable String ram) {
         return laptopApi.getLaptopByRamCapacityActivated(ram);
     }
+
+    @GetMapping("/get-by-processor/{processor}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Laptop> getLaptopByProcessorNameActivated(@PathVariable String processor) {
+        return laptopApi.getLaptopByProcessorNameActivated(processor);
+    }
 }

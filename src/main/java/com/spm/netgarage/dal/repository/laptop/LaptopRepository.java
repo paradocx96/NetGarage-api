@@ -9,4 +9,6 @@ import java.util.List;
 public interface LaptopRepository extends MongoRepository<LaptopModel, String> {
 
     List<LaptopModel> findByStatus(String status);
+
+    List<LaptopModel> findByBrand(String brand);
 }

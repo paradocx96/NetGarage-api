@@ -63,4 +63,8 @@ public class LaptopApi {
     public List<Laptop> getLaptopByBrandActivated(String brand) {
         return laptopDataAdapter.findByBrand(brand);
     }
+
+    public List<Laptop> getLaptopByRamCapacityActivated(String ramcapacity) {
+        return laptopDataAdapter.findByRamcapacity(ramcapacity);
+    }
 }

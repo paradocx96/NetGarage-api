@@ -80,7 +80,7 @@ public class LaptopApi {
     }
 
     public ResponseEntity<InputStreamResource> generateReportLaptop() {
-        List<Laptop> laptopList = (List<Laptop>) getAllLaptop();
+        List<Laptop> laptopList = getAllLaptop();
         ByteArrayInputStream byteArrayInputStream = laptopGenerateReport.laptopReport(laptopList);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline; filename=Laptops.pdf");

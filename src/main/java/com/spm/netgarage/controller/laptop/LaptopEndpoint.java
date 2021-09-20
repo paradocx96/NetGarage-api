@@ -195,6 +195,6 @@ public class LaptopEndpoint {
 
     @RequestMapping(value = "/report-all", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> generateReportLaptop() {
-        return null;
+        return laptopApi.generateReportLaptop();
     }
 }

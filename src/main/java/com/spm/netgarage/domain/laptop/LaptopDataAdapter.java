@@ -29,4 +29,6 @@ public interface LaptopDataAdapter {
     ResponseEntity<?> deleteAll(List<String> ids);
 
     List<Laptop> findByBrand(String brand);
+
+    List<Laptop> findByRamcapacity(String ramcapacity);
 }

@@ -6,7 +6,9 @@ import com.spm.netgarage.domain.laptop.Laptop;
 import com.spm.netgarage.dto.laptop.LaptopDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -189,5 +191,10 @@ public class LaptopEndpoint {
     @ResponseStatus(HttpStatus.OK)
     public List<Laptop> getLaptopByProcessorNameActivated(@PathVariable String processor) {
         return laptopApi.getLaptopByProcessorNameActivated(processor);
+    }
+
+    @RequestMapping(value = "/report-all", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> generateReportLaptop() {
+        return laptopApi.generateReportLaptop();
     }
 }

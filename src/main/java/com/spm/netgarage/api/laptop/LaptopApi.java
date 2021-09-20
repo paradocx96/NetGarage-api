@@ -59,4 +59,16 @@ public class LaptopApi {
     public ResponseEntity<?> deleteAllLaptop(List<String> ids) {
         return laptopDataAdapter.deleteAll(ids);
     }
+
+    public List<Laptop> getLaptopByBrandActivated(String brand) {
+        return laptopDataAdapter.findByBrand(brand);
+    }
+
+    public List<Laptop> getLaptopByRamCapacityActivated(String ramcapacity) {
+        return laptopDataAdapter.findByRamcapacity(ramcapacity);
+    }
+
+    public List<Laptop> getLaptopByProcessorNameActivated(String processorname) {
+        return laptopDataAdapter.findByProcessorname(processorname);
+    }
 }

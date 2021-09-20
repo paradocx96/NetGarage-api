@@ -173,4 +173,21 @@ public class LaptopEndpoint {
         return laptopApi.deleteAllLaptop(ids);
     }
 
+    @GetMapping("/get-by-brand/{brand}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Laptop> getLaptopByBrandActivated(@PathVariable String brand) {
+        return laptopApi.getLaptopByBrandActivated(brand);
+    }
+
+    @GetMapping("/get-by-ram/{ram}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Laptop> getLaptopByRamCapacityActivated(@PathVariable String ram) {
+        return laptopApi.getLaptopByRamCapacityActivated(ram);
+    }
+
+    @GetMapping("/get-by-processor/{processor}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Laptop> getLaptopByProcessorNameActivated(@PathVariable String processor) {
+        return laptopApi.getLaptopByProcessorNameActivated(processor);
+    }
 }

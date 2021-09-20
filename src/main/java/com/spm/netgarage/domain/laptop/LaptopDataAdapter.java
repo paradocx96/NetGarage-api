@@ -27,4 +27,10 @@ public interface LaptopDataAdapter {
     Laptop updateImage(Laptop laptop);
 
     ResponseEntity<?> deleteAll(List<String> ids);
+
+    List<Laptop> findByBrand(String brand);
+
+    List<Laptop> findByRamcapacity(String ramcapacity);
+
+    List<Laptop> findByProcessorname(String processorname);
 }

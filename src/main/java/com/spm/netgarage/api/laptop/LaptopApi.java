@@ -3,21 +3,28 @@ package com.spm.netgarage.api.laptop;
 import com.spm.netgarage.dal.model.laptop.LaptopModel;
 import com.spm.netgarage.domain.laptop.Laptop;
 import com.spm.netgarage.domain.laptop.LaptopDataAdapter;
+import com.spm.netgarage.domain.laptop.LaptopGenerateReport;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 @Service
 public class LaptopApi {
 
     private final LaptopDataAdapter laptopDataAdapter;
+    private final LaptopGenerateReport laptopGenerateReport;
 
     @Autowired
-    public LaptopApi(LaptopDataAdapter laptopDataAdapter) {
+    public LaptopApi(LaptopDataAdapter laptopDataAdapter, LaptopGenerateReport laptopGenerateReport) {
         this.laptopDataAdapter = laptopDataAdapter;
+        this.laptopGenerateReport = laptopGenerateReport;
     }
 
     public Laptop saveLaptop(Laptop laptop) {
@@ -70,5 +77,14 @@ public class LaptopApi {
 
     public List<Laptop> getLaptopByProcessorNameActivated(String processorname) {
         return laptopDataAdapter.findByProcessorname(processorname);
+    }
+
+    public ResponseEntity<InputStreamResource> generateReportLaptop() {
+        List<Laptop> laptopList = (List<Laptop>) getAllLaptop();
+        ByteArrayInputStream byteArrayInputStream = laptopGenerateReport.laptopReport(laptopList);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=Laptops.pdf");
+
+        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(byteArrayInputStream));
     }
 }

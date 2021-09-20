@@ -59,4 +59,8 @@ public class LaptopApi {
     public ResponseEntity<?> deleteAllLaptop(List<String> ids) {
         return laptopDataAdapter.deleteAll(ids);
     }
+
+    public List<Laptop> getLaptopByBrandActivated(String brand) {
+        return laptopDataAdapter.findByBrand(brand);
+    }
 }

@@ -179,4 +179,9 @@ public class LaptopEndpoint {
         return laptopApi.getLaptopByBrandActivated(brand);
     }
 
+    @GetMapping("/get-by-ram/{ram}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Laptop> getLaptopByRamCapacityActivated(@PathVariable String ram) {
+        return laptopApi.getLaptopByRamCapacityActivated(ram);
+    }
 }

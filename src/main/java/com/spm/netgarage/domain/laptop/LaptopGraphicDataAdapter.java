@@ -15,4 +15,6 @@ public interface LaptopGraphicDataAdapter {
     LaptopGraphic update(LaptopGraphic laptopGraphic);
 
     List<LaptopGraphic> getById(String id);
+
+    boolean findByName(String name);
 }

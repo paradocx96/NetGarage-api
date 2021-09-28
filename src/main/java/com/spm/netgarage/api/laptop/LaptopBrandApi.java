@@ -38,4 +38,8 @@ public class LaptopBrandApi {
     public ResponseEntity<?> deleteLaptopBrandById(String id) {
         return laptopBrandDataAdapter.deleteById(id);
     }
+
+    public boolean checkBrandAvailable(String brand) {
+        return laptopBrandDataAdapter.findByName(brand);
+    }
 }

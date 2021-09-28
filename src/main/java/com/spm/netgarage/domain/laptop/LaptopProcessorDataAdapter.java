@@ -15,4 +15,6 @@ public interface LaptopProcessorDataAdapter {
     LaptopProcessor update(LaptopProcessor laptopProcessor);
 
     List<LaptopProcessor> getById(String id);
+
+    boolean findByName(String name);
 }

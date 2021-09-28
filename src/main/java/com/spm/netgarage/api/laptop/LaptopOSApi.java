@@ -38,4 +38,8 @@ public class LaptopOSApi {
     public ResponseEntity<?> deleteLaptopOSById(String id) {
         return laptopOSDataAdapter.deleteById(id);
     }
+
+    public boolean checkAvailable(String name) {
+        return laptopOSDataAdapter.findByName(name);
+    }
 }

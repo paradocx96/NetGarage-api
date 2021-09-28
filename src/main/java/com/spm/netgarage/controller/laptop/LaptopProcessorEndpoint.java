@@ -63,4 +63,9 @@ public class LaptopProcessorEndpoint {
 
         return laptopProcessorApi.updateLaptopProcessor(laptopProcessor);
     }
+
+    @GetMapping("/check/{name}")
+    public boolean checkAvailable(@PathVariable String name) {
+        return laptopProcessorApi.checkAvailable(name);
+    }
 }

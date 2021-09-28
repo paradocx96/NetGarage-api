@@ -15,4 +15,6 @@ public interface LaptopBrandDataAdapter {
     LaptopBrand update(LaptopBrand laptopBrand);
 
     List<LaptopBrand> getById(String id);
+
+    boolean findByName(String name);
 }

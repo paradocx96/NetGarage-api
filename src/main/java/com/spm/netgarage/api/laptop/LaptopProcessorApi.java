@@ -38,4 +38,8 @@ public class LaptopProcessorApi {
     public ResponseEntity<?> deleteLaptopProcessorById(String id) {
         return laptopProcessorDataAdapter.deleteById(id);
     }
+
+    public boolean checkAvailable(String name) {
+        return laptopProcessorDataAdapter.findByName(name);
+    }
 }

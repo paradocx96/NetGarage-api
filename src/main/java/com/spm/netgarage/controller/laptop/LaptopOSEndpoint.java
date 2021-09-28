@@ -63,4 +63,9 @@ public class LaptopOSEndpoint {
 
         return laptopOSApi.updateLaptopOS(laptopOS);
     }
+
+    @GetMapping("/check/{name}")
+    public boolean checkAvailable(@PathVariable String name) {
+        return laptopOSApi.checkAvailable(name);
+    }
 }

@@ -67,13 +67,63 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			//All Permit Access Control
 			.antMatchers("/user/**").permitAll()
 
-			.antMatchers("/laptop/**").permitAll()
-			.antMatchers("/laptop-brand/**").permitAll()
-			.antMatchers("/laptop-graphic/**").permitAll()
-			.antMatchers("/laptop-image/**").permitAll()
-			.antMatchers("/laptop-os/**").permitAll()
-			.antMatchers("/laptop-processor/**").permitAll()
-			
+			//Laptop Endpoint
+			.antMatchers("/laptop/add/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop/get/**").permitAll()
+			.antMatchers("/laptop/get-by-id/**").permitAll()
+			.antMatchers("/laptop/delete/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop/update/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop/update-status/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop/get-by-status/**").permitAll()
+			.antMatchers("/laptop/get-object-by-id/**").permitAll()
+			.antMatchers("/laptop/update-image/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop/delete-selected/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop/get-by-brand/**").permitAll()
+			.antMatchers("/laptop/get-by-ram/**").permitAll()
+			.antMatchers("/laptop/get-by-processor/**").permitAll()
+			.antMatchers("/laptop/report-all/**").hasAnyRole("EDITOR","ADMIN")
+
+			//Laptop Brand Endpoint
+			.antMatchers("/laptop-brand/add/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-brand/get/**").permitAll()
+			.antMatchers("/laptop-brand/get-by-id/**").permitAll()
+			.antMatchers("/laptop-brand/delete/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-brand/update/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-brand/check/**").hasAnyRole("EDITOR","ADMIN")
+
+			//Laptop Graphic Endpoint
+			.antMatchers("/laptop-graphic/add/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-graphic/get/**").permitAll()
+			.antMatchers("/laptop-graphic/get-by-id/**").permitAll()
+			.antMatchers("/laptop-graphic/delete/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-graphic/update/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-graphic/check/**").hasAnyRole("EDITOR","ADMIN")
+
+			//Laptop OS Endpoint
+			.antMatchers("/laptop-os/add/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-os/get/**").permitAll()
+			.antMatchers("/laptop-os/get-by-id/**").permitAll()
+			.antMatchers("/laptop-os/delete/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-os/update/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-os/check/**").hasAnyRole("EDITOR","ADMIN")
+
+			//Laptop Processor Endpoint
+			.antMatchers("/laptop-processor/add/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-processor/get/**").permitAll()
+			.antMatchers("/laptop-processor/get-by-id/**").permitAll()
+			.antMatchers("/laptop-processor/delete/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-processor/update/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-processor/check/**").hasAnyRole("EDITOR","ADMIN")
+
+			//Laptop Images Endpoint
+			.antMatchers("/laptop-image/add/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-image/get/**").permitAll()
+			.antMatchers("/laptop-image/get-by-id/**").permitAll()
+			.antMatchers("/laptop-image/get-by-lid/**").permitAll()
+			.antMatchers("/laptop-image/update/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-image/update-main/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/laptop-image/delete/**").hasAnyRole("EDITOR","ADMIN")
+
 			//phone access control
 			//temporarily permitted all
 			//.antMatchers("/api/phone/**").permitAll()

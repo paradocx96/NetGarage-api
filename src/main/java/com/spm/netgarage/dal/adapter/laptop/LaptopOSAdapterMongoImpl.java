@@ -17,9 +17,13 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Component
 public class LaptopOSAdapterMongoImpl implements LaptopOSDataAdapter {
+
+    public static final Logger LOGGER = Logger.getLogger(LaptopOSAdapterMongoImpl.class.getName());
 
     private final LaptopOSRepository repository;
     private final MongoTemplate mongoTemplate;
@@ -109,5 +113,20 @@ public class LaptopOSAdapterMongoImpl implements LaptopOSDataAdapter {
         laptopOSList.add(laptopOS);
 
         return laptopOSList;
+    }
+
+    @Override
+    public boolean findByName(String name) {
+        boolean isAvailable = false;
+        try {
+            String value = repository.findByName(name).getName();
+            if (value != null) {
+                isAvailable = true;
+            }
+            return isAvailable;
+        } catch (NullPointerException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            return isAvailable;
+        }
     }
 }

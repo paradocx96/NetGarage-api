@@ -15,4 +15,6 @@ public interface LaptopOSDataAdapter {
     LaptopOS update(LaptopOS laptopOS);
 
     List<LaptopOS> getById(String id);
+
+    boolean findByName(String name);
 }

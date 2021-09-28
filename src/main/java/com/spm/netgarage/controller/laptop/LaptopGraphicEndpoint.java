@@ -63,4 +63,9 @@ public class LaptopGraphicEndpoint {
 
         return laptopGraphicApi.updateLaptopGraphic(laptopGraphic);
     }
+
+    @GetMapping("/check/{name}")
+    public boolean checkAvailable(@PathVariable String name) {
+        return laptopGraphicApi.checkAvailable(name);
+    }
 }

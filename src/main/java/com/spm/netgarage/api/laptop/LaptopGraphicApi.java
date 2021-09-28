@@ -38,4 +38,8 @@ public class LaptopGraphicApi {
     public ResponseEntity<?> deleteLaptopGraphicById(String id) {
         return laptopGraphicDataAdapter.deleteById(id);
     }
+
+    public boolean checkAvailable(String name) {
+        return laptopGraphicDataAdapter.findByName(name);
+    }
 }

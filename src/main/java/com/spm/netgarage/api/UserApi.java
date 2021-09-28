@@ -1,10 +1,15 @@
 package com.spm.netgarage.api;
 
+
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.spm.netgarage.dal.model.User;
+import com.spm.netgarage.dal.model.UserFeedback;
 import com.spm.netgarage.domain.UserDataAdapter;
 import com.spm.netgarage.domain.UserLoginDto;
 import com.spm.netgarage.dto.UserFeedbackDto;
@@ -48,4 +53,7 @@ public class UserApi {
 		return userDataAdapter.addUserFeedback(feedback);
 	}
 
+	public List<UserFeedback> getFeedbackAll() {
+		return userDataAdapter.getUserFeedbackAll();
+	}
 }

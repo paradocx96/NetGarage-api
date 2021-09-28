@@ -1,5 +1,7 @@
 package com.spm.netgarage.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spm.netgarage.api.UserApi;
 import com.spm.netgarage.dal.model.User;
+import com.spm.netgarage.dal.model.UserFeedback;
 import com.spm.netgarage.domain.UserLoginDto;
 import com.spm.netgarage.dto.UserFeedbackDto;
 import com.spm.netgarage.dto.UserRegisterDto;
@@ -67,4 +70,8 @@ public class UserEndPoint {
 		return userApi.addUserFeedback(feedback);
 	}
   
+	@GetMapping("/get-feedback-all")
+	public List<UserFeedback> getFeedBackAll() {
+		return userApi.getFeedbackAll();
+	}
 }

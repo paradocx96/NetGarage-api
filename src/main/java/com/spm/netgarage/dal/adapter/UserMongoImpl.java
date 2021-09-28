@@ -1,6 +1,7 @@
 package com.spm.netgarage.dal.adapter;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -255,6 +256,23 @@ public class UserMongoImpl implements UserDataAdapter{
 		
 		// return success MSG to frontEnd user is updated successfully
 		return ResponseEntity.ok(new MessageResponseDto("Your comment added successfully!"));
+	}
+
+	@Override
+	public List<UserFeedback> getUserFeedbackAll() {
+		
+		List<UserFeedback> userFeedbackObj = userFeedbackRepository.findAll();
+		
+//		List<UserFeedback> userFeedbacks = new ArrayList<>();
+//		
+//		for(UserFeedback feedback : userFeedbackObj) {
+//			
+//			UserFeedback userFeedback = new UserFeedback();
+//			
+//			laptop.
+//		}
+
+		 return userFeedbackObj;
 	}
 
 }

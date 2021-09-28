@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import com.spm.netgarage.dal.model.User;
+import com.spm.netgarage.dto.UserFeedbackDto;
 import com.spm.netgarage.dto.UserRegisterDto;
 
 public interface UserDataAdapter {
@@ -16,5 +17,6 @@ public interface UserDataAdapter {
 	ResponseEntity<?> loginAccount(UserLoginDto user);
 	ResponseEntity<?> forgotPassword(UserRegisterDto user);
 	ResponseEntity<?> resetPassword(UserRegisterDto user);
+	ResponseEntity<?> addUserFeedback(UserFeedbackDto feedback);
 
 }

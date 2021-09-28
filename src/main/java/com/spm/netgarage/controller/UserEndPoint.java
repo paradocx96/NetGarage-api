@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spm.netgarage.api.UserApi;
 import com.spm.netgarage.dal.model.User;
 import com.spm.netgarage.domain.UserLoginDto;
+import com.spm.netgarage.dto.UserFeedbackDto;
 import com.spm.netgarage.dto.UserRegisterDto;
 
 @RestController
@@ -59,6 +60,11 @@ public class UserEndPoint {
 	@PostMapping("/reset-password")
 	public ResponseEntity<?> userResetPassword(@Valid @RequestBody UserRegisterDto user){
 		return userApi.resetPassword(user);
+	}
+	
+	@PostMapping("/add-feedback")
+	public ResponseEntity<?> userAddFeedback(@Valid @RequestBody UserFeedbackDto feedback){
+		return userApi.addUserFeedback(feedback);
 	}
   
 }

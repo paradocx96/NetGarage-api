@@ -24,12 +24,15 @@ import com.spm.netgarage.dal.model.EmailSender;
 import com.spm.netgarage.dal.model.ForgotPasswordEmailSender;
 import com.spm.netgarage.dal.model.Role;
 import com.spm.netgarage.dal.model.User;
+import com.spm.netgarage.dal.model.UserFeedback;
 import com.spm.netgarage.dal.repository.RoleMongoRepository;
+import com.spm.netgarage.dal.repository.UserFeedbackMongoRepository;
 import com.spm.netgarage.dal.repository.UserMongoRepository;
 import com.spm.netgarage.domain.JwtResponseDto;
 import com.spm.netgarage.domain.UserDataAdapter;
 import com.spm.netgarage.domain.UserLoginDto;
 import com.spm.netgarage.dto.MessageResponseDto;
+import com.spm.netgarage.dto.UserFeedbackDto;
 import com.spm.netgarage.dto.UserRegisterDto;
 import com.spm.netgarage.security.jwt.JwtUtils;
 
@@ -42,6 +45,9 @@ public class UserMongoImpl implements UserDataAdapter{
 	
 	@Autowired
 	RoleMongoRepository roleRepository;
+	
+	@Autowired
+	private UserFeedbackMongoRepository userFeedbackRepository;
 	
 	@Autowired
 	ForgotPasswordEmailSender forgotPasswordEmailSender;
@@ -227,6 +233,28 @@ public class UserMongoImpl implements UserDataAdapter{
 		
 		// return success MSG to frontEnd user is updated successfully
 		return ResponseEntity.ok(new MessageResponseDto("Successfully updated your password!"));
+	}
+
+	@Override
+	public ResponseEntity<?> addUserFeedback(@Valid @RequestBody UserFeedbackDto feedback) {
+		
+		String nickName;
+		
+		if(feedback.getNickName() == null || feedback.getNickName() == "") {
+			nickName = "Anonymous";
+		}else {
+			nickName = feedback.getNickName();
+		}
+		
+		
+		UserFeedback userFeedback = new UserFeedback(	feedback.getDeviceID(),
+														nickName,
+														feedback.getComment());
+		
+		userFeedbackRepository.save(userFeedback);
+		
+		// return success MSG to frontEnd user is updated successfully
+		return ResponseEntity.ok(new MessageResponseDto("Your comment added successfully!"));
 	}
 
 }

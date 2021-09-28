@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.spm.netgarage.dal.model.User;
 import com.spm.netgarage.domain.UserDataAdapter;
 import com.spm.netgarage.domain.UserLoginDto;
+import com.spm.netgarage.dto.UserFeedbackDto;
 import com.spm.netgarage.dto.UserRegisterDto;
 
 @Service
@@ -41,6 +42,10 @@ public class UserApi {
 	
 	public ResponseEntity<?> resetPassword(UserRegisterDto user){
 		return userDataAdapter.resetPassword(user);
+	}
+	
+	public ResponseEntity<?> addUserFeedback(UserFeedbackDto feedback){
+		return userDataAdapter.addUserFeedback(feedback);
 	}
 
 }

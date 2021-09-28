@@ -1,22 +1,17 @@
-package com.spm.netgarage.dal.model;
+package com.spm.netgarage.dto;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection = "userFeedbacks")
-public class UserFeedback {
+public class UserFeedbackDto {
 	
-	@Id
 	private String id;
 	private String deviceID;
 	private String nickName;
 	private String comment;
 	
-	public UserFeedback() {
+	public UserFeedbackDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public UserFeedback(String deviceID, String nickName, String comment) {
+	public UserFeedbackDto(String deviceID, String nickName, String comment) {
 		this.deviceID = deviceID;
 		this.nickName = nickName;
 		this.comment = comment;	
@@ -48,6 +43,7 @@ public class UserFeedback {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
 
 
 }

@@ -18,9 +18,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Component
 public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
+
+    public static final Logger LOGGER = Logger.getLogger(LaptopBrandAdapterMongoImpl.class.getName());
 
     private final LaptopBrandRepository repository;
     private final MongoTemplate mongoTemplate;
@@ -110,5 +114,20 @@ public class LaptopBrandAdapterMongoImpl implements LaptopBrandDataAdapter {
         laptopBrandList.add(laptopBrand);
 
         return laptopBrandList;
+    }
+
+    @Override
+    public boolean findByName(String name) {
+        boolean isAvailable = false;
+        try {
+            String value = repository.findByName(name).getName();
+            if (value != null) {
+                isAvailable = true;
+            }
+            return isAvailable;
+        } catch (NullPointerException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            return isAvailable;
+        }
     }
 }

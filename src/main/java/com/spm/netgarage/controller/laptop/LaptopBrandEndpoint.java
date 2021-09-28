@@ -63,4 +63,9 @@ public class LaptopBrandEndpoint {
 
         return laptopBrandApi.updateLaptopBrand(laptopBrand);
     }
+
+    @GetMapping("/check/{brand}")
+    public boolean checkBrandAvailable(@PathVariable String brand) {
+        return laptopBrandApi.checkBrandAvailable(brand);
+    }
 }

@@ -27,6 +27,10 @@ public class UserApi {
 		return userDataAdapter.updateAccount(userRegisterDto);
 	}
 	
+	public ResponseEntity<?> deleteUserAccount(String id){
+		return userDataAdapter.deleteAccount(id);
+	}
+	
 	public ResponseEntity<?> loginAccount(UserLoginDto userLoginDto){
 		return userDataAdapter.loginAccount(userLoginDto);
 	}
@@ -38,4 +42,5 @@ public class UserApi {
 	public ResponseEntity<?> resetPassword(UserRegisterDto user){
 		return userDataAdapter.resetPassword(user);
 	}
+
 }

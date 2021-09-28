@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,11 @@ public class UserEndPoint {
 		return userApi.updateUserAccount(userRegisterDto);
 	}
 	
+	@DeleteMapping("/delete-account/{id}")
+	public ResponseEntity<?> deleteUserAccount(@PathVariable String id){
+		return userApi.deleteUserAccount(id);
+  }
+  
 	@PostMapping("/sign-in")
 	public ResponseEntity<?> loginUserAccount(@Valid @RequestBody UserLoginDto userLoginDto){
 		return userApi.loginAccount(userLoginDto);
@@ -54,4 +60,5 @@ public class UserEndPoint {
 	public ResponseEntity<?> userResetPassword(@Valid @RequestBody UserRegisterDto user){
 		return userApi.resetPassword(user);
 	}
+  
 }

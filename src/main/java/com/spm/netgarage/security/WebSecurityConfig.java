@@ -76,7 +76,64 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			
 			//phone access control
 			//temporarily permitted all
-			.antMatchers("/api/phone/**").permitAll()
+			//.antMatchers("/api/phone/**").permitAll()
+			
+			//phone brand access control
+			//permit all for external users
+			.antMatchers("/api/phone/brand/getAllBrands/**").permitAll()
+			
+			//limited access to internal brand functions
+			.antMatchers("/api/phone/brand/addBrand/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/api/phone/brand/getBrandById/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/api/phone/brand/getBrandByName/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/api/phone/brand/updateBrand/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/api/phone/brand/deleteBrandById/**").hasAnyRole("EDITOR","ADMIN")
+			.antMatchers("/api/phone/brand/isBrandAvailable/**").hasAnyRole("EDITOR","ADMIN")
+			
+			//phone chipset control
+			//permit all for external users.
+			.antMatchers("/api/phone/chipset/getByBrandModel/**").permitAll()
+			.antMatchers("/api/phone/chipset/getAllChipsets/**").permitAll()
+			
+			//limited access to internal chipset functions
+			.antMatchers("/api/phone/chipset/addChipset/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/chipset/getChipsetById/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/chipset/updateChipset/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/chipset/isChipsetAvailable/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/chipset/getByBrandModel/**").hasAnyRole("EDITOR", "ADMIN")
+			
+			//phone OS access control
+			//permit all for external users
+			.antMatchers("/api/phone/os/getAllOS/**").permitAll()
+			
+			//limited access control for Phone OS
+			.antMatchers("/api/phone/os/addOS/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/os/getOSById/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/os/update/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/os/deleteOS/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/os/isOsNameAvailable/**").hasAnyRole("EDITOR", "ADMIN")
+			
+			//phone related access control
+			//permit all for external users
+			.antMatchers("/api/phone/phones/getPhoneByName/**").permitAll()
+			.antMatchers("/api/phone/phones/getPhoneById/**").permitAll()
+			.antMatchers("/api/phone/phones/getPublishedPhonesByBrand/**").permitAll()
+			.antMatchers("/api/phone/phones/getPublishedPhonesByChipset/**").permitAll()
+			.antMatchers("/api/phone/phones/getPublishedPhonesByOs/**").permitAll()
+			
+			//limited access control for phone related functionality
+			.antMatchers("/api/phone/phones/getAllPhones/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/addPhone/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/updatePhone/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/deletePhone/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/isPhoneAvailable/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/getPublihsedPhones/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/getUnpublihsedPhones/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/publishPhone/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/unpublishPhone/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/getPhonesByChipset/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/getPhonesByOs/**").hasAnyRole("EDITOR", "ADMIN")
+			.antMatchers("/api/phone/phones/getPhonesByBrand/**").hasAnyRole("EDITOR", "ADMIN")
 
 			.anyRequest().authenticated();
 

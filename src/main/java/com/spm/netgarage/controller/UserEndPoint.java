@@ -74,4 +74,10 @@ public class UserEndPoint {
 	public List<UserFeedback> getFeedBackAll() {
 		return userApi.getFeedbackAll();
 	}
+	
+	@GetMapping("/get-feedback-by-deviceId/{id}")
+	public List<UserFeedbackDto> getUserFeedbackDeviceByID(@PathVariable String id) {
+		return userApi.getUserFeedbackDeviceByID(id);
+	}
+	
 }

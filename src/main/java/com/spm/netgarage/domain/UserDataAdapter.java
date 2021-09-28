@@ -20,5 +20,5 @@ public interface UserDataAdapter {
 	ResponseEntity<?> resetPassword(UserRegisterDto user);
 	ResponseEntity<?> addUserFeedback(UserFeedbackDto feedback);
 	List<UserFeedback> getUserFeedbackAll();
-
+	List<UserFeedbackDto> getUserFeedbackDeviceByID(String id);
 }

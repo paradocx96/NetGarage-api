@@ -56,4 +56,8 @@ public class UserApi {
 	public List<UserFeedback> getFeedbackAll() {
 		return userDataAdapter.getUserFeedbackAll();
 	}
+	
+	public List<UserFeedbackDto> getUserFeedbackDeviceByID(String id){
+		return userDataAdapter.getUserFeedbackDeviceByID(id);
+	}
 }

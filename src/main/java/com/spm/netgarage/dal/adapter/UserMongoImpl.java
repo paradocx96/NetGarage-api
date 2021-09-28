@@ -263,16 +263,30 @@ public class UserMongoImpl implements UserDataAdapter{
 		
 		List<UserFeedback> userFeedbackObj = userFeedbackRepository.findAll();
 		
-//		List<UserFeedback> userFeedbacks = new ArrayList<>();
-//		
-//		for(UserFeedback feedback : userFeedbackObj) {
-//			
-//			UserFeedback userFeedback = new UserFeedback();
-//			
-//			laptop.
-//		}
-
 		 return userFeedbackObj;
+	}
+
+	@Override
+	public List<UserFeedbackDto> getUserFeedbackDeviceByID(String id) {
+
+		List<UserFeedback> userFeedbacks = userFeedbackRepository.findBydeviceID(id);
+		
+		List<UserFeedbackDto> feedback = new ArrayList<>();
+		
+		for(UserFeedback userFeedback : userFeedbacks) {
+			
+			UserFeedbackDto userFeedbackDto = new UserFeedbackDto();
+			
+			userFeedbackDto.setId(userFeedback.getId());
+			userFeedbackDto.setDeviceID(userFeedback.getDeviceID());
+			userFeedbackDto.setNickName(userFeedback.getNickName());
+			userFeedbackDto.setComment(userFeedback.getComment());
+			
+			feedback.add(userFeedbackDto);
+		}
+		
+		
+		return feedback;
 	}
 
 }

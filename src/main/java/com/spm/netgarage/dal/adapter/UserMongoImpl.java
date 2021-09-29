@@ -1,6 +1,7 @@
 package com.spm.netgarage.dal.adapter;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,12 +25,15 @@ import com.spm.netgarage.dal.model.EmailSender;
 import com.spm.netgarage.dal.model.ForgotPasswordEmailSender;
 import com.spm.netgarage.dal.model.Role;
 import com.spm.netgarage.dal.model.User;
+import com.spm.netgarage.dal.model.UserFeedback;
 import com.spm.netgarage.dal.repository.RoleMongoRepository;
+import com.spm.netgarage.dal.repository.UserFeedbackMongoRepository;
 import com.spm.netgarage.dal.repository.UserMongoRepository;
 import com.spm.netgarage.domain.JwtResponseDto;
 import com.spm.netgarage.domain.UserDataAdapter;
 import com.spm.netgarage.domain.UserLoginDto;
 import com.spm.netgarage.dto.MessageResponseDto;
+import com.spm.netgarage.dto.UserFeedbackDto;
 import com.spm.netgarage.dto.UserRegisterDto;
 import com.spm.netgarage.security.jwt.JwtUtils;
 
@@ -42,6 +46,9 @@ public class UserMongoImpl implements UserDataAdapter{
 	
 	@Autowired
 	RoleMongoRepository roleRepository;
+	
+	@Autowired
+	private UserFeedbackMongoRepository userFeedbackRepository;
 	
 	@Autowired
 	ForgotPasswordEmailSender forgotPasswordEmailSender;
@@ -227,6 +234,59 @@ public class UserMongoImpl implements UserDataAdapter{
 		
 		// return success MSG to frontEnd user is updated successfully
 		return ResponseEntity.ok(new MessageResponseDto("Successfully updated your password!"));
+	}
+
+	@Override
+	public ResponseEntity<?> addUserFeedback(@Valid @RequestBody UserFeedbackDto feedback) {
+		
+		String nickName;
+		
+		if(feedback.getNickName() == null || feedback.getNickName() == "") {
+			nickName = "Anonymous";
+		}else {
+			nickName = feedback.getNickName();
+		}
+		
+		
+		UserFeedback userFeedback = new UserFeedback(	feedback.getDeviceID(),
+														nickName,
+														feedback.getComment());
+		
+		userFeedbackRepository.save(userFeedback);
+		
+		// return success MSG to frontEnd user is updated successfully
+		return ResponseEntity.ok(new MessageResponseDto("Your comment added successfully!"));
+	}
+
+	@Override
+	public List<UserFeedback> getUserFeedbackAll() {
+		
+		List<UserFeedback> userFeedbackObj = userFeedbackRepository.findAll();
+		
+		 return userFeedbackObj;
+	}
+
+	@Override
+	public List<UserFeedbackDto> getUserFeedbackDeviceByID(String id) {
+
+		List<UserFeedback> userFeedbacks = userFeedbackRepository.findBydeviceID(id);
+		
+		List<UserFeedbackDto> feedback = new ArrayList<>();
+		
+		for(UserFeedback userFeedback : userFeedbacks) {
+			
+			UserFeedbackDto userFeedbackDto = new UserFeedbackDto();
+			
+			userFeedbackDto.setId(userFeedback.getId());
+			userFeedbackDto.setDeviceID(userFeedback.getDeviceID());
+			userFeedbackDto.setNickName(userFeedback.getNickName());
+			userFeedbackDto.setComment(userFeedback.getComment());
+			
+			feedback.add(userFeedbackDto);
+		}
+		
+		
+		return feedback;
 	}
 
 }

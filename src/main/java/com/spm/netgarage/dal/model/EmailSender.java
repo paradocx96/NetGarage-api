@@ -64,7 +64,7 @@ public class EmailSender {
 		 helper.setSubject(subject);
 			
 		 content = content.replace("[[name]]", getUsername());
-		 String verifyURL = "http://localhost:3000/login";
+		 String verifyURL = "https://net-garage.vercel.app/login";
 		 content = content.replace("[[URL]]", verifyURL);
 		 helper.setText(content, true);
 			

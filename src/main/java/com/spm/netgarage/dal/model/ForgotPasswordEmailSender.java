@@ -66,7 +66,7 @@ public class ForgotPasswordEmailSender {
 		 helper.setSubject(subject);
 			
 
-		 String verifyURL = "http://localhost:3000/reset-password/"+userID;
+		 String verifyURL = "https://net-garage.vercel.app/reset-password/"+userID;
 		 content = content.replace("[[URL]]", verifyURL);
 		 helper.setText(content, true);
 			

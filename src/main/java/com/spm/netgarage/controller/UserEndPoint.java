@@ -80,4 +80,9 @@ public class UserEndPoint {
 		return userApi.getUserFeedbackDeviceByID(id);
 	}
 	
+	@GetMapping("/get-all-users")
+	public List<User> getAllUsers(){
+		return userApi.getAllUsers();
+	}
+	
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 import com.spm.netgarage.dal.model.User;
 import com.spm.netgarage.dal.model.UserFeedback;
 import com.spm.netgarage.domain.UserDataAdapter;
@@ -59,5 +60,9 @@ public class UserApi {
 	
 	public List<UserFeedbackDto> getUserFeedbackDeviceByID(String id){
 		return userDataAdapter.getUserFeedbackDeviceByID(id);
+	}
+	
+	public List<User> getAllUsers(){
+		return userDataAdapter.getAllUsers();
 	}
 }

@@ -289,4 +289,12 @@ public class UserMongoImpl implements UserDataAdapter{
 		return feedback;
 	}
 
+	@Override
+	public List<User> getAllUsers() {
+		
+		List<User> users = userRepository.findAll();
+		
+		return users;
+	}
+
 }

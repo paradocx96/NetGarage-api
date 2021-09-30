@@ -21,4 +21,5 @@ public interface UserDataAdapter {
 	ResponseEntity<?> addUserFeedback(UserFeedbackDto feedback);
 	List<UserFeedback> getUserFeedbackAll();
 	List<UserFeedbackDto> getUserFeedbackDeviceByID(String id);
+	List<User> getAllUsers();
 }

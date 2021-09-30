@@ -120,6 +120,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/api/phone/phones/getPublishedPhonesByBrand/**").permitAll()
 			.antMatchers("/api/phone/phones/getPublishedPhonesByChipset/**").permitAll()
 			.antMatchers("/api/phone/phones/getPublishedPhonesByOs/**").permitAll()
+			.antMatchers("/api/phone/phones/getPublihsedPhones/**").permitAll()
 			
 			//limited access control for phone related functionality
 			.antMatchers("/api/phone/phones/getAllPhones/**").hasAnyRole("EDITOR", "ADMIN")
@@ -127,7 +128,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/api/phone/phones/updatePhone/**").hasAnyRole("EDITOR", "ADMIN")
 			.antMatchers("/api/phone/phones/deletePhone/**").hasAnyRole("EDITOR", "ADMIN")
 			.antMatchers("/api/phone/phones/isPhoneAvailable/**").hasAnyRole("EDITOR", "ADMIN")
-			.antMatchers("/api/phone/phones/getPublihsedPhones/**").hasAnyRole("EDITOR", "ADMIN")
+			//.antMatchers("/api/phone/phones/getPublihsedPhones/**").hasAnyRole("EDITOR", "ADMIN")
 			.antMatchers("/api/phone/phones/getUnpublihsedPhones/**").hasAnyRole("EDITOR", "ADMIN")
 			.antMatchers("/api/phone/phones/publishPhone/**").hasAnyRole("EDITOR", "ADMIN")
 			.antMatchers("/api/phone/phones/unpublishPhone/**").hasAnyRole("EDITOR", "ADMIN")

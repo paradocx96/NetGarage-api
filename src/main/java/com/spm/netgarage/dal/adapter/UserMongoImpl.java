@@ -124,7 +124,7 @@ public class UserMongoImpl implements UserDataAdapter{
 		User exist = userRepository.findById(user.getId()).get();
 		
 		exist.setUsername(user.getUsername());
-		exist.setPassword(user.getPassword());
+		exist.setPassword(passwordEncoder.encode(user.getPassword()));
 		exist.setEmail(user.getEmail());
 		
 		userRepository.save(exist);
